@@ -6,14 +6,11 @@ int m1,d1,f;
 int date(int d,int leap_yr)
 {
 	int m[]={31,28,31,30,31,30,31,31,30,31,30,31};
+	m[1]+=leap_yr;
 	m1=1;
 	for(int i=0;i<=11,d>m[i];i++)
 	{
 		d-=m[i];
-		if(i=1)
-		{
-			d-=leap_yr;
-		}
 		m1++;
 	}
 	d1=d;
@@ -55,7 +52,7 @@ int main()
 	scanf("%d",&y);
 	printf("\nEnter the Number : ");
 	scanf("%d",&d);
-	if(y%4==0)
+	if(y%400==0||(y%4==0&&y%100!=0))
 	{
 		y+=(d/366);
 		d%=366;
