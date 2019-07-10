@@ -29,7 +29,7 @@ int main()
     {
         printf("\n\nERROR!");
         exit(7);  
-     }
+    }
 	if(y%400==0||(y%4==0&&y%100!=0))
 			res=date(d,m,1);
 	else

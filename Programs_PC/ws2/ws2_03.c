@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 int m1,d1,f; 
 
@@ -52,6 +52,11 @@ int main()
 	scanf("%d",&y);
 	printf("\nEnter the Number : ");
 	scanf("%d",&d);
+	if(y<=0||d<=0)
+    {
+        printf("\n\nERROR!");
+        exit(7);  
+    }
 	if(y%400==0||(y%4==0&&y%100!=0))
 	{
 		y+=(d/366);
