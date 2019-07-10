@@ -7,7 +7,7 @@ int main()
 	printf("Enter the Input : ");
 	for (i = 1;; i++)
 	{
-		scanf_s("%d", &Val);
+		scanf("%d", &Val);
 		if (Val == -999)
 			break;
 		Average += Val;

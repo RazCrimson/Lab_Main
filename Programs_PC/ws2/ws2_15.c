@@ -6,13 +6,13 @@ int main()
     float Slope_line,Slope_perpendicular_Bisector,inter;
     printf("\n ##### Finding ther Perpendicular Bisector ####");
     printf("\nEnter the x-coordinate of the first point : ");
-    scanf_s("%d",&x1);
+    scanf("%d",&x1);
     printf("\nEnter the y-coordinate of the first point : ");
-    scanf_s("%d",&y1);
+    scanf("%d",&y1);
     printf("\nEnter the x-coordinate of the second point : ");
-    scanf_s("%d",&x2);
+    scanf("%d",&x2);
     printf("\nEnter the y-coordinate of the second point : ");
-    scanf_s("%d",&y2);
+    scanf("%d",&y2);
     x_mid=(x1+x2)/2;
     y_mid=(y1+y2)/2;
     Slope_line=(y2-y1)/(x2-x1);

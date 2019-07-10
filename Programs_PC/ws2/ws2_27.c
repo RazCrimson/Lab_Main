@@ -7,12 +7,12 @@ int main()
     float Val,Standard_Deviation=0,Sum_Squares=0,Average=0,Max_val=0,Min_val=0;
     printf("\n ##### Standard Deviation Calculation ####\n");
 	printf("Enter the Input : ");
-	scanf_s("%d", &Input);
+	scanf("%d", &Input);
     if (Input >= 1)
 	{
 		for (int i = 0; i < Input; i++)
 		{
-			scanf_s("%f", &Val);
+			scanf("%f", &Val);
 			if (i == 0)
             	Min_val = Max_val= Val;
             if (Min_val > Val)

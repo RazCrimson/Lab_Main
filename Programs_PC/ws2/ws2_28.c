@@ -7,12 +7,12 @@ int main()
 	float Val, avg = 0;
 	printf("\n ##### Temperature Calculation ####\n");
 	printf("Enter the no. of Inputs : ");
-	scanf_s("%u", &Input);
+	scanf("%u", &Input);
 	if (Input >= 1)
 	{
 		for (int i = 0; i < Input; i++)
 		{
-			scanf_s("%u", &Val);
+			scanf("%u", &Val);
 			if (Val >= 85)
 			{
 				hot_d++;

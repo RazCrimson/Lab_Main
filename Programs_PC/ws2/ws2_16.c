@@ -5,9 +5,9 @@ int main()
 	float m, n, Side1, Side2, Hypotenuse;
 	printf("\n ##### Using the Pythagoras Theorum ####");
 	printf("\nEnter the first value : ");
-	scanf_s("%f", &m);
+	scanf("%f", &m);
 	printf("\nEnter the second value : ");
-	scanf_s("%f", &n);
+	scanf("%f", &n);
 	if (n > m)
 	{
 		Hypotenuse = n;

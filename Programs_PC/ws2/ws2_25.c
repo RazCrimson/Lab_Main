@@ -6,7 +6,7 @@ int main()
 	long long Input;
 	printf("\n ##### Sum of the Digits of the given Number ####\n");
 	printf("\n\nEnter the number : ");
-	scanf_s("%lld", &Input);
+	scanf("%lld", &Input);
 	printf("\nThe Digits from right are : ");
 	for (; Input != 0; Input /= 10)
 	{
