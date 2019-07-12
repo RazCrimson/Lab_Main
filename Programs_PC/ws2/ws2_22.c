@@ -17,6 +17,6 @@ int main()
 				temp = Val;
 		}
 	}
-	printf("\n\nThe Smallest Interger inputted is : %d", temp);
+	printf("\n\nThe Smallest Interger inputted is : %d\n", temp);
 	return 0;
 }
