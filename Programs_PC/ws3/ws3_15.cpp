@@ -4,22 +4,22 @@
 int main()
 {
     unsigned short Input;
-    cout<<"\nEnter the Input : ";
-    cin>>Input;
+    std::cout<<"\nEnter the Input : ";
+    std::cin>>Input;
     if(Input>=100&&Input<=999)
     {
-        if((Input-((Input%10)+((int)(Input/100)*100)==((Input%10)+(Input/100))
-            cout<<"\nThe Middle Digit is the sum of the other two digits";
+        if(Input-((Input%10)+((int)(Input/100)*100)==((Input%10)+(Input/100))))
+            std::cout<<"\nThe Middle Digit is the sum of the other two digits";
         else
         {
-            cout<<"\nThe Middle Digit is not the sum of the other two digits";
+            std::cout<<"\nThe Middle Digit is not the sum of the other two digits";
         }
     }
     else
     {
-        cout<<"\nERROR!\nEnter a three digit number";
+        std::cout<<"\nERROR!\nEnter a three digit number";
         exit(7);
     }
-    cout<<endl;
+    std::cout<<std::endl;
     return 0;
 }
