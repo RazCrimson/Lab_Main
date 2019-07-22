@@ -32,6 +32,7 @@ int main()
     {
         res+=1.0/fact(i);
     }
-    printf("\nResult is ")
+    printf("\nResult is %f ",res);
+    return 0;
 
 }
