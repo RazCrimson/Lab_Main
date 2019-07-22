@@ -15,11 +15,21 @@ int main()
     scanf("%d",&y2);
     x_mid=(x1+x2)/2;
     y_mid=(y1+y2)/2;
-    Slope_line=(y2-y1)/(x2-x1);
-    Slope_perpendicular_Bisector=(-1/Slope_line);
-    inter=y_mid-(Slope_perpendicular_Bisector*x_mid);
     printf("\nThe First point is (%d,%d)",x1,y1);
     printf("\nThe Second point is (%d,%d)",x2,y2);
-    printf("\nThe Equation of the Perpendicular Bisector is y = %fx + %f)",Slope_perpendicular_Bisector,inter);
+    if((x2-x1)!=0)
+    {
+        Slope_line=(y2-y1)/(x2-x1);
+        if(Slope_line!=0)
+        {
+            Slope_perpendicular_Bisector=(-1/Slope_line);
+            inter=y_mid-(Slope_perpendicular_Bisector*x_mid);
+            printf("\nThe Equation of the Perpendicular Bisector is y = %.2fx + %.2f",Slope_perpendicular_Bisector,inter);
+        }
+        else
+            printf("\nThe Equation of the Perpendicular Bisector is x = %.2f",x_mid);
+    }
+    else
+        printf("\nThe Equation of the Perpendicular Bisector is y = %.2f",y_mid);
     return 0;
 }

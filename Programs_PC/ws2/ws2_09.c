@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-void Swap(int *a, int* b)
+void Swap(int* a, int* b)
 {
 	int temp;
 	temp = *a;
@@ -21,7 +21,6 @@ int Encrypt()
 		for (int i = 3; i >= 0; i--)
 		{
 			Pro[3 - i] = (Input / (pow(10, i))) - (Remainder *= 10);
-			printf("\n%d   %d",3-i, Pro[3 - i]);
 			Remainder += Pro[3 - i];
 			Pro[3 - i] = (Pro[3 - i] + 7) % 10;
 		}
@@ -30,7 +29,7 @@ int Encrypt()
 		Remainder = 0;
 		for (int i = 3; i >= 0; i--)
 		{
-			Remainder += Pro[3-i] * pow(10, i);
+			Remainder += Pro[3 - i] * pow(10, i);
 		}
 		return Remainder;
 	}
@@ -52,7 +51,6 @@ int Decrypt()
 		for (int i = 3; i >= 0; i--)
 		{
 			Pro[3 - i] = (Input / (pow(10, i))) - (Remainder *= 10);
-			printf("\n%d   %d", 3 - i, Pro[3 - i]);
 			Remainder += Pro[3 - i];
 			if (Pro[3 - i] >= 7)
 				Pro[3 - i] -= 7;
@@ -88,6 +86,13 @@ int main()
 	case 2: out = Decrypt(); break;
 	default: printf("\n\nError!!! Invalid choice.");  exit(0);
 	}
-	printf("\n\nThe Output value is : %4.d \n", out);
+	printf("\n\nThe Output value is : ");
+	if (out / 1000 == 0)
+		printf("0");
+	if (out / 100 == 0)
+		printf("0");
+	if (out / 10 == 0)
+		printf("0");
+	printf("%d \n", out);
 	return 0;
 }

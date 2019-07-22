@@ -16,9 +16,9 @@ int main()
     m=-m;
 	printf("\nEnter the value of a of the second equation : ");
 	scanf("%d",&c);
-	printf("\nEnter the value of m of the second equation : ");
+	printf("\nEnter the value of b of the second equation : ");
 	scanf("%d",&d);
-	printf("\nEnter the value of n of the second equation : ");
+	printf("\nEnter the value of c of the second equation : ");
 	scanf("%d",&n);
 	n=-n;
     if(!(a*d-b*c))
@@ -31,8 +31,20 @@ int main()
 	printf("\n\nThe Point of Intersection of the Two Line is (%.2f,%.2f) : ",x1,x2);
 	s1=(-a/b);
     s2=-c/d;
-    s=(s1-s2)/(1+(s1*s2));
+	if(b!=0&&d!=0)
+	{    s=(s1-s2)/(1+(s1*s2));
+    	if(s<0)
+        	s=-s;
+    	printf("\n\nThe Angle Between Lines is : %.2f degrees ",atan(s)*180/3.14);
+		return 0;
+	}
+	else if(b==0)
+		s1=0;
+    else if(d==0)
+		s2=0;
+	s=(s1-s2)/(1+(s1*s2));
     if(s<0)
-        s=-s;
-    printf("\n\nThe Angle Between Lines is : %.2f ",atan(s));
+       	s=-s;
+    printf("\n\nThe Angle Between Lines is : %.2f degrees ",90-(atan(s)*180/3.14));
 	return 0;
+}

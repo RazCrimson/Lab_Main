@@ -22,5 +22,5 @@ int main()
 
 
 
-/* The problem can also be handled with Switch statement, but it is cubersome.
+/* The problem can also be handled with Switch statement, but it is cubersome and redundant.
 	The Switch version of the program is saved as ws2_12(ver2).c */

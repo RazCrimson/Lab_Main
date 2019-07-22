@@ -13,7 +13,7 @@ int main()
     printf("\n\tPayment\tInterest\tPrincipal\tPrincipal");
     for(int i=1;P>0;i++)
     {
-        printf("")
+        printf("");
     }
     
 
