@@ -2,7 +2,7 @@
 
 int main()
 {
-	int Input = 1,Val=0,temp=0;
+	int Input = 1, Val = 0, temp = 0;
 	printf("\n ##### Minimun Number calculation ####\n");
 	printf("Enter the Input : ");
 	scanf("%d", &Input);
