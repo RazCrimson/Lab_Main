@@ -13,7 +13,9 @@ int main()
 		printf("\nERROR!!");
 		exit(7);
 	}
-	char str[18];;
+	char str[18];
+	if(n%2!=0)
+		n++;
 	for (i = 0; i <= n  / 2; i++)
 		str[i] = str[n - i] = (48 + i + 1);
 	str[n+1] = '\0';
