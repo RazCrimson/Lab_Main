@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**"
-                "Z:\Mingw\lib\gcc\x86_64-w64-mingw32\5.1.0\include\ssp"
+                "Z:/Mingw/lib/gcc/x86_64-w64-mingw32/5.1.0/include/ssp/**"
             ],
             "defines": [
                 "_DEBUG",
