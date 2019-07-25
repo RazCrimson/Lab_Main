@@ -18,7 +18,7 @@ int main()
 		printf("\nTOO LOW\n");
 	else if (abs(abs(Given) - abs(Guess)) < 5)
 		printf("\nTOO CLOSE\n");
-	else if ((Given * 5 >= Guess) || (Given / 5 <= Guess))
+	else if ((Guess >= Given*10) || (Given / 5 <= Guess))
 		printf("\nCLOSE\n");
 	return 0;
 }
