@@ -3,14 +3,14 @@
 
 int main()
 {
-	int n1,n2,i,flg=0;
+	int n1,n2,i;
 	short a=0;
 	printf("\nEnter the Input : ");
 	scanf("%d%d",&n1,&n2);
 	printf("\n");
-	if((n1>>31)&&(((n1>>31)&1)^((n2>>31)&1)))
+	if((n1>>31)&&((n1>>31)^(n2>>31)))
 		printf("n1neg %d is greater than %d\n",n2,n1);
-	else if((n2>>31)&&((n1>>31)^(n2>>31)))
+	else if((n2>>31)&&((n1>>31)^((n2>>31))))
 		printf("%n2neg d is greater than %d\n",n1,n2);
 	else if((n2>>31)&&(n1>>31))
 	{
@@ -34,7 +34,7 @@ int main()
 			if(!(i+1))
 				break;
 		}
-		else if(((n2>>i)&1)&&((n1>>i)^(n2>>i)))
+		else if(((n2>>i)&1)&&(((n1>>i)&1^((n2>>i)&1))
 		{
 			if(a)
 			{
