@@ -9,16 +9,21 @@ int main()
 	scanf("%d%d",&n1,&n2);
 	printf("\n");
 	if((n1>>31)&&(((n1>>31)&1)^((n2>>31)&1)))
-		printf("n1neg %d is greater than %d\n",n2,n1);
+	{
+		printf("%d is greater than %d\n",n2,n1);
+		return 0;
+	}
 	else if((n2>>31)&&((n1>>31)^(n2>>31)))
-		printf("%n2neg d is greater than %d\n",n1,n2);
+	{
+		printf("%d is greater than %d\n",n1,n2);
+		return 0;
+	}
 	else if((n2>>31)&&(n1>>31))
 	{
 		n1=~n1+1;
 		n2=~n2+1;
 		a=1;
 	}
-	printf("n1 = %d   n2 = %d\n",n1,n2);
 	for(i=30;i>=0;i--)
 	{
 		if(((n1>>i)&1)&&(((n1>>i)&1)^((n2>>i)&1)))
