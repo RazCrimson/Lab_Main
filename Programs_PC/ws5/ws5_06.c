@@ -7,7 +7,7 @@ int main()
 	int n;
 	printf("\nEnter the Input of unsigned char as a interger  : ");
 	scanf("%d",&x);
-	printf("\nENter the Input of n : ");
+	printf("\nEnter the Input of n : ");
 	scanf("%d",&n);
 	printf("\nRightmost Bit : ");
 	printf("%d",x&1);
