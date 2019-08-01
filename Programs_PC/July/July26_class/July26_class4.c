@@ -17,8 +17,8 @@ int main()
 		}
 	}
 	if(flg==2)
-		printf("\nNot Div\n");
+		printf("\nNot a power of 2\n");
 	else
-		printf("\nDiv\n");
+		printf("\nPower of 2\n");
 	return 0;
 }
