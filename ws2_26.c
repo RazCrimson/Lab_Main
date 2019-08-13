@@ -16,7 +16,7 @@ void main()
         int j=0;
         do
         {
-                x=(9/1200.0)*p;
+                x=(t/1200.0)*p;
                 y=mp-x;
                 p=p-y;
                 j++;
