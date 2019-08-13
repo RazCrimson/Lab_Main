@@ -5,9 +5,9 @@ signed int AAA = 0x7d0000f2, BBB = 0xb500004e;
 unsigned int CCC = 0x7d0000f2, DDD = 0xb500004e;
 printf( "\nUnary Operations\n\n" );
 printf( "%08x\n", -AAA ); /* ______________________________ */
-printf( "%08x\n", ̃AAA ); /* ______________________________ */
+printf( "%08x\n", ~AAA); /* ______________________________ */
 printf( "%08x\n", -BBB ); /* ______________________________ */
-printf( "%08x\n", ̃BBB ); /* ______________________________ */
+printf( "%08x\n", ~BBB); /* ______________________________ */
 printf( "\nBinary Bitwise Operations (signed)\n\n" );
 printf( "%08x\n", AAA & BBB ); /* ______________________________ */
 printf( "%08x\n", AAA ^ BBB ); /* ______________________________ */

@@ -7,7 +7,7 @@ int main()
 	int n;
 	printf("\nEnter the Input of unsigned char as a interger  : ");
 	scanf("%d",&x);
-	printf("\nENter the Input of n : ");
+	printf("\nEnter the Input of n : ");
 	scanf("%d",&n);
 	printf("\nBefore Shift : ");
 	for(int i=7;i>=0;i--)

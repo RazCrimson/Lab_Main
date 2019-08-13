@@ -3,22 +3,38 @@
 
 int main()
 {
-	short i;
-	unsigned n;
+	unsigned n,No_of_Digits;
 	printf("\n\t\t##### Printing a  Palindrome #####");
 	printf("\nEnter the value of n : ");
 	scanf("%u", &n);
-	if (n <= 0 && n > 17)
+	for (No_of_Digits = 0;; No_of_Digits++)
 	{
-		printf("\nERROR!!");
-		exit(7);
+		if (((int)(n / pow(10, No_of_Digits))) <= 0)
+			break;
 	}
-	char str[18];
-	if(n%2!=0)
-		n++;
-	for (i = 0; i <= n  / 2; i++)
-		str[i] = str[n - i] = (48 + i + 1);
-	str[n+1] = '\0';
-	printf("\n%s", str);
+	int* arr=(int*)malloc(sizeof(int));
+	for(int i=No_of_Digits-1;i>=0;i--)
+	{
+		*(arr+i)=n%10;
+		n/=10;
+	}
+	for(int i=0;i<No_of_Digits/2;i++)
+	{
+		re:
+		if(*(arr+i)==*(arr+No_of_Digits-i-1))
+			continue;
+		else if(*(arr+i)>=*(arr+No_of_Digits-i-1))
+			*(arr+No_of_Digits-i-1)=*(arr+i);
+		else if(*(arr+i)<=*(arr+No_of_Digits-i-1))
+		{
+			*(arr+i)=*(arr+i)+1;
+			goto re;
+		}
+	}
+	for (int i = 0; i < No_of_Digits; i++)
+	{
+		printf("%d",*(arr+i));
+	}
+	printf("\n");
 	return 0;
 }
