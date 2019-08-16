@@ -1,25 +1,34 @@
 #include <stdio.h>
 
 
+void printbin(unsigned char x)
+{
+    for(int i=7;i>=0;i--)
+    {
+        printf("%d",(x>>i)&1);
+    }
+}
+
 int main()
 {
 	unsigned char x;
 	int n;
 	printf("\nEnter the Input of unsigned char as a interger  : ");
 	scanf("%d",&x);
-	printf("\nEnter the Input of n : ");
-	scanf("%d",&n);
+	printbin(x);
 	printf("\nRightmost Bit : ");
-	printf("%d",x&1);
+	printbin(x&1);
 	printf("\nThree Rightmost Bit : ");
-	printf("%d",(x)&111);
+	printbin(x&0x07);
 	printf("\nLeftmost Bit : ");
-	printf("%d",(x>>31)&1);
+	printbin((x>>31)&1);
 	printf("\nThree Leftmost Bit : ");
-	printf("%d",(x>>31)&111);
-	printf("\nAfter Shift : ");
-	for(int i=7;i>=0;i--)
-		printf("%d",(x>>i)&1);
-	printf("\n");
+	printbin(x&0xe0);
+	printf("\nThree Rightmost Bits Removed :");
+	printbin(x&0xf8);
+	printf("\nLeftmost Bits Removed :");
+	printbin(x&0x1f);
+	printf("Four rightmost bits, last bit removed :")
+	printbin(x&0x0e)
 	return 0;
 }
