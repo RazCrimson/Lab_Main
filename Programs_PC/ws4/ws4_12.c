@@ -23,7 +23,7 @@ int main()
 		for (j = i; j > 0; j--)
 			printf(" ");
 		for(j=10-i;j>0;j--)
-			printf("*");
+			printf("* ");
 		printf("\n");
 	}
 	printf("\n\n");
