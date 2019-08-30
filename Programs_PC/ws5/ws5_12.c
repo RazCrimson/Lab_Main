@@ -9,7 +9,7 @@ int main()
 	for(int i=31;i>=0;i--)
 		printf("%d",(n>>i)&1);
     if(n&1==1)
-        n=n&(~(0)&0);
+        n=n&~1;
     printf("\nAfter Changing : ");
 	for(int i=31;i>=0;i--)
 		printf("%d",(n>>i)&1);
