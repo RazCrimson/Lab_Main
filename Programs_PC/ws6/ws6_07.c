@@ -1,26 +1,34 @@
 #include <stdio.h>
 #include <limits.h>
+#include <stdlib.h>
 
 
 int main()
 {
-    int min=INT_MAX,n=0;
-    printf("\nEnter the No. of Elements : ");
+    int n=0;
     scanf("%d",&n);
-    if(n<=0)
-    {
-        printf("\nERROR!! Array cant have negative no. of elements");
-        exit(-1);
-    }
     int *arr=(int*) malloc(sizeof(int)*n);
-    printf("\nEnter the Elements of the array : ");
     for(int i=0;i<=n-1;i++)
     {
-        scanf("%d",(arr+i));
-        if(arr[i]>-1&&arr[i]<min)
-            min=arr[i];
+        scanf("%d",(arr+i));       
     }
-    printf("\nThe required positive interger is %d",min-1);
+    for(int j=1;;j++)
+    {   
+        int flg=0;
+        for(int i=0;i<n-1;i++)
+        {
+            if(a[i]==j)
+            {
+                flg=1;
+                break;
+            }      
+        }
+        if(flg==0)
+        {   
+            printf("%d",j);
+            break;
+        }   
+    }
     return 0;
 
 }

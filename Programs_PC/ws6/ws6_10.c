@@ -1,28 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
+
+void swap(int *x, int *y) 
+{ 
+    *x = *x ^ *y; 
+    *y = *x ^ *y;
+    *x = *x ^ *y;
+}
 
 int main()
 {
-	int n=0,max=INT_MIN,count =0;
+	int n=0,count=0;
 	printf("\nEnter the Size of Array : ");
 	scanf("%d",&n);
-    if(n<=0)
-	{
-		printf("\nERROR!! Array index cant be negative.");
-		exit(-1);
-	}
 	int *arr=(int*)malloc(sizeof(int)*n);
-	printf("Enter the Elements of the array : ");
-    for(int i =0;i<n;i++)
-	{
-        scanf("%d",arr+i);
-        if(max<arr[i])
-            max=arr[i];
-    }
-    for(int i=0;i<n;i++)
-        if(arr[i]==max)
+	for(int i =0;i<n;i++)
+    {
+		scanf("%d",arr+i);
+        if(arr[i]<0)
             count++;
-    printf("\nThe maximum number is %d and no. of occurance is %d",max,count);
+    }
+    for(int i=0;i<n-1;i++)
+    {
+        if(arr[i]<0&&count-->0)
+        {    
+            for(int j=i;j<n-1;j++)
+                swap(arr+j,arr+j+1);
+            i--;
+        }
+    }
+    printf("\nThe Ordered Array :\t");
+    for(int i=0;i<n;i++)
+        printf("%d\t",arr[i]);
     return 0;
 }
