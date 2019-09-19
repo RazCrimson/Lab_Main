@@ -28,7 +28,7 @@ int main()
 	printbin(x&0xf8);
 	printf("\nLeftmost Bits Removed :");
 	printbin(x&0x1f);
-	printf("Four rightmost bits, last bit removed :")
-	printbin(x&0x0e)
+	printf("Four rightmost bits, last bit removed :");
+	printbin(x&0x0e);
 	return 0;
 }

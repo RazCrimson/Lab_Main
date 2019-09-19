@@ -62,8 +62,9 @@ int main()
 		print_digit(Num / 100);
 		printf("Hundred ");
 		if(Num%100!=0)
-			printf("and ")
-				print_digit(Num % 100);
+		{	printf("and ");
+			print_digit(Num % 100);
+		}
 	}
 	else if(Num>0&&Num<100)
 		print_digit(Num);
