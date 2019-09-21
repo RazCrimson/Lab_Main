@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <ctype.h>
 
 int main()
 {
@@ -18,5 +18,6 @@ int main()
     for(i=0;i<len;i++)
         if((!(arr[i]=='a'||arr[i]=='e'||arr[i]=='i'||arr[i]=='o'||arr[i]=='u'||arr[i]=='A'||arr[i]=='E'||arr[i]=='I'||arr[i]=='O'||arr[i]=='U'))&&isalpha(arr[i]))
             printf("%c",arr[i]);
+    printf("\n");
     return 0;
 }

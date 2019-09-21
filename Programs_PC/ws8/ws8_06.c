@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
-int swap(char* x,char *y)
+//check required
+int swap(char* x,char* y)
 {
     *x=*x^*y;
     *y=*x^*y;
@@ -20,5 +20,6 @@ int main()
     len=strlen(arr);
     for(int i=0;i<(len/2);i++)
         swap(&arr[i],&arr[len-i]);
+    printf("str:%s\n",arr);
     return 0;
 }

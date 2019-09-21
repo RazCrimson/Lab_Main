@@ -18,5 +18,6 @@ int main()
         if(isupper(arr[i]))
             arr[i]+=32;
     printf("\nThe String in Lowercase is : %s",arr);
+    printf("\n");
     return 0;
 }

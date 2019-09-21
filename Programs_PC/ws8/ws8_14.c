@@ -5,7 +5,7 @@ int main()
 {
 	int n=0;
     char ch;
-    printf("\nWorksheet 8: Program 14")
+    printf("\nWorksheet 8: Program 14");
 	printf("\nEnter the Size of String : ");
 	scanf("%d",&n);
     printf("Enter the string : ");

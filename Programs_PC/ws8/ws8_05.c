@@ -18,5 +18,6 @@ int main()
             arr[i]+=32;
     }
     printf("\nThe Toggled String is : %s",arr);
+    printf("\n");
     return 0;
 }

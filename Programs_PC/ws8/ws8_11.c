@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -24,6 +25,6 @@ int main()
             exit(-1);        
         }
     }
-    printf("\nThe value is : %d ",num);
+    printf("\nThe value is : %d \n",num);
     return 0;
 }

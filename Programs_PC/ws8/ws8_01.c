@@ -12,5 +12,6 @@ int main()
     len=strlen(arr);
     for(i=0;i<len;i++)
         printf("%c",arr[i]);
+    printf("\n");
     return 0;
 }
