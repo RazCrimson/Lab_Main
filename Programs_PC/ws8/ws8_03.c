@@ -19,6 +19,6 @@ int main()
         else 
         count[2]++;
     }
-    printf("\nThe No of Lower characters : %d\nThe No of Lower characters : %d\nThe No of Special characters(including non printables) : %d\n",count[0],count[1],count[2]);
+    printf("\nThe No of Lower characters : %d\nThe No of Upper characters : %d\nThe No of Special characters(including non printables) : %d\n",count[0],count[1],count[2]);
     return 0;
 }

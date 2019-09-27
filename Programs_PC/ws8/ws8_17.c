@@ -1,22 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 int main()
 {
-	int n=0;
-    char ch;
-    printf("\nWorksheet 8: Program 13")
-	printf("\nEnter the Size of Array : ");
-	scanf("%d",&n);
+	int n=0,len=0;
+    char arr[1000],ch[1000];
+    printf("\nWorksheet 8: Program 16");
     printf("Enter the string : ");
-	char *arr=(char*)malloc(sizeof(char)*(n+1);
-    scanf("%[^\n]s",arr);
-    printf("\nEnter the Size of Substring : ");
-	scanf("%d",&n);
-    char *ch=(char*)malloc(sizeof(char)*(n+1);
-    printf("\nEnter the string to replace :");
-    scanf("%s",ch);
-    for(int cn=0;cn<strlen(ch);cn++)
+    scanf("%s",arr);
+    printf("Enter the substring : ");
+    scanf("%[^\n]s",ch);
+    for(int cn=0;cn<strlen(arr);cn++)
     {
         for(int i=0;i<n;i++)
         {

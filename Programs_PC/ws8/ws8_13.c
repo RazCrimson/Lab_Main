@@ -7,7 +7,7 @@ int main()
 	char arr[1000], ch;
     int len;
     printf("\nWorksheet 8: Program 13");
-    printf("Enter a string within 999 characters : ");
+    printf("\nEnter a string within 999 characters : ");
     getchar();
     //getchar();
     scanf("%s",arr);
@@ -19,12 +19,14 @@ int main()
     {
 		if(arr[i]==ch)
         {
-            for(int j=1;j<len-1;j++)
+            for(int j=i;j<len-1;j++)
                 arr[j]=arr[j+1];
             i--;
             len--;
         }
     }
-    printf("%s",arr);
+    for(int i=0;i<len;i++)
+        printf("%c",arr[i]);
+    printf("\n");
     return 0;
 }

@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-//check required
-int swap(char* x,char* y)
-{
-    *x=*x^*y;
-    *y=*x^*y;
-    *x=*x^*y;
-}
 
 
 int main()
@@ -19,7 +12,13 @@ int main()
     scanf("%s",arr);
     len=strlen(arr);
     for(int i=0;i<(len/2);i++)
-        swap(&arr[i],&arr[len-i]);
-    printf("str:%s\n",arr);
+    {
+        char temp=arr[i];
+        arr[i]=arr[len-i-1];
+        arr[len-i-1]=temp;
+    }
+    for(i=0;i<len;i++)
+        printf("%c",arr[i]);
+    printf("\n");
     return 0;
 }

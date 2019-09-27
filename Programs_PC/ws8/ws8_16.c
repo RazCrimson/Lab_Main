@@ -1,21 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
-	int n=0;
-    char ch;
-    printf("\nWorksheet 8: Program 16")
-	printf("\nEnter the Size of String : ");
-	scanf("%d",&n);
+	int n=0,len=0;
+    char ch,arr[1000],word[1000];
+    printf("\nWorksheet 8: Program 16");
     printf("Enter the string : ");
-	char *arr=(char*)malloc(sizeof(char)*(n+1);
-    scanf("%[^\n]s",arr);
-    printf("\nEnter the Size of WOrd : ");
-	scanf("%d",&n);
+    scanf("%s",arr);
     printf("Enter the substring : ");
-	char *word=(char*)malloc(sizeof(char)*(n+1);
-    scanf("%[^\n]s",word);
+    scanf("%s",word);
     if(strlen(word)>=strlen(arr))
     {
         printf("\nERROR!! the length of substring is largeer that main string.");
@@ -25,7 +20,7 @@ int main()
     for(int i=0,j=0;i<len;i++)
     {
         for(j=0;j<n;j++)
-            if(arr[j+i]!=word[j+i])
+            if(arr[j+i]!=word[j])
                 break;
         if(j==n)
         {
@@ -38,6 +33,7 @@ int main()
                     arr[k]=arr[k+n];
                 }
                 len-=n;
+                i-=n;
             }
             else if(len==n)
             {
@@ -46,8 +42,8 @@ int main()
             
         }
     }
-    printf("\nThe String is ",)
+    printf("\nThe String is ");
     for(int i=0;i<len;i++)
-        printf("%c",arr[i])
+        printf("%c",arr[i]);
     return 0;
 }
