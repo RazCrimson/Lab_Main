@@ -5,19 +5,19 @@
 int main()
 {
     char arr[1000];
-    int i=0,len=0;
+    int i = 0, len = 0;
     printf("\nWorksheet 8: Program 5");
     printf("\nEnter a string within 999 characters  : ");
-    scanf("%s",arr);
-    len=strlen(arr);
-    for(i=0;i<len;i++)
+    scanf("%s", arr);
+    len = strlen(arr);
+    for (i = 0; i < len; i++)
     {
-        if(islower(arr[i]))
-            arr[i]-=32;
-        else if(isupper(arr[i]))
-            arr[i]+=32;
+        if (islower(arr[i]))
+            arr[i] -= 32;
+        else if (isupper(arr[i]))
+            arr[i] += 32;
     }
-    printf("\nThe Toggled String is : %s",arr);
+    printf("\nThe Toggled String is : %s", arr);
     printf("\n");
     return 0;
 }

@@ -5,19 +5,19 @@
 int main()
 {
     char arr[1000];
-    int i=0,len=0;
+    int i = 0, len = 0;
     printf("\nWorksheet 8: Program 2");
     printf("\nEnter a string within 999 characters  : ");
-    scanf("%s",arr);
-    len=strlen(arr);
+    scanf("%s", arr);
+    len = strlen(arr);
     printf("\nVowels : ");
-    for(i=0;i<len;i++)
-        if(arr[i]=='a'||arr[i]=='e'||arr[i]=='i'||arr[i]=='o'||arr[i]=='u'||arr[i]=='A'||arr[i]=='E'||arr[i]=='I'||arr[i]=='O'||arr[i]=='U')
-            printf("%c",arr[i]);
+    for (i = 0; i < len; i++)
+        if (arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u' || arr[i] == 'A' || arr[i] == 'E' || arr[i] == 'I' || arr[i] == 'O' || arr[i] == 'U')
+            printf("%c", arr[i]);
     printf("\nConsonats : ");
-    for(i=0;i<len;i++)
-        if((!(arr[i]=='a'||arr[i]=='e'||arr[i]=='i'||arr[i]=='o'||arr[i]=='u'||arr[i]=='A'||arr[i]=='E'||arr[i]=='I'||arr[i]=='O'||arr[i]=='U'))&&isalpha(arr[i]))
-            printf("%c",arr[i]);
+    for (i = 0; i < len; i++)
+        if ((!(arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u' || arr[i] == 'A' || arr[i] == 'E' || arr[i] == 'I' || arr[i] == 'O' || arr[i] == 'U')) && isalpha(arr[i]))
+            printf("%c", arr[i]);
     printf("\n");
     return 0;
 }
