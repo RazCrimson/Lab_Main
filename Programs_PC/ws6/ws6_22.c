@@ -19,7 +19,7 @@ void jacob()
 void thabo()
 {
     int n[10]={0},Guess,Sum=0;
-    while(n--)
+    for(int i=0;i<10;i++)
     {
         printf("Enter your guess : ");
         scanf("%d",&Guess);
@@ -35,7 +35,7 @@ void thabo()
 int main(){
 
     int choice=0;
-    printf("\nGuess Game!!\nTry to Guess the number within the least tries.")
+    printf("\nGuess Game!!\nTry to Guess the number within the least tries.");
     printf("\n0-Jacob\n1-Thabo\nEnter your choice : ");
     scanf("%d",&choice);
     if(choice==0)
@@ -46,3 +46,4 @@ int main(){
         printf("Error!");
     return 0;
     }
+

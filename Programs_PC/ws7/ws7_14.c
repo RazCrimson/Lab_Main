@@ -38,4 +38,5 @@ int main()
             arr[len-1]=='\0';
         }
     printf("\n%s",arr);
+    return 0;
 }

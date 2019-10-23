@@ -19,6 +19,5 @@ int main()
         printf("\nThe elements are sorted.");
     else
         printf("\nThe elements are not sorted.");
-        
-
+    return 0;
 }
