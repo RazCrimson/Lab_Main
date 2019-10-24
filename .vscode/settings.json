@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "WS6_25.C": "cpp"
-    }
+    },
+    "editor.detectIndentation": false
 }

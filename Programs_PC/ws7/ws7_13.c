@@ -14,7 +14,7 @@ void print_plural(char *word)
             word[len - 1] = 'i';
             printf("Plural : %ses\n", word);
         }
-        else if (word[len - 1] == 's'||(word[len - 2] == 'c' && word[len - 1] == 'h') || (word[len - 2] == 's' && word[len - 1] == 'h'))
+        else if (word[len - 1] == 's' || (word[len - 2] == 'c' && word[len - 1] == 'h') || (word[len - 2] == 's' && word[len - 1] == 'h'))
             printf("Plural : %ses\n", word);
         else
             printf("Plural : %ss\n", word);
