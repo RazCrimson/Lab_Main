@@ -1,13 +1,30 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    static int a[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int i, j;
-    static *p[] = {a, a + 1, a + 2};
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-            printf("%d\t%d\t%d\t%d\n", *(*(p + i) + j), *(*(j + p) + i), *(*(i + p) + j), *(*(p + j) + i));
-    }
+        char code[][5] = {"imo", "lol", "cul", "asap", "cu", "lmk", "hand"};
+        char english[][20] = {"In my opinion", "Laugh out loud", "See you later", "As soon as possible", "See you", "Let me know", "Have a nice day"};
+        printf("Enter SMS abbreviation\n");
+        char s1[5];
+        scanf("%[^\n]s", s1);
+        int i;
+        int flag = 0;
+        for(i=0;i<7;i++)
+        {
+                if(!strcmp(code[i], s1))
+                {
+                        flag = 1;
+                        printf("The equivalent English phrase is: %s\n", english[i]);
+                }
+        }
+        if(!flag)
+                printf("SMS Abbreviation not found\n");
+        return 0;
 }
+
+
+
+
+
+
