@@ -79,7 +79,7 @@ void Rectangle::setLength(float length1)
 
 void Rectangle::setBreadth(float breadth1)
 {
-    breadth = breath1;
+    breadth = breadth1;
 }
 
 float Rectangle::getBreadth()
