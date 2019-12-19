@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ws2_07</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #container {
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2> A Sample Form</h2>
+        <form onsubmit="handlesubmit()">
+            <fieldset>
+                <legend>Sample Form</legend>
+                <label>Enter your Email Address : </label>
+                <input type="email" name="mailAddress" autocomplete="on" autofocus><br /><br />
+                <label>Enter your Phone number :</label>
+                <input type="tel" name="contactNo" autocomplete="on"><br /><br />
+                <label>Enter your Favourite Color :</label>
+                <input type="text" name="colour" autocomplete="on"><br /><br />
+                <label>Enter your Age :</label>
+                <input type="number" name="age" min="10" max= autocomplete="on"><br /><br />
+                <label>Grade your liking towards Technology with the below slider</label><br /><br />
+                <input type="range" id="slider" min="1" max="100" autocomplete="on">
+                <h4 id="value"></h3>
+                <input type="submit">
+            </fieldset>
+
+
+        </form>
+    </div>
+    <script>
+        var slider = document.getElementById("slider");
+        var output = document.getElementById("value");
+        output.innerHTML ="Value : " + slider.value;
+
+        slider.oninput = function () {
+            output.innerHTML = "Value : " + this.value;
+        }
+    </script>
+</body>
+
+</html>
