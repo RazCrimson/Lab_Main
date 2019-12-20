@@ -27,9 +27,6 @@ void print2(int arr[][6], int n)
 
 int main()
 {
-    int m, n;
-    cout << "Enter Row and column index of the array : ";
-    cin >> m >> n;
     int arr[6][5], sum = 0, colMinMaxSum[3][5] = {{0}}, rowMinMaxSum[3][6] = {{0}};
     int minimum = 2147483647, maximum1, maximum2, sumMain, sumMinor, sumUpper, sumLower, temp;
     maximum1 = maximum2 = sumMain = sumMinor = sumUpper = sumLower = 0;
@@ -49,8 +46,8 @@ int main()
                 minimum = temp;
             if (maximum1 < temp)
                 maximum1 = temp;
-            else if (arr[i][j] > max2 && arr[i] < max1)
-                max2 = arr[i];
+            else if (arr[i][j] > maximum2 && arr[i][j] < maximum1)
+                maximum2 = arr[i][j];
             if (rowMinMaxSum[0][i] > temp)
                 rowMinMaxSum[0][i] = temp;
             if (rowMinMaxSum[1][i] < temp)
