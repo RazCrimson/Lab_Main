@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void print1(int arr[][5], int n)
+void five_row_print(int arr[][5], int n)
 {
     cout << endl;
     for (int i = 0; i < n; i++)
@@ -14,7 +14,7 @@ void print1(int arr[][5], int n)
     }
 }
 
-void print2(int arr[][6], int n)
+void six_row_print(int arr[][6], int n)
 {
     cout << endl;
     for (int i = 0; i < n; i++)
@@ -76,9 +76,9 @@ int main()
         for (int j = i + 1; j < 5; j++)
             sumUpper += arr[i][j];
     }
-    cout << "lo,up" << sumLower << sumUpper;
-    print1(arr, 6);
-    print1(colMinMaxSum, 3);
-    print2(rowMinMaxSum, 3);
+    cout << "\nLower : " << sumLower << "\nUpper : "<< sumUpper;
+    five_row_print(arr, 6);
+    five_row_print(colMinMaxSum, 3);
+    six_row_print(rowMinMaxSum, 3);
     return 0;
 }

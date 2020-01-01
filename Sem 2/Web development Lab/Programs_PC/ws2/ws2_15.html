@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>ws2_16</title>
+	</head>
+	<body>
+		<style>
+			.holder {
+				margin: auto;
+				min-width: 200px;
+				width: min-content;
+			}
+
+			.content {
+				line-height: 30px;
+			}
+		</style>
+
+		<div class="holder">
+			<div class="content">
+				<form onsubmit="submitform()">
+					<label
+						>Title :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="title">
+							<option value="mr">Mr</option>
+							<option value="mrs">Mrs</option>
+							<option value="miss">Miss</option>
+							<option value="ms">Ms</option>
+							<option value="dr">Dr</option>
+						</select> </label
+					><br />
+					<label
+						>Age : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="age">
+							<option value="0">under 20(&lt19)</option>
+							<option value="1">20 - 29</option>
+							<option value="2">30 - 39</option>
+							<option value="3">40 - 49</option>
+							<option value="3">50 - 59</option>
+							<option value="0">over 60(60&ut)</option>
+						</select> </label
+					><br />
+					<label
+						>Gender :&nbsp;&nbsp;
+						<select name="gender">
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select> </label
+					><br />
+					<label
+						>Status :&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="status">
+							<option value="employed">Employed</option>
+							<option value="unemployed">Unemployed</option>
+							<option value="student">Student</option>
+						</select> </label
+					><br />
+					<label
+						>Day :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="day" id="day"></select> </label
+					><br />
+					<label
+						>Month : &nbsp;&nbsp;
+						<select name="month">
+							<option value="1">January</option>
+							<option value="2">Feburary</option>
+							<option value="3">March</option>
+							<option value="4">April</option>
+							<option value="5">May</option>
+							<option value="6">June</option>
+							<option value="7">July</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select> </label
+					><br />
+					<label
+						>Year : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select name="year" id="year"></select> </label
+					><br />
+					<input type="submit" />
+				</form>
+				<script>
+					var options_yr = "";
+					var options_day = "";
+					for (var year = 1960; year <= 1996; year++) {
+						options_yr += "<option value='" + year + "'>" + year + "</option>";
+					}
+					for (var day = 1; day <= 31; day++) {
+						options_day += "<option value='" + day + "'>" + day + "</option>";
+					}
+					document.getElementById("year").innerHTML = options_yr;
+					document.getElementById("day").innerHTML = options_day;
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>ws2_17</title>
+		<style>
+			.search {
+				border: 2px solid #cf5c3f;
+				overflow: auto;
+				padding-left: 5px;
+				border-radius: 5px;
+			}
+
+			.container {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form class="search-form" onsubmit="submitform()">
+				<input
+					class="search"
+					type="text"
+					list="datalist"
+					name="search"
+					placeholder="Enter a random name"
+				/>
+				<datalist id="datalist">
+					<option value="Tim"> </option>
+					<option value="Harry"> </option>
+					<option value="Brad"> </option>
+					<option value="Raz"> </option>
+					<option value="Chris"> </option>
+					<option value="Alice"> </option>
+					<option value="Astin"> </option>
+					<option value="Brad"> </option>
+					<option value="Grace"> </option>
+					<option value="Zack"> </option>
+				</datalist>
+
+				<br /><br />
+				<input type="submit" />
+			</form>
+		</div>
+	</body>
+</html>

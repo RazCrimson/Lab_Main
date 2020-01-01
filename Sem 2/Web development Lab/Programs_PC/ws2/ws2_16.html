@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>ws2_16</title>
+	</head>
+	<body>
+		<style>
+			.holder {
+				margin: auto;
+				width: min-content;
+			}
+
+			.content {
+				line-height: 30px;
+			}
+			.long {
+				width: 250px;
+			}
+			.short {
+				width: 80px;
+			}
+			.box {
+				width: 500px;
+				height: 100px;
+			}
+		</style>
+
+		<div class="holder">
+			<div class="content">
+				<form onsubmit="submitform()">
+					<label
+						>Name :
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="text"
+							class="long"
+							name="name"/></label
+					><br />
+					<label
+						>Address : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="text"
+							class="long"
+							name="address"/></label
+					><br />
+					<label
+						>City :
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="text"
+							class="long"
+							name="city"/></label
+					><br />
+					<label
+						>State :
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="text"
+							class="short"
+							name="state"/></label
+					><br />
+					<label
+						>Zip :
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="number"
+							class="short"
+							name="zip"/></label
+					><br />
+					<label
+						>Magazine :&nbsp;&nbsp;&nbsp;
+						<select name="time">
+							<option value="daily">Daily</option>
+							<option value="weekly">Weekly</option>
+							<option value="fortnight">Fortnight</option>
+							<option value="monthly">Monthly</option>
+						</select> </label
+					><br />
+					<label>
+						Subscription:<input type="radio" name="subscription" value="1yr" />
+						1 Year <input type="radio" name="subscription" value="2yr" /> 2
+						Years </label
+					><br />
+					<label>
+						Additional Comments:<br />
+						<input type="text" class="box" name="additional" />
+					</label>
+					<br />
+					<button onclick="submitform()">Send Your Order!</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
