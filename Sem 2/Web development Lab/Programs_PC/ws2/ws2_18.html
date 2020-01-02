@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ws2_18</title>
+</head>
+<body>
+    <h3><b>A Simple Form</b></h3>
+    <h4 style="color: silver;"><i>Form Fundamentals</i></h4>
+    <form>
+        <fieldset>
+            <legend>Customer Info</legend>
+            Name  : <input type="text" placeholder="Enter your name" name="name" id="name"><br><br>
+            Telephone : <input type="number" placeholder="Pattern : 1-234-567-8910" name="number" id="number" pattern="\d-\(\d\d\d\)-\d\d\d-\d\d\d\d" ><br><br>
+            Email Address : <input type="email" name="email" id="email" placeholder="Enter your mail address"><br><br>
+        </fieldset>
+        <fieldset>
+            <legend>Books</legend>
+            <input type="text" name="book" id="book">&nbsp;&nbsp;
+            Quantity (Maximum 5) : <input type="number" min="1" max="5" step="1" name="quantity" id="quantity">
+        </fieldset>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

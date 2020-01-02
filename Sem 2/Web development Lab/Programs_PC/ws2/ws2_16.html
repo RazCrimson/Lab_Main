@@ -49,37 +49,35 @@
 							class="long"
 							name="city"/></label
 					><br />
-					<label
-						>State :
+					<label>State :
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 							type="text"
 							class="short"
 							name="state"/></label
 					><br />
-					<label
-						>Zip :
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+					<label>Zip :
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
 							type="number"
 							class="short"
-							name="zip"/></label
-					><br />
-					<label
-						>Magazine :&nbsp;&nbsp;&nbsp;
+                            name="zip"/>
+                    </label><br />
+					<label>Magazine :&nbsp;&nbsp;&nbsp;
 						<select name="time">
 							<option value="daily">Daily</option>
 							<option value="weekly">Weekly</option>
 							<option value="fortnight">Fortnight</option>
 							<option value="monthly">Monthly</option>
-						</select> </label
-					><br />
+                        </select>
+                    </label><br />
 					<label>
 						Subscription:<input type="radio" name="subscription" value="1yr" />
-						1 Year <input type="radio" name="subscription" value="2yr" /> 2
-						Years </label
-					><br />
+						1 Year <input type="radio" name="subscription" value="2yr" checked/> 2
+                        Years 
+                    </label><br />
 					<label>
 						Additional Comments:<br />
-						<input type="text" class="box" name="additional" />
+						<textarea type="text" class="box" rows=25 cols="50" name="additional" ></textarea>
 					</label>
 					<br />
 					<button onclick="submitform()">Send Your Order!</button>
