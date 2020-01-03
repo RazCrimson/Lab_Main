@@ -1,61 +1,61 @@
+#include <string>
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
-
 class sparseMatrix
 {
     int **matrix;
     int rows, cols, nonZero;
 
 public:
-    sparseMatrix(int, int);
-    sparseMatrix(int**,int, int);
     void print();
-    void add(sparseMatrix);
-    void multiply(sparseMatrix);
     void insert(int, int, int);
+    sparseMatrix(int, int, int = 0);
+    sparseMatrix(int **, int, int);
     sparseMatrix transpose();
+    sparseMatrix add(sparseMatrix);
+    sparseMatrix multiply(sparseMatrix);
 };
 
-sparseMatrix::sparseMatrix(int r, int c)
+sparseMatrix::sparseMatrix(int r, int c, int count)
 {
     rows = r;
     cols = c;
-    nonZero = 0;
-    matrix = new int *[1];
-    matrix[0] = new int[3]();
+    nonZero = count;
+    matrix = new int *[nonZero + 1];
+    for (int i = 0; i <= nonZero; i++)
+        matrix[i] = new int[3]();
 }
 
-sparseMatrix::sparseMatrix(int** arr,int r, int c)
+sparseMatrix::sparseMatrix(int **arr, int r, int c)
 {
     rows = r;
     cols = c;
     nonZero = 0;
-    for(int i=0;i<rows;i++)
+    for (int i = 0; i < rows; i++)
     {
-       for(int j=0;j<cols;j++)
-          if(arr[i][j] != 0)
-            nonZero++;
+        for (int j = 0; j < cols; j++)
+            if (arr[i][j] != 0)
+                nonZero++;
     }
-    
-    matrix = new int *[nonZero+1];
+
+    matrix = new int *[nonZero + 1];
     for (int i = 0; i <= nonZero; i++)
         matrix[i] = new int[3]();
 
-    int index=0;
-    for(int i=0;i<rows;i++)
+    int index = 0;
+    for (int i = 0; i < rows; i++)
     {
-       for(int j=0;j<cols;j++)
-          if(arr[i][j] != 0)
-          {
-            matrix[index][0] = i;
-            matrix[index][1] = j;
-            matrix[index][2] = arr[i][j];
-            index++;
-          }  
+        for (int j = 0; j < cols; j++)
+            if (arr[i][j] != 0)
+            {
+                matrix[index][0] = i;
+                matrix[index][1] = j;
+                matrix[index][2] = arr[i][j];
+                index++;
+            }
     }
-    
 }
 
 void sparseMatrix::insert(int r, int c, int val)
@@ -70,18 +70,19 @@ void sparseMatrix::insert(int r, int c, int val)
         matrix[nonZero][1] = c;
         matrix[nonZero][2] = val;
         nonZero++;
-        matrix = (int**)realloc(matrix,sizeof(int*)*(nonZero+1));
+        matrix = (int **)realloc(matrix, sizeof(int *) * (nonZero + 1));
         matrix[nonZero] = new int[3]();
-
     }
 }
 
-void sparseMatrix::add(sparseMatrix b)
+sparseMatrix sparseMatrix::add(sparseMatrix b)
 {
 
     if (rows != b.rows || cols != b.cols)
+    {
         cout << "Matrices can't be added";
-
+        return *this;
+    }
     else
     {
         int apos = 0, bpos = 0;
@@ -118,15 +119,14 @@ void sparseMatrix::add(sparseMatrix b)
         while (bpos < b.nonZero)
             result.insert(b.matrix[bpos][0], b.matrix[bpos][1], b.matrix[bpos++][2]);
 
-        result.print();
+        return result;
     }
 }
 
 sparseMatrix sparseMatrix::transpose()
 {
 
-    sparseMatrix result(cols, rows);
-    result.nonZero = nonZero;
+    sparseMatrix result(cols, rows, nonZero);
 
     int *count = new int[cols + 1];
 
@@ -137,9 +137,9 @@ sparseMatrix sparseMatrix::transpose()
         count[matrix[i][1]]++;
 
     int *index = new int[cols + 1];
-    index[1] = 0;
+    index[0] = 0;
 
-    for (int i = 2; i <= cols; i++)
+    for (int i = 1; i <= cols; i++)
         index[i] = index[i - 1] + count[i - 1];
 
     for (int i = 0; i < nonZero; i++)
@@ -154,13 +154,13 @@ sparseMatrix sparseMatrix::transpose()
     return result;
 }
 
-void sparseMatrix::multiply(sparseMatrix b)
+sparseMatrix sparseMatrix::multiply(sparseMatrix b)
 {
 
     if (cols != b.rows)
     {
         cout << "Can't multiply, Invalid dimensions";
-        return;
+        return*this;
     }
 
     int apos, bpos;
@@ -203,15 +203,12 @@ void sparseMatrix::multiply(sparseMatrix b)
             apos++;
     }
 
-    result.print();
+    return result;
 }
 
 void sparseMatrix::print()
 {
-    cout << "Dimension of the Matrix: " << rows << "x" << cols;
-    cout << "\n Matrix: \nRow\tColumn\t Value\n";
-
+    cout<< "\nRow\t  Column\t  Value";
     for (int i = 0; i < nonZero; i++)
         cout << matrix[i][0] << "\t  " << matrix[i][1] << "\t  " << matrix[i][2] << "\n";
 }
-

@@ -1,33 +1,41 @@
+#include <string>
 #include <iostream>
-#include <sparseMatrix.cpp>
-
+#include "sparseMatrix.h"
 
 using namespace std;
 
 int main()
 {
-    int r,c;
-    cout<<"\nEnter the no. of rows and columns : ";
-    cin>>r>>c;
-    if(r<1||c<1)
+    int r, c;
+    cout << "\nEnter the no. of rows and columns of A : ";
+    cin >> r >> c;
+    if (r < 1 || c < 1)
     {
-        cout<<"Error in size!!";
+        cout << "Error in size!!";
         exit(0);
     }
-    int **arr= new int*[r];
-    for(int i=0;i<r;i++)
-        arr[i]=new int[c];
-    cout<<"\nEnter the elements of the matrix : ";
-    for(int i=0;i<r;i++)
+    int **arr = new int *[r];
+    for (int i = 0; i < r; i++)
+        arr[i] = new int[c];
+    for (int i = 0; i < r; i++)
     {
-        for(int j=0;j<c;j++)
+        for (int j = 0; j < c; j++)
         {
-            cin>>arr[i][j];
+            cout << "\nEnter the elements at["<<i<<"]["<<j<<"] : ";
+            cin >> arr[i][j];
         }
     }
-    sparseMatrix a(arr,r,c);
+    sparseMatrix a(arr, r, c);
+    cout << "Triple Represenetation of A :\n";
     a.print();
-    // needs more work
+    cout << "Transpose of A :\n";
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c; j++)
+            cout << arr[j][i] << "\t";
+        cout << endl;
+    }
+    cout << "Transpose of Triple Represenetation of A : ";
+    a.transpose().print();
+    return 0;
 }
-
-
