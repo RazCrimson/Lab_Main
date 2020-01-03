@@ -11,8 +11,10 @@ class sparseMatrix
 public:
     void print();
     void insert(int, int, int);
+    void twinAdd(sparseMatrix);
     sparseMatrix(int, int, int = 0);
     sparseMatrix(int **, int, int);
+    bool isTwins(sparseMatrix);
     sparseMatrix transpose();
     sparseMatrix add(sparseMatrix);
     sparseMatrix multiply(sparseMatrix);
@@ -160,7 +162,7 @@ sparseMatrix sparseMatrix::multiply(sparseMatrix b)
     if (cols != b.rows)
     {
         cout << "Can't multiply, Invalid dimensions";
-        return*this;
+        return *this;
     }
 
     int apos, bpos;
@@ -206,9 +208,47 @@ sparseMatrix sparseMatrix::multiply(sparseMatrix b)
     return result;
 }
 
+bool sparseMatrix::isTwins(sparseMatrix b)
+{
+    if (rows == b.rows && cols != b.cols && nonZero != b.nonZero)
+        return false;
+    for (int i = 0; i < nonZero; i++)
+    {
+        if (matrix[i][0] != b.matrix[i][0] || matrix[i][1] != b.matrix[i][1])
+            return false;
+    }
+    return true;
+}
+
+void sparseMatrix::twinAdd(sparseMatrix b)
+{
+    if (!isTwins(b))
+        cout << "The Matrices are not Twins";
+    else
+    {
+        sparseMatrix result(rows, cols, nonZero);
+        for (int i = 0; i < nonZero; i++)
+        {
+            int val = 0;
+            if (matrix[i][2] < b.matrix[i][2])
+                val = -2;
+            else if (matrix[i][2] > b.matrix[i][2])
+                val = 2;
+            else
+                val = 1;
+
+            result.matrix[i][0] = matrix[i][1];
+            result.matrix[i][1] = matrix[i][0];
+            result.matrix[i][2] = val;
+        }
+        cout << "\nThe Twins Sum is : \n";
+        result.print();
+    }
+}
+
 void sparseMatrix::print()
 {
-    cout<< "\nRow\t  Column\t  Value";
+    cout << "\nRow\t  Column\t  Value\n";
     for (int i = 0; i < nonZero; i++)
         cout << matrix[i][0] << "\t  " << matrix[i][1] << "\t  " << matrix[i][2] << "\n";
 }

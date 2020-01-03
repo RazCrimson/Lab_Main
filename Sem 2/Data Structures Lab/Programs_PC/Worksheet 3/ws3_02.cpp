@@ -1,67 +1,72 @@
-/* C++ Program for finding out 
-majority element in an array */
-#include <bits/stdc++.h> 
-using namespace std; 
+#include <iostream>
 
-/* Function to find the candidate for Majority */
-int findCandidate(int a[], int size) 
-{ 
-	int maj_index = 0, count = 1; 
-	for (int i = 1; i < size; i++) 
-	{ 
-		if (a[maj_index] == a[i]) 
-			count++; 
-		else
-			count--; 
-		if (count == 0) 
-		{ 
-			maj_index = i; 
-			count = 1; 
-		} 
-	} 
-	return a[maj_index]; 
-} 
+using namespace std;
 
-/* Function to check if the candidate 
-occurs more than n/2 times */
-bool isMajority(int a[], int size, int cand) 
-{ 
-	int count = 0; 
-	for (int i = 0; i < size; i++) 
-	
-	if (a[i] == cand) 
-	count++; 
-		
-	if (count > size/2) 
-	return 1; 
-	
-	else
-	return 0; 
-} 
+int findFirstOccurrence(int *, int, int);
+int findLastOccurrence(int *, int, int);
 
-/* Function to print Majority Element */
-void printMajority(int a[], int size) 
-{ 
-/* Find the candidate for Majority*/
-int cand = findCandidate(a, size); 
+int main()
+{
+    int i, n, target, len;
+    cout << "Enter the number of elements in the sorted array: ";
+    cin >> n;
+    int *arr = new int[n];
+    cout << "Enter the elements of the sorted array:\n";
+    for (i = 0; i < n; i++)
+        cin >> arr[i];
+    target = arr[n / 2];
+    int first = findFirstOccurrence(arr, n, target);
+    int last = findLastOccurrence(arr, n, target);
 
-/* Print the candidate if it is Majority*/
-if (isMajority(a, size, cand)) 
-cout << " " << cand << " "; 
-	
-else
-cout << "No Majority Element"; 
-} 
+    if (first == -1 || last == -1)
+    {
+        cout << "Element not found in the array\n";
+        return 0;
+    }
+    len = last - first + 1;
+    if (len > n / 2)
+        cout << "The element occurs more than half the size of the array\n";
+    else
+        cout << "The element does not occurs more than half the size of the array\n";
+    return 0;
+}
 
+int findFirstOccurrence(int arr[], int len, int x)
+{
+    int low = 0, high = len - 1;
+    int result = -1;
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (x == arr[mid])
+        {
+            result = mid;
+            high = mid - 1;
+        }
+        else if (x < arr[mid])
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return result;
+}
 
-/* Driver function to test above functions */
-int main() 
-{ 
-	int a[] = {1, 3, 3, 1, 2}; 
-	int size = (sizeof(a))/sizeof(a[0]); 
-	
-	// Function calling 
-	printMajority(a, size); 
-	
-	return 0; 
-} 
+int findLastOccurrence(int arr[], int len, int x)
+{
+    int low = 0, high = len - 1;
+    int result = -1;
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (x == arr[mid])
+        {
+            result = mid;
+            low = mid + 1;
+        }
+        else if (x < arr[mid])
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return result;
+}
