@@ -18,7 +18,10 @@
         "sstream": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "fstream": "cpp",
+        "algorithm": "cpp",
+        "random": "cpp"
     },
     "editor.detectIndentation": false
 }
