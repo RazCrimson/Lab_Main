@@ -25,10 +25,7 @@ int main()
         }
     }
     sparseMatrix a(arr, r, c);
-    //for (int i = 0; i < r; i++)
-     //   delete[] arr[i];
-    //delete[] arr;
-
+    
     cout << "\nEnter the no. of rows and columns of B : ";
     cin >> r >> c;
     if (r < 1 || c < 1)
@@ -48,9 +45,7 @@ int main()
         }
     }
     sparseMatrix b(arr, r, c);
-    //for (int i = 0; i < r; i++)
-    //    delete[] arr[i];
-    //delete[] arr;
+ 
     cout << "Triple Represenetation of A :\n";
     a.print();
     cout << "Triple Represenetation of B :\n";

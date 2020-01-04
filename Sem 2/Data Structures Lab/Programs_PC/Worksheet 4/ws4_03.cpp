@@ -20,7 +20,7 @@ int main()
     {
         for (int j = 0; j < c; j++)
         {
-            cout << "\nEnter the elements of A at["<<i<<"]["<<j<<"] : ";
+            //cout << "\nEnter the elements of A at["<<i<<"]["<<j<<"] : ";
             cin >> arr[i][j];
         }
     }
@@ -40,7 +40,7 @@ int main()
     {
         for (int j = 0; j < c; j++)
         {
-            cout << "\nEnter the elements of B at["<<i<<"]["<<j<<"] : ";
+            //cout << "\nEnter the elements of B at["<<i<<"]["<<j<<"] : ";
             cin >> arr[i][j];
         }
     }
