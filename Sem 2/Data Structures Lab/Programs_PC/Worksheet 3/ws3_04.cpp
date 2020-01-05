@@ -30,6 +30,6 @@ int main()
             }
         }
     }
-    cout << "The no. of Inversin pairs is " << pairs << endl;
+    cout << "The no. of Inversion pairs is " << pairs << endl;
     return 0;
 }
