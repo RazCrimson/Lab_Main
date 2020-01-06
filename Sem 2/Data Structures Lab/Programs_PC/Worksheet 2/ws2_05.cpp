@@ -93,8 +93,8 @@ int Matrix::sumMajor()
 int Matrix::sumMinor()
 {
     int sum = 0;
-    for (int i = rows; i >= 0; i--)
-        sum += arr[i][i];
+    for (int i = 0, j = cols - 1; i < rows, j >= 0 ; i++,j--)
+        sum += arr[i][j];
     return sum;
 }
 
@@ -105,7 +105,7 @@ int *Matrix::rowSum()
         for (int j = 0; j < cols; j++)
             sum[i] += arr[i][j];
     for (int i = 0; i < rows; i++)
-        cout<<sum[i]<<endl;
+        cout << sum[i] << endl;
     return sum;
 }
 
@@ -120,7 +120,7 @@ int *Matrix::rowMin()
                 min[i] = arr[i][j];
 
     for (int i = 0; i < rows; i++)
-        cout<<min[i]<<endl;
+        cout << min[i] << endl;
     return min;
 }
 
@@ -132,7 +132,7 @@ int *Matrix::rowMax()
             if (maximum[i] < arr[i][j])
                 maximum[i] = arr[i][j];
     for (int i = 0; i < rows; i++)
-        cout<<maximum[i]<<endl;
+        cout << maximum[i] << endl;
     return maximum;
 }
 
@@ -143,7 +143,8 @@ int *Matrix::columnSum()
         for (int j = 0; j < cols; j++)
             sum[j] += arr[i][j];
     for (int i = 0; i < cols; i++)
-        cout<<sum[i]<<endl;
+        cout << sum[i] << "\t";
+    cout << endl;
     return sum;
 }
 
@@ -157,7 +158,8 @@ int *Matrix::columnMin()
             if (min[j] > arr[i][j])
                 min[j] = arr[i][j];
     for (int i = 0; i < cols; i++)
-        cout<<min[i]<<endl;
+        cout << min[i] << "\t";
+    cout << endl;
     return min;
 }
 
@@ -169,7 +171,8 @@ int *Matrix::columnMax()
             if (maximum[j] < arr[i][j])
                 maximum[j] = arr[i][j];
     for (int i = 0; i < cols; i++)
-        cout<<maximum[i]<<endl;
+        cout << maximum[i] << "\t";
+    cout << endl;
     return maximum;
 }
 
@@ -228,7 +231,7 @@ void Matrix::replaceDuplicates()
         for (int j = 0; j < cols; j++)
         {
 
-            for (int x = 0; x < rows; i++)
+            for (int x = 0; x < rows; x++)
             {
                 for (int y = 0; y < cols; y++)
                 {
@@ -246,7 +249,7 @@ void Matrix::replaceDuplicates()
 
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < cols; j++)
-            if (!isDuplicate[i][j])
+            if (isDuplicate[i][j])
                 arr[i][j] = -1;
 }
 
@@ -327,27 +330,29 @@ void Matrix::changeDiagonals()
 int main()
 {
     Matrix a;
-    cout<<"Matrix is :\n";
+    cout << "Matrix is :\n";
     a.display();
-    cout<<"Frequency is :\n";
+    cout << "Frequency is :\n";
     a.frequency();
-    cout<<"Sum of Major and Minor are:" << a.sumMajor() <<"  "<<a.sumMinor();
-    cout<<"Column Minimum is :\n";
+    cout << "\nSum of Major and Minor are:" << a.sumMajor() << "  " << a.sumMinor();
+    cout << "\nColumn Minimum is :\n";
     a.columnMin();
-    cout<<"Column Maximum is :\n";
+    cout << "Column Maximum is :\n";
     a.columnMax();
-    cout<<"Column Sum is :\n";
+    cout << "Column Sum is :\n";
     a.columnSum();
-    cout<<"Row Minimum is :\n";
+    cout << "Row Minimum is :\n";
     a.rowMin();
-    cout<<"Row Maximum is :\n";
+    cout << "Row Maximum is :\n";
     a.rowMax();
-    cout<<"Row Sum is :\n";
+    cout << "Row Sum is :\n";
     a.rowSum();
-    cout<<"No of duplicates is : "<<a.countDuplicates();
-    cout<<"Changing Diagonals :\n";
+    cout << "No of duplicates is : " ;
+    cout<< a.countDuplicates();
+    cout << "\nChanging Diagonals :\n";
     a.changeDiagonals();
     a.display();
-    cout<<"Display Unique :\n";
+    cout << "Display Unique :\n";
     a.displayUnique();
+    return 0;
 }

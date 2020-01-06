@@ -9,7 +9,7 @@ int main()
     cin >> n;
     if (n < 1)
     {
-        cout << "Error in size!!";
+    cout << "Error in size!!";
         exit(0);
     }
     int *arr = new int[n];
