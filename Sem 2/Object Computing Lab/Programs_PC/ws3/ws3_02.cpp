@@ -21,6 +21,18 @@ public:
         bloodgroup[2] = '\0';
     }
 
+    Donor(Donor& D)
+    {
+        name = D.name;
+        address = D.address;
+        sex = D.sex;
+        age = D.age;
+        donorNumber = D.donorNumber;
+        bloodgroup[0] = D.bloodgroup[0];
+        bloodgroup[1] = D.bloodgroup[1];
+        bloodgroup[2] = '\0';
+    }
+
     void print()
     {
         cout << "Donor Name : " << name << "\nAge : "
@@ -72,6 +84,7 @@ int main()
         char sex, bloodgroup[3];
         int age, donorNumber;
         cout << "Enter the Donor's Name : ";
+        cin.sync();
         getline(cin, name);
         cin.sync();
         cout << "Enter the Donor's Age : ";
@@ -79,6 +92,7 @@ int main()
         cout << "Enter the Donor's Gender(M/F) : ";
         cin >> sex;
         cout << "Enter the Donor's Address : ";
+        cin.sync();
         getline(cin, address);
         cin.sync();
         cout << "Enter the Donor's Blood Group : ";

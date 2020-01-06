@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void func(char = '*',int = 10);
+void func(char = '*', int = 10);
 
 int main()
 {
@@ -10,8 +10,8 @@ int main()
     return 0;
 }
 
-void func(char ch = '*',int n = 10)
+void func(char ch = '*', int n = 10)
 {
-    for(int i = 0; i < n; i++)
-        cout<<ch<<endl;
+    for (int i = 0; i < n; i++)
+        cout << ch << endl;
 }
