@@ -9,7 +9,7 @@ class Donor
     int age, donorNumber;
 
 public:
-    Donor(string &cName, int &cNumber, int &cAge, string &cAddress, char &cSex, char cBlood[3])
+    Donor(string cName, int cNumber, int cAge, string cAddress, char cSex, char cBlood[3])
     {
         name = cName;
         donorNumber = cNumber;
@@ -27,7 +27,7 @@ public:
              << "\nGender : " << sex << age << "\nBlood Group : " << bloodgroup << "\nNumber : " << donorNumber << "\nAddress : " << address;
     }
 
-    void display(Donor *arr[], int &len, char blood[3])
+    void display(Donor *arr[], int len, char blood[3])
     {
         for (int i = 0; i < len; i++)
         {
@@ -36,7 +36,7 @@ public:
         }
     }
 
-    void display(Donor *arr[], int &len, int low, int high)
+    void display(Donor *arr[], int len, int low, int high)
     {
         for (int i = 0; i < len; i++)
         {
@@ -45,7 +45,7 @@ public:
         }
     }
 
-    void display(Donor *arr[], int &len, char blood[3], char cSex, int low, int high)
+    void display(Donor *arr[], int len, char blood[3], char cSex, int low, int high)
     {
         for (int i = 0; i < len; i++)
         {
@@ -57,7 +57,7 @@ public:
 
 int main()
 {
-    int n;
+    int n, opt;
     cout << "Enter the no. of donors : ";
     cin >> n;
     if (n < 1)
@@ -73,14 +73,14 @@ int main()
         int age, donorNumber;
         cout << "Enter the Donor's Name : ";
         getline(cin, name);
-        cin.ignore();
+        cin.sync();
         cout << "Enter the Donor's Age : ";
         cin >> age;
         cout << "Enter the Donor's Gender(M/F) : ";
         cin >> sex;
         cout << "Enter the Donor's Address : ";
         getline(cin, address);
-        cin.ignore();
+        cin.sync();
         cout << "Enter the Donor's Blood Group : ";
         cin >> bloodgroup;
         cout << "Enter the Donor's Number : ";
@@ -88,5 +88,25 @@ int main()
         static Donor a(name, donorNumber, age, address, sex, bloodgroup);
         arr[i] = &a;
     }
-    // add menu creation
+    cout << "\f";
+    do
+    {
+        cout << "1.Donors have O+ blood\n2.Donors with age between 16 to 25\n";
+        cout << "3.Female donors having A+ blood and are 19 t0 24 years old.";
+        cout << "\nEnter your choice : ";
+        cin >> opt;
+        if (opt == 1)
+            arr[0]->display(arr, n, "O+");
+        else if (opt == 2)
+            arr[0]->display(arr, n, 16, 25);
+        else if (opt == 3)
+            arr[0]->display(arr, n, "A+", 'F', 16, 25);
+        else
+        {
+            cout << "Unknown Option!!\nChoose a valid one\n";
+            continue;
+        }
+
+    } while (0);
+    return 0;
 }
