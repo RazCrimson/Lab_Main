@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 struct set
@@ -51,9 +51,9 @@ struct set merge(struct set &x, struct set &y)
 int main()
 {
     struct set s1, s2, s3;
-    cout << "Enter the details of first array\n";
+    cout << "\nEnter the details of the first struct :";
     read(s1);
-    cout << "Enter the details of second array\n";
+    cout << "\nEnter the details of the second struct";
     read(s2);
     s3 = merge(s1, s2);
     display(s3);
