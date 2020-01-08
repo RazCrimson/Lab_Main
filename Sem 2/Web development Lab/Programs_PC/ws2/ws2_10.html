@@ -4,33 +4,45 @@
     <meta charset="UTF-8">
     <title>ws2_10</title>
     <style>
-        form{
-            margin-left: 10%;
-            height: 150px;
-            width: 500px;
-            border: 1px solid #ccc;
-            overflow: auto;
-            box-sizing: border-box;
-            line-height: 25px;
-        }
+        .root{
+                min-width: 800px;
+                width: 70%;
+                margin: auto;
+            }
+        b {
+				width: 35%;
+				margin-left: 25%;
+				padding-bottom: 10px;
+				display: inline-block;
+				text-align: left;
+			}
         h3{
             text-align: center;
         }
+        .buttons{
+                margin-left: 48%;
+				display: inline-block;
+                min-width: 100px;
+            }
         </style>
 </head>
 <body>
     <h3>Watches for Sale</h3>
+    <div class="root">
     <form>
-        <pre>
- Simple Digital Watch ($40)       <input type="checkbox" name="watch1" value="SDW">
- Chrome Strap Digital Watch ($52)̥ <input type="checkbox" name="watch2" value="CSD">
- Traditional Gold Watch ($107)    <input type="checkbox" name="watch3" value="TGW">
- Antique Watch ($250)             <input type="checkbox" name="watch4" value="AW">
- Samsung Gear S3 Frontier ($180)  <input type="checkbox" name="watch5" value="SGS">
- Samsung Galaxy Watch ($350)      <input type="checkbox" name="watch6" value="SGW">
- Apple Watch Series 3 ($200)      <input type="checkbox" name="watch7" value="AS3">
- Apple Watch Series 5 ($400)      <input type="checkbox" name="watch8" value="AS5">
- Fossil Gen5 Carlyle ($295)       <input type="checkbox" name="watch9" value="FG5C"></pre>
+        
+ <b>Simple Digital Watch ($40)</b>       <input type="checkbox" name="watch1" value="SDW">
+ <b>Chrome Strap Digital Watch ($52)</b> <input type="checkbox" name="watch2" value="CSD">
+ <b>Traditional Gold Watch ($107)</b>    <input type="checkbox" name="watch3" value="TGW">
+ <b>Antique Watch ($250)</b>             <input type="checkbox" name="watch4" value="AW">
+ <b>Samsung Gear S3 Frontier ($180)</b>  <input type="checkbox" name="watch5" value="SGS">
+ <b>Samsung Galaxy Watch ($350)</b>      <input type="checkbox" name="watch6" value="SGW">
+ <b>Apple Watch Series 3 ($200)</b>      <input type="checkbox" name="watch7" value="AS3">
+ <b>Apple Watch Series 5 ($400)</b>      <input type="checkbox" name="watch8" value="AS5">
+ <b>Fossil Gen5 Carlyle ($295)</b>       <input type="checkbox" name="watch9" value="FG5C"><br>
+ <div class="buttons"><input type="submit"></div>
+</div>
     </form>
+</div>
 </body>
 </html>

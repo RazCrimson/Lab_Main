@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .main-box{
+            line-height: 30px;
+            border: 2px solid rgb(190,190,190);
+            display: block;
+        }
+        header{
+            background-color: rgb(160,160,160);
+        }
+        footer{
+            background-color: rgb(230,230,230);
+        }
+        header h3,header select{
+            display: inline-block;
+            padding: 10px;
+        }
+        header h3{
+            margin: 7px;
+        }
+        header select{
+            background-color: rgb(160,160,160);
+            border: none;
+        }
+        .column1 {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 500px;
+        }
+        .column2{
+            float:right;
+            width: 50%;
+            padding: 10px;
+            height: 500px;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+       b,u{
+            display:inline-block;
+            width:300px;
+            margin-left:10px;
+            text-align:left;
+       }
+       .radio-button{
+           display: inline-block;
+           margin-right:10px;
+           text-align:left;
+       }
+       .footer{
+           text-align: center;
+           width: 100%;
+           background-color: rgb(230,230,230);
+       }
+       button{
+           display: inline;
+            padding : 5px 20px;
+            border-style: none;
+            color: white;
+            background-color: rgb(160,160,160);
+            box-shadow: none;
+            border-radius: 0px;
+            margin: 10px;
+       }
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <header>
+            <h3>Workshop Registration</h3>
+            <select name="options">
+                <option value="More Actions">More Actions</option>
+                <option value="Home">Home</option>
+                <option value="Developer Contact">Developer Contact</option>
+            </select>
+        </header>
+        <form action="#">
+            <div class="row">
+                <div class="column1">
+                    <u>Register now while seats are available!</u> <br>
+                    <b>First Name *</b>
+                    <input type="text"> <br>
+                    <b>Last Name *</b>
+                    <input type="text"> <br>
+                    <b>Company/Institution *</b>
+                    <input type="text"> <br>
+                    <b>Address *</b>
+                    <textarea cols="30" rows="10"></textarea> <br>
+                    <b>City</b>
+                    <input type="text"> <br>
+                    <b>State/Province/Region</b>
+                    <select name="state">
+                        <option value="Select">-Select-</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Andra Pradesh">Andra Pradesh</option>
+                        <option value="Kerla">kerla</option>
+                        <option value="Telungana">Telungana</option>
+                    </select> <br>
+                    <b>Country</b>
+                    <select name="Country">
+                        <option value="Select">-Select-</option>
+                        <option value="India">India</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
+                    </select> <br>
+                    <b>Email *</b>
+                    <input type="text"> <br>
+                    <b>Phone Number *</b>
+                    <input type="text">
+                </div>
+                <div class="column2">
+                    <u>Lunch</u> <br>
+                    <b>Meal Preference</b>
+                    <select name="meal">
+                        <option value="Vegetarian">Vegetarian</option>
+                        <option value="Non-Vegetarian"></option>
+                    </select> <br>
+                    <u>Payment Details</u> <br>
+                    <b>Payment Mode</b>
+                    <div class="radio-button">
+                        <input type="radio" name="payment" value="Cash"> Cash <br>
+                        <input type="radio" name="payment" value="Cheque"> Cheque  <br>
+                        <input type="radio" name="payment" value="Demand Draft"> Demand Draft  <br>
+                    </div>
+                    <b>DD/Check No.</b>
+                    <input type="text"> <br>
+                    <b>Draw on (Bank Name)</b>
+                    <input type="text"> <br>
+                    <b>Payable at</b>
+                    <input type="text">
+                </div>
+            </div>
+        </form>
+        <div class="footer">
+            <button action="submit">Submit</button>
+            <button action="reset">Reset</button>
+        </div>
+    </div>
+</body>
+</html>

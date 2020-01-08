@@ -2,24 +2,44 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>ws2_08</title>
+        <title>ws2_08</title>
+        <style>
+            .root{
+                min-width: 800px;
+                width: 70%;
+                margin: auto;
+            }
+			b {
+				width: 35%;
+				margin-left: 25%;
+				padding-bottom: 10px;
+				display: inline-block;
+				text-align: left;
+			}
+            h3{
+                text-align: center;
+            }
+            .buttons{
+                margin-left: 48%;
+				display: inline-block;
+                min-width: 100px;
+            }
+        </style>
 	</head>
 
 	<body>
-		<style>
-			.test {
-				text-align: center;
-			}
-		</style>
-		<form class="test">
+        <br>
+        <br>
+        <div class="root">
+		<form >
 			<h3>Date and Time</h3>
-			<pre>
-      Birthday                         :  <input type="date" name="bday"><br>
-Current Time                     :  <input type="time" name="currtime"><br><br>
-Current Month                    :  <input type="month" name="currmon" ><br><br>
-Local Date time                  :  <input type="datetime-local" name="locdate" ><br><br>
-        <input type="submit">
-            </pre>
+			<b>Birthday:</b><input type="date" name="bday"><br>
+            <b>Current Time:</b><input type="time" name="currtime"><br>
+            <b>Current Month:</b><input type="month" name="currmon" ><br>
+            <b>Current Date:</b><input type="date" name="currmon" ><br>
+            <b>Local Datetime:</b><input type="datetime-local" name="locdate" ><br><br>
+        <div class="buttons"><input type="submit"></div>
+    </div>
 		</form>
 	</body>
 </html>
