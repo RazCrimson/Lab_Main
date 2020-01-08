@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ws2_20</title>
+    <style>
+        b{
+            width:20%;
+            min-width: 150px;
+            margin-left: 30%;
+            padding-bottom: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="root">
+        <form>
+            <fieldset>
+                <b>Position applied for :</b>
+                <select name="position_applied" autofocus>
+                    <option value="manager">Manager</option>
+                    <option value="dev">Developer</option>
+                    <option value="director">Director</option>
+                    <option value="hardwre_specialist">Hardware Specialist</option>
+                </select>
+                    <br/>
+            </fieldset>
+            <fieldset>
+                <legend>Personal Details</legend>
+            <b>Name:</b><input name="name" type="text"><br/>
+            <b>Nationality:</b><input name="nationality" type="text"><br/>
+            <b>Date of Birth:</b><input name="dob" type="date"><br/>
+            <b>Email:</b><input name="mail_address" type="email" required><br/>
+            <b>Telephone Number:</b><input name="number" type="number" pattern="[0-9]{10}"><br/>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
