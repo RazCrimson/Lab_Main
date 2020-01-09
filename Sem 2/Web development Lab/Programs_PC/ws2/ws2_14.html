@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>ws2_14</title>
 </head>
+
 <body>
     <video id="player" width="320" height="240" controls>
         <source src="video/movie.mp4" type="video/mp4">
         Your browser does not support the video tag.
-      </video>
-      <script>
-            var i = 0;
-            var files = [
-                //add files here
-            ];
-            player = document.getElementById("player")
-            player.onended = function next(){
-              player.src = files[i];
-              i+=1;
+    </video>
+    <script>
+        var i = 0;
+        var files = [
+            "video/SampleVideo_1280x720_1mb.mp4",
+            "video/SampleVideo_1280x720_2mb.mp4",
+            "video/SampleVideo_1280x720_5mb.mp4"
+        ];
+        player = document.getElementById("player")
+        player.onended = function next() {
+            if (i < files.length) {
+                player.src = files[i];
+                player.autoplay = true;
+                i += 1;
             }
-  
-        </script>
+        }
+
+    </script>
 </body>
+
 </html>
