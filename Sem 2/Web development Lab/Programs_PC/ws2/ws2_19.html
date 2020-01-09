@@ -1,81 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{
+        * {
             box-sizing: border-box;
         }
-        .main-box{
+
+        .main-box {
             line-height: 30px;
-            border: 2px solid rgb(190,190,190);
+            border: 2px solid rgb(190, 190, 190);
             display: block;
         }
-        header{
-            background-color: rgb(160,160,160);
+
+        header {
+            background-color: rgb(160, 160, 160);
         }
-        footer{
-            background-color: rgb(230,230,230);
+
+        footer {
+            background-color: rgb(230, 230, 230);
         }
-        header h3,header select{
+
+        header h3,
+        header select {
             display: inline-block;
             padding: 10px;
         }
-        header h3{
+
+        header h3 {
             margin: 7px;
         }
-        header select{
-            background-color: rgb(160,160,160);
+
+        header select {
+            background-color: rgb(160, 160, 160);
             border: none;
         }
+
         .column1 {
             float: left;
             width: 50%;
             padding: 10px;
             height: 500px;
         }
-        .column2{
-            float:right;
+
+        .column2 {
+            float: right;
             width: 50%;
             padding: 10px;
             height: 500px;
         }
+
         .row:after {
             content: "";
             display: table;
             clear: both;
         }
-       b,u{
-            display:inline-block;
-            width:300px;
-            margin-left:10px;
-            text-align:left;
-       }
-       .radio-button{
-           display: inline-block;
-           margin-right:10px;
-           text-align:left;
-       }
-       .footer{
-           text-align: center;
-           width: 100%;
-           background-color: rgb(230,230,230);
-       }
-       button{
-           display: inline;
-            padding : 5px 20px;
+
+        b,
+        u {
+            display: inline-block;
+            width: 300px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .radio-button {
+            display: inline-block;
+            margin-right: 10px;
+            text-align: left;
+        }
+
+        .footer {
+            text-align: center;
+            width: 100%;
+            background-color: rgb(230, 230, 230);
+        }
+
+        button {
+            display: inline;
+            padding: 5px 20px;
             border-style: none;
             color: white;
-            background-color: rgb(160,160,160);
+            background-color: rgb(160, 160, 160);
             box-shadow: none;
             border-radius: 0px;
             margin: 10px;
-       }
+        }
     </style>
 </head>
+
 <body>
     <div class="main-box">
         <header>
@@ -132,8 +149,8 @@
                     <b>Payment Mode</b>
                     <div class="radio-button">
                         <input type="radio" name="payment" value="Cash"> Cash <br>
-                        <input type="radio" name="payment" value="Cheque"> Cheque  <br>
-                        <input type="radio" name="payment" value="Demand Draft"> Demand Draft  <br>
+                        <input type="radio" name="payment" value="Cheque"> Cheque <br>
+                        <input type="radio" name="payment" value="Demand Draft"> Demand Draft <br>
                     </div>
                     <b>DD/Check No.</b>
                     <input type="text"> <br>
@@ -150,4 +167,5 @@
         </div>
     </div>
 </body>
+
 </html>
