@@ -18,7 +18,7 @@
             "audio/oneplus_rhythm.mp3",
             "audio/oneplus_tune_remix.mp3"
         ];
-        player = document.getElementById("player")
+        player = document.getElementById("player");
         player.onended = function next() {
             if (i < files.length) {
                 player.src = files[i];
