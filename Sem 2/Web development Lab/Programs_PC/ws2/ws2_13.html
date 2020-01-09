@@ -5,9 +5,23 @@
     <title>ws2_13</title>
 </head>
 <body>
-    <audio controls>
+    <audio controls id="player">
         <source src="audio/oneplus_tone.mp3" type="audio/mp3">
       Your browser does not support the audio element.
       </audio> 
+      <script>
+          var i = 0;
+          var files = [
+              "audio/oneplus_mclaren.mp3",
+              "audio/oneplus_rhythm.mp3",
+              "audio/oneplus_tune_remix.mp3"
+          ];
+          player = document.getElementById("player")
+          player.onended = function next(){
+            player.src = files[i];
+            i+=1;
+          }
+
+      </script>
 </body>
 </html>
