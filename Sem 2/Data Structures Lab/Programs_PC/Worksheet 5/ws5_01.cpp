@@ -3,7 +3,7 @@
 
 int main()
 {
-    Stack s1;
+    Stack<int> s1;
     int size, ch, element;
     cout << "Enter the max size of Stack : ";
     cin>>size;

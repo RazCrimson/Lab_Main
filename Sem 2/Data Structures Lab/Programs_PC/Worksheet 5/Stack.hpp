@@ -2,15 +2,17 @@
 
 using namespace std;
 
+template <typename T>
 class Stack
 {
-    int *stack, top, size;
+    T *stack;
+    int top, size;
 
 public:
     Stack();
-    Stack(int[], int, int = 0);
-    int push(int);
-    int pop();
+    Stack(T[], int, int = 0);
+    int push(T);
+    T pop();
     int count();
     void assignSize(int);
     void displayFromTop();
@@ -18,38 +20,43 @@ public:
     ~Stack();
 };
 
-Stack::Stack()
+template <typename T>
+Stack<T>::Stack()
 {
     top = -1;
-    stack = new int[0]();
+    stack = new T[0]();
     size = 0;
 }
 
-Stack::Stack(int arr[], int len, int max)
+template <typename T>
+Stack<T>::Stack(T arr[], int len, int max)
 {
     if (max == 0)
         max = len;
-    stack = new int[max]();
+    stack = new T[max]();
     size = max;
     top = -1;
     for (int i = 0; i < len; i++)
         push(arr[i]);
 }
 
-Stack::~Stack()
+template <typename T>
+Stack<T>::~Stack()
 {
     delete[] stack;
 }
 
-void Stack::assignSize(int max)
+template <typename T>
+void Stack<T>::assignSize(int max)
 {
     delete[] stack;
-    stack = new int[size]();
+    stack = new T[size]();
     top = -1;
     size = max;
 }
 
-int Stack::push(int element)
+template <typename T>
+int Stack<T>::push(T element)
 {
     if (top + 1 == size)
     {
@@ -64,7 +71,8 @@ int Stack::push(int element)
     }
 }
 
-int Stack::pop()
+template <typename T>
+T Stack<T>::pop()
 {
     if (top == -1)
     {
@@ -73,59 +81,62 @@ int Stack::pop()
     }
     else
     {
-        int element = stack[top];
+        T element = stack[top];
         top -= 1;
         return element;
     }
 }
 
-void Stack::displayFromBottom()
+template <typename T>
+void Stack<T>::displayFromBottom()
 {
     if (top == -1)
     {
         cout << "Empty Stack\n";
         return;
     }
-    Stack temp;
+    Stack<T> temp;
     temp.assignSize(size);
     while (top != -1)
     {
-        int element = pop();
+        T element = pop();
         temp.push(element);
     }
     while (temp.top != -1)
     {
-        int element = temp.pop();
+        T element = temp.pop();
         cout << "\n"
              << element;
         push(element);
     }
 }
 
-void Stack::displayFromTop()
+template <typename T>
+void Stack<T>::displayFromTop()
 {
     if (top == -1)
     {
         cout << "Empty Stack\n";
         return;
     }
-    Stack temp;
+    Stack<T> temp;
     temp.assignSize(size);
     while (top != -1)
     {
-        int element = pop();
+        T element = pop();
         cout << "\n"
              << element;
         temp.push(element);
     }
     while (temp.top != -1)
     {
-        int element = temp.pop();
+        T element = temp.pop();
         push(element);
     }
 }
 
-int Stack::count()
+template <typename T>
+int Stack<T>::count()
 {
     return top + 1;
 }
