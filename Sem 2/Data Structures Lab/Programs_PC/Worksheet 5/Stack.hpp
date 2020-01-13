@@ -2,7 +2,7 @@
 
 using namespace std;
 
-template <typename T>
+template <class T>
 class Stack
 {
     T *stack;
@@ -20,7 +20,7 @@ public:
     ~Stack();
 };
 
-template <typename T>
+template <class T>
 Stack<T>::Stack()
 {
     top = -1;
@@ -28,7 +28,7 @@ Stack<T>::Stack()
     size = 0;
 }
 
-template <typename T>
+template <class T>
 Stack<T>::Stack(T arr[], int len, int max)
 {
     if (max == 0)
@@ -40,13 +40,13 @@ Stack<T>::Stack(T arr[], int len, int max)
         push(arr[i]);
 }
 
-template <typename T>
+template <class T>
 Stack<T>::~Stack()
 {
     delete[] stack;
 }
 
-template <typename T>
+template <class T>
 void Stack<T>::assignSize(int max)
 {
     delete[] stack;
@@ -55,7 +55,7 @@ void Stack<T>::assignSize(int max)
     size = max;
 }
 
-template <typename T>
+template <class T>
 int Stack<T>::push(T element)
 {
     if (top + 1 == size)
@@ -71,7 +71,7 @@ int Stack<T>::push(T element)
     }
 }
 
-template <typename T>
+template <class T>
 T Stack<T>::pop()
 {
     if (top == -1)
@@ -87,7 +87,7 @@ T Stack<T>::pop()
     }
 }
 
-template <typename T>
+template <class T>
 void Stack<T>::displayFromBottom()
 {
     if (top == -1)
@@ -111,7 +111,7 @@ void Stack<T>::displayFromBottom()
     }
 }
 
-template <typename T>
+template <class T>
 void Stack<T>::displayFromTop()
 {
     if (top == -1)
@@ -135,7 +135,7 @@ void Stack<T>::displayFromTop()
     }
 }
 
-template <typename T>
+template <class T>
 int Stack<T>::count()
 {
     return top + 1;
