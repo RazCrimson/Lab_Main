@@ -22,7 +22,7 @@ Stack::Stack()
 {
     top = -1;
     stack = new int[0]();
-    size  = 0;
+    size = 0;
 }
 
 Stack::Stack(int arr[], int len, int max)
@@ -73,7 +73,6 @@ int Stack::pop()
     }
     else
     {
-        cout<<top;
         int element = stack[top];
         top -= 1;
         return element;
@@ -82,9 +81,9 @@ int Stack::pop()
 
 void Stack::displayFromBottom()
 {
-    if(top == -1)
+    if (top == -1)
     {
-        cout<<"Empty Stack\n";
+        cout << "Empty Stack\n";
         return;
     }
     Stack temp;
@@ -105,9 +104,9 @@ void Stack::displayFromBottom()
 
 void Stack::displayFromTop()
 {
-    if(top == -1)
+    if (top == -1)
     {
-        cout<<"Empty Stack\n";
+        cout << "Empty Stack\n";
         return;
     }
     Stack temp;
