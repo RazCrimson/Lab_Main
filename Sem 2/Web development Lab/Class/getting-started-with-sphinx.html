@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,26 +8,27 @@
 </head>
 
 <body link="#d0d0d0" vlink="#c0c0c0" alink="#c0c0c0" bgcolor="#353535">
-    <table width=100% cellspacing=8px cellpadding=3px height="670px" >
+    <font face="Helvetica">
+        <table width=100% cellspacing=8px cellpadding=3px height="770px">
 
-        <tr>
-            <td width="20%" bgcolor="#2980B9" height=100px>
-                <a href="./index.html">
-                    <img src="./images/logo.svg" width=100% class="logo" alt="Logo">
-                </a>
-                <div role="search">
-                    <center>
-                        <form action="../search.html" method="get">
-                            <input type="text" name="q" placeholder="Search docs">
-                            <input type="hidden" name="check_keywords" value="yes">
-                            <input type="hidden" name="area" value="default">
-                        </form>
-                    </center>
-                </div>
+            <tr>
+                <td width="20%" bgcolor="#2980B9" height=100px>
+                    <a href="./index.html">
+                        <img src="./images/logo.svg" width=100% class="logo" alt="Logo">
+                    </a>
+                    <div role="search">
+                        <center>
+                            <form action="../search.html" method="get">
+                                <input type="text" name="q" placeholder="Search docs">
+                                <input type="hidden" name="check_keywords" value="yes">
+                                <input type="hidden" name="area" value="default">
+                            </form>
+                        </center>
+                    </div>
 
                 <td bgcolor="#d3d3d3" rowspan="2">
-                    <div style="width: 100%; height: 100%; overflow: auto;">
-    
+                    <div style="height: 100%; overflow: auto;">
+
                         <div>
                             <div id="getting-started-with-sphinx">
                                 <h1>
@@ -48,7 +48,7 @@
                                     <li>
                                         You can use reStructuredText or
                                         <a href="#using-markdown-with-sphinx">
-                                            <font color="#454545">Markdown</font>
+                                            <font color="#2980B9">Markdown</font>
                                         </a>
                                         to write documentation
                                     </li>
@@ -61,7 +61,7 @@
                                         A vibrant ecosystem of first and third-party
                                         <a
                                             href="http://www.sphinx-doc.org/en/master/ext/builtins.html#builtin-sphinx-extensions">
-                                            <font color="#454545">extensions</font>
+                                            <font color="#2980B9">extensions</font>
                                         </a>
                                     </li>
                                 </ul>
@@ -72,7 +72,7 @@
                                     <p>
                                         This screencast will help you get started or you can
                                         <a href="#quick-start">
-                                            <font color="#454545">read our guide below</font>
+                                            <font color="#2980B9">read our guide below</font>
                                         </a>.
                                     </p>
                                     <center>
@@ -88,23 +88,23 @@
                                     <p>
                                         Assuming you have Python already,
                                         <a href="http://sphinx-doc.org/install.html">
-                                            <font color="#454545">install Sphinx</font>
+                                            <font color="#2980B9">install Sphinx</font>
                                         </a>:
                                     </p>
-                                    <code><font color="#ee0000">$pip install sphinx</font></code>
+                                    <code><font color="#ee0000">&emsp;&emsp;$pip install sphinx</font></code>
                                     <p>
                                         Create a directory inside your project to hold your
                                         docs:
                                     </p>
-                                    <code><font color="#ee0000">$cd /path/to/project</font></code><br />
-                                    <code><font color="#ee0000">$mkdir docs</font></code>
+                                    <code><font color="#ee0000">&emsp;&emsp;$cd /path/to/project</font></code><br />
+                                    <code><font color="#ee0000">&emsp;&emsp;$mkdir docs</font></code>
                                     <p>
                                         Run
                                         <code><font color="#ee0000">$sphinx-quickstart</font></code>
                                         in there:
                                     </p>
-                                    <code><font color="#ee0000">$cd docs</font></code><br>
-                                    <code><font color="#ee0000">$sphinx-quickstart</font></code>
+                                    <code><font color="#ee0000">&emsp;&emsp;$cd docs</font></code><br>
+                                    <code><font color="#ee0000">&emsp;&emsp;$sphinx-quickstart</font></code>
                                     <p>
                                         This quick start will walk you through creating the
                                         basic configuration; in most cases, you can just
@@ -122,20 +122,22 @@
                                             <font color="#454545">reStructuredText</font>
                                         </a>
                                         syntax or
-                                        <a href="https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/#id1">
-                                            <font color="#454545">this
+                                        <a
+                                            href="https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/#id1">
+                                            <font color="#2980B9">this
                                                 template</font>
                                         </a>
                                         if you need help). Build them to see how they look:
                                     </p>
-                                    <code><font color="#ee0000">$make html</font></code>
+                                    <code><font color="#ee0000">&emsp;&emsp;$make html</font></code>
                                     <p>
                                         Your
                                         <code><font color="#ee0000">index.rst</font></code>
                                         has been built into
                                         <code><font color="#ee0000">index.html</font></code>
                                         in your documentation output directory (typically
-                                        <code><font color="#ee0000">build/html/index.html</font></code>). Open this file in
+                                        <code><font color="#ee0000">build/html/index.html</font></code>). Open this file
+                                        in
                                         your web browser to see your
                                         docs.
                                     </p>
@@ -156,7 +158,7 @@
                                         public repository, you can start using Read the Docs
                                         by
                                         <a href="import-guide.html">
-                                            <font color="#454545">importing your docs</font>
+                                            <font color="#2980B9">importing your docs</font>
                                         </a>.
                                     </p>
                                 </div>
@@ -169,7 +171,7 @@
                                         Sphinx project. We support this natively on Read the
                                         Docs, and you can do it locally:
                                     </p>
-                                    <code><font color="#ee0000">$pip install recommonmark</font></code>
+                                    <code><font color="#ee0000">&emsp;&emsp;$pip install recommonmark</font></code>
                                     <p>
                                         Then in your
                                         <code><font color="#ee0000">conf.py</font></code>:
@@ -187,7 +189,7 @@
                                             please read
                                             <a
                                                 href="https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">
-                                                <font color="#454545">this
+                                                <font color="#2980B9">this
                                                     blog post</font>
                                             </a>
                                             for motivation.
@@ -205,19 +207,20 @@
                                     <ul>
                                         <li>
                                             <a href="http://www.sphinx-doc.org/">
-                                                <font color="#454545">Sphinx documentation</font>
+                                                <font color="#2980B9">Sphinx documentation</font>
                                             </a>
                                         </li>
                                         <li>
                                             <a
                                                 href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">
-                                                <font color="#454545">RestructuredText
+                                                <font color="#2980B9">RestructuredText
                                                     primer</font>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://ericholscher.com/blog/2016/jul/1/sphinx-and-rtd-for-writers/">
-                                                <font color="#454545">An
+                                            <a
+                                                href="https://ericholscher.com/blog/2016/jul/1/sphinx-and-rtd-for-writers/">
+                                                <font color="#2980B9">An
                                                     introduction to Sphinx and Read the Docs for
                                                     technical writers</font>
                                             </a>
@@ -228,163 +231,177 @@
                         </div>
                     </div>
                 </td>
-        </tr>
+            </tr>
 
-        <tr>
-            <td width="20%" bgcolor="#353535">
-                <div style="height: 100%; overflow: auto;">
-                    <p>
-                        <font color="#D0D0D0"><B>FIRST STEPS</B></font>
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="#"> Getting Started with Sphinx </a>
-                            <ul>
-                                <li ><a href="#quick-start-video">Quick start video</a></li>
-                                <li ><a href="#quick-start">Quick start</a></li>
-                                <li ><a href="#using-markdown-with-sphinx">Using Markdown with Sphinx</a></li>
-                                <li ><a href="#external-resources">External resources</a></li>
+            <tr>
+                <td width="20%" bgcolor="#353535">
+                    <div style="height: 100%; overflow: auto;">
+                        <p>
+                            <font color="#D0D0D0"><B>FIRST STEPS</B></font>
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="#"><font color="#c0c0c0"> Getting Started with Sphinx </font></a>
+                                <ul>
+                                    <li><a href="#quick-start-video">Quick start video</a></li>
+                                    <li><a href="#quick-start">Quick start</a></li>
+                                    <li><a href="#using-markdown-with-sphinx">Using Markdown with Sphinx</a></li>
+                                    <li><a href="#external-resources">External resources</a></li>
                                 </ul>
-                        </li>
-                        <li>
-                            <a href="getting-started-with-mkdocs.html">Getting Started with MkDocs</a>
-                           
-                        </li>
-                        <li>
-                            <a href="import-guide.html">Importing Your Documentation</a>
-                        </li>
-                    </ul>
-                    <p>
-                        <font color="#D0D0D0"><b>GETTING STARTED</b></font>
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/features.html">Read the Docs features</a></font>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/config-file/index.html">Configuration File</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/webhooks.html">Webhooks</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/badges.html">Badges</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/custom_domains.html">Custom Domains</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/connected-accounts.html">Connecting Your Account</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/builds.html">Build Process</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/versions.html">Versions</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/support.html">Support</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/faq.html">Frequently Asked Questions</a>
-                        </li>
-                    </ul>
-                    <p>
-                        <font color="#D0D0D0"><b>ADVANCED FEATURES</b></font>
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/subprojects.html">Subprojects</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/single_version.html">Single Version Documentation</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/privacy.html">Privacy Levels</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/localization.html">Localization of Documentation</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/user-defined-redirects.html">User-defined Redirects</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/automatic-redirects.html">Automatic Redirects</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/automation-rules.html">Automation Rules</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/guides/index.html">Guides</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/api/index.html">Public API</a>
-                        </li>
-                    </ul>
-                    <p>
-                        <font color="#D0D0D0"><B>ABOUT READ THE DOCS</B></font>
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/contribute.html">Contributing to Read the Docs</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/roadmap.html">Roadmap</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/gsoc.html">Google Summer of Code</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/code-of-conduct.html">Code of Conduct</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/security.html">Security</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/privacy-policy.html">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/terms-of-service.html">Read the Docs Terms of Service</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/dmca/index.html">DMCA Takedown Policy</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/abandoned-projects.html">Policy for Abandoned Projects</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/changelog.html">Changelog</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/team.html">Read the Docs Team</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/open-source-philosophy.html">Read the Docs Open Source Philosophy</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/story.html">The Story of Read the Docs</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/advertising/index.html">Advertising</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/sponsors.html">Sponsors of Read the Docs</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/commercial/index.html">Read the Docs for Business</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.readthedocs.io/en/stable/custom_installs/index.html">Info about custom installs</a>
-                        </li>
-                    </ul>
-                </div>
+                            </li>
+                            <li>
+                                <a href="getting-started-with-mkdocs.html">Getting Started with MkDocs</a>
 
-            </td>
+                            </li>
+                            <li>
+                                <a href="import-guide.html">Importing Your Documentation</a>
+                            </li>
+                        </ul>
+                        <p>
+                            <font color="#D0D0D0"><b>GETTING STARTED</b></font>
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/features.html">Read the Docs features</a>
 
-        </tr>
-
-
-    </table>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/config-file/index.html">Configuration
+                                    File</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/webhooks.html">Webhooks</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/badges.html">Badges</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/custom_domains.html">Custom Domains</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/connected-accounts.html">Connecting Your
+                                    Account</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/builds.html">Build Process</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/versions.html">Versions</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/support.html">Support</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/faq.html">Frequently Asked Questions</a>
+                            </li>
+                        </ul>
+                        <p>
+                            <font color="#D0D0D0"><b>ADVANCED FEATURES</b></font>
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/subprojects.html">Subprojects</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/single_version.html">Single Version
+                                    Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/privacy.html">Privacy Levels</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/localization.html">Localization of
+                                    Documentation</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/user-defined-redirects.html">User-defined
+                                    Redirects</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/automatic-redirects.html">Automatic
+                                    Redirects</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/automation-rules.html">Automation
+                                    Rules</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/guides/index.html">Guides</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/api/index.html">Public API</a>
+                            </li>
+                        </ul>
+                        <p>
+                            <font color="#D0D0D0"><B>ABOUT READ THE DOCS</B></font>
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/contribute.html">Contributing to Read the
+                                    Docs</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/roadmap.html">Roadmap</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/gsoc.html">Google Summer of Code</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/code-of-conduct.html">Code of Conduct</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/security.html">Security</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/privacy-policy.html">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/terms-of-service.html">Read the Docs
+                                    Terms of Service</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/dmca/index.html">DMCA Takedown Policy</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/abandoned-projects.html">Policy for
+                                    Abandoned Projects</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/changelog.html">Changelog</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/team.html">Read the Docs Team</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/open-source-philosophy.html">Read the
+                                    Docs Open Source
+                                    Philosophy</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/story.html">The Story of Read the
+                                    Docs</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/advertising/index.html">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/sponsors.html">Sponsors of Read the
+                                    Docs</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/commercial/index.html">Read the Docs for
+                                    Business</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.readthedocs.io/en/stable/custom_installs/index.html">Info about
+                                    custom installs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </font>
 </body>
 
 </html>

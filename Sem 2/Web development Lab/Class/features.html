@@ -28,81 +28,171 @@
 
                 <td bgcolor="#d3d3d3" rowspan="2">
                     <div style="width: 100%; height: 100%; overflow: auto;">
-                        <div id="getting-started-with-mkdocs">
-                            <h1>Getting Started with MkDocs<a href="#getting-started-with-mkdocs"></a></h1>
-                            <p>MkDocs is a documentation generator that focuses on speed and simplicity.
-                                It has many great features including:</p>
-                            <ul>
-                                <li>Preview your documentation as you write it</li>
-                                <li>Easy customization with themes and extensions</li>
-                                <li>Writing documentation with Markdown</li>
-                            </ul>
-                            <div>
-                                <p>Note : </p>
-                                <p>&emsp;MkDocs is a great choice for building technical documentation.
-                                    However, Read the Docs also supports <a href="getting-started-with-sphinx.html">
-                                        <font color="#2980B9">Sphinx</font>
-                                    </a>,
-                                    another tool for writing and building documentation.</p>
+
+                        <div id="read-the-docs-features">
+                            <h1>Read the Docs features<a href="#read-the-docs-features"></a></h1>
+                            <p>This will serve as a list of all of the features that Read the Docs currently has. Some
+                                features are important enough to have their own page in the docs, others will simply be
+                                listed here.</p>
+                            <div id="github-bitbucket-and-gitlab-integration">
+                                <h2>GitHub, Bitbucket and GitLab Integration<a
+                                        href="#github-bitbucket-and-gitlab-integration"></a></h2>
+                                <p>We now support linking by default in the sidebar. It links to the page on your host,
+                                    which should help people quickly update typos and send pull requests to contribute
+                                    to project documentation.</p>
+                                <p>More information can be found in <a href="https://docs.readthedocs.io/en/stable/guides/vcs.html"><span>Version Control
+                                            System Integration</span></a>.</p>
                             </div>
-                            <div id="quick-start">
-                                <h2>Quick start<a href="#quick-start"></a></h2>
-                                <p>Assuming you have Python already, <a href="https://www.mkdocs.org/#installation">
-                                        <font color="#2980B9">install
-                                            MkDocs</font>
-                                    </a>:</p>
-                                <code><font color="#ee0000">&emsp;&emsp;$pip install mkdocs</font></code>
-                                <p>Setup your MkDocs project:</p>
-                                <code><font color="#ee0000">&emsp;&emsp;$mkdocs new .</font></code>
-                                <p>This command creates <code><font color="#ee0000">mkdocs.yml</font></code>
-                                    which holds your MkDocs configuration,
-                                    and <code><font color="#ee0000">docs/index.md</font></code>
-                                    which is the Markdown file
-                                    that is the entry point for your documentation.</p>
-                                <p>You can edit this <code><font color="#ee0000">index.md</font></code> file
-                                    to add more details about your project
-                                    and then you can build your documentation:</p>
-                                <code><font color="#ee0000">&emsp;&emsp;$mkdocs serve</font></code>
-                                <p>This command builds your Markdown files into HTML
-                                    and starts a development server to browse your documentation.
-                                    Open up <a href="http://127.0.0.1:8000/">
-                                        <font color="#2980B9">http://127.0.0.1:8000/</font>
-                                    </a> in your web browser
-                                    to see
-                                    your documentation.
-                                    You can make changes to your Markdown files and your docs will automatically
-                                    rebuild.
+                            <div id="auto-updating">
+                                <h2>Auto-updating<a href="#auto-updating"></a></h2>
+                                <p>The <a href="https://docs.readthedocs.io/en/stable/webhooks.html"><span>Webhooks</span></a> page talks about the different
+                                    ways you can ping RTD to let us know your project has been updated. We have official
+                                    support for GitHub, Bitbucket and GitLab, and anywhere else we have a generic
+                                    post-commit hook that allows you to POST to a URL to get your documentation built.
                                 </p>
-                                <center>
-                                    <a href="./images/mkdocs-hello-world.png"><img alt="./images/mkdocs-hello-world.png"
-                                            src="./images/mkdocs-hello-world.png"></a>
-                                </center>
-                                <p>Your MkDocs project is built</p>
                             </div>
-                            <p>Once you have your documentation in a public repository such as GitHub, Bitbucket, or
-                                GitLab,
-                                you can start using Read the Docs by <a href="import-guide.html">importing your
-                                    docs</a>.</p>
+                            <div id="internationalization">
+                                <h2>Internationalization<a href="#internationalization"></a></h2>
+                                <p>Read the Docs itself is localized, and we support documentation translated into
+                                    multiple languages.
+                                    Read more on the <a href="https://docs.readthedocs.io/en/stable/localization.html"><span>Localization of
+                                            Documentation</span></a> and <a
+                                        href="https://docs.readthedocs.io/en/stable/development/i18n.html"><span>Internationalization</span></a> pages.</p>
+                            </div>
+                            <div id="canonical-urls">
+                                <h2>Canonical URLs<a href="#canonical-urls"></a>
+                                </h2>
+                                <p>Canonical URLs give your docs better search performance, by pointing all URLs to one
+                                    version. This also helps to solve the issues around users landing on outdated
+                                    versions of documentation.</p>
+                                <p>More information can be found in the <a href="https://docs.readthedocs.io/en/stable/guides/canonical.html"><span>Canonical
+                                            URLs</span></a> page.</p>
+                            </div>
+                            <div id="versions">
+                                <h2>Versions<a href="#versions"></a></h2>
+                                <p>We can build multiple versions of your documentation. Look on the “Versions” page
+                                    of your project’s admin (using the nav on the left) to find a list of available
+                                    versions
+                                    that we’ve inferred from the tags and branches in your source control system
+                                    (according to
+                                    the support matrix below). On the Versions page you can tell us which versions you’d
+                                    like us
+                                    to build docs for, whether each should be public, protected, or private, and what
+                                    the default
+                                    version should be (we’ll redirect there when someone hits your main project page,
+                                    e.g.,
+                                    <a href="http://my-project.rtfd.org/">http://my-project.rtfd.org/</a>).</p>
+                            </div>
+                            <div id="version-control-support-matrix">
+                                <h2>Version Control Support Matrix<a href="#version-control-support-matrix"></a></h2>
+                                <div>
+                                    <table border="1">
+                                        <colgroup>
+                                            <col width="21%">
+                                            <col width="21%">
+                                            <col width="19%">
+                                            <col width="21%">
+                                            <col width="19%">
+                                        </colgroup>
+                                        <thead valign="bottom">
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>Git</th>
+                                                <th>hg</th>
+                                                <th>bzr</th>
+                                                <th>svn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody valign="top">
+                                            <tr>
+                                                <td>Tags</td>
+                                                <td>Yes</td>
+                                                <td>Yes</td>
+                                                <td>Yes</td>
+                                                <td>No</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Branches</td>
+                                                <td>Yes</td>
+                                                <td>Yes</td>
+                                                <td>Yes</td>
+                                                <td>No</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Default</td>
+                                                <td>master</td>
+                                                <td>default</td>
+                                                <td>&nbsp;</td>
+                                                <td>trunk</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="pdf-generation">
+                                <h2>PDF Generation<a href="#pdf-generation" ></a>
+                                </h2>
+                                <p>When you build your project on RTD, we automatically build a PDF of your project’s
+                                    documentation. We also build them for every version that you upload, so we can host
+                                    the PDFs of your latest documentation, as well as your latest stable releases as
+                                    well.</p>
+                            </div>
+                            <div id="search">
+                                <h2>Search<a href="#search" ></a></h2>
+                                <p>We provide full-text search across all of the pages of documentation hosted on our
+                                    site. This uses Elasticsearch as the search backend. We hope to be integrating this
+                                    into the site more fully in the future.</p>
+                            </div>
+                            <div id="alternate-domains">
+                                <h2>Alternate Domains<a href="#alternate-domains"></a></h2>
+                                <p>We provide support for custom domains, subdomains, and a shorturl for your
+                                    project as well. This is outlined in the <a href="https://docs.readthedocs.io/en/stable/custom_domains.html"><span>Custom
+                                            Domains</span></a> section.</p>
+                            </div>
                         </div>
-                        <div id="external-resources">
-                            <h2>External resources<a href="#external-resources" title="Permalink to this headline">¶</a>
-                            </h2>
-                            <p>Here are some external resources to help you learn more about MkDocs.</p>
-                            <ul>
-                                <li><a href="https://www.mkdocs.org/">
-                                        <font color="#2980B9">MkDocs
-                                            documentation</font>
-                                    </a></li>
-                                <li><a href="http://daringfireball.net/projects/markdown/syntax">
-                                        <font color="#2980B9">Markdown syntax
-                                            guide</font>
-                                    </a></li>
-                                <li><a href="https://www.mkdocs.org/user-guide/writing-your-docs/">
-                                        <font color="#2980B9">Writing your docs
-                                            with MkDocs</font>
-                                    </a></li>
-                            </ul>
+
+
+                    </div>
+
+                    </div>
+                    <footer>
+
+                        <div role="navigation" aria-label="footer navigation">
+
+                            <a href="https://docs.readthedocs.io/en/stable/config-file/index.html" title="Configuration File" accesskey="n" rel="next">Next
+                                </a>
+
+
+                            <a href="https://docs.readthedocs.io/en/stable/intro/import-guide.html" title="Importing Your Documentation" accesskey="p"
+                                rel="prev">Previous</a>
+
                         </div>
+
+
+                        <hr>
+                        <div>
+                            <div id="rtd-fj9quyy8"></div>
+                        </div>
+
+                        <div role="contentinfo">
+                            <p>
+                                © Copyright 2010-2020, Read the Docs, Inc &amp; contributors
+
+                                <span>
+                                    Revision <code>06df4171</code>.
+                                </span>
+
+
+                            </p>
+                        </div>
+                        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+                            href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a
+                            href="https://readthedocs.org">Read the Docs</a>.
+
+                    </footer>
+
+                    </div>
+                    </div>
                     </div>
 
                     </div>
