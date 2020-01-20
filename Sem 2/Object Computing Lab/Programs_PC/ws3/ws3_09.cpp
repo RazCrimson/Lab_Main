@@ -14,7 +14,7 @@ public:
     // Question: why should a friend function return another object?
 };
 
-Coordinate::Coordinate(double x = 0, double y = 0)
+Coordinate::Coordinate(double x, double y)
 {
     xVal = x;
     yVal = y;

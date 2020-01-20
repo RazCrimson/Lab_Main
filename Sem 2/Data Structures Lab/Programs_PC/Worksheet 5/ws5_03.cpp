@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Stack.hpp"
 
 using namespace std;
 
@@ -12,13 +11,12 @@ class DoubleStack
 public:
     DoubleStack();
     DoubleStack(T[], int, int = 0);
-    int push(T,int);
+    int push(T, int);
     T pop(int);
-    int count();
     void assignSize(int);
-    void displayFromTop();
-    void displayFromBottom();
-    ~Stack();
+    void high();
+    void low();
+    ~DoubleStack();
 };
 
 template <class T>
@@ -44,7 +42,7 @@ DoubleStack<T>::DoubleStack(T arr[], int len, int max)
 }
 
 template <class T>
-DoubleStack<T>::~Stack()
+DoubleStack<T>::~DoubleStack()
 {
     delete[] stack;
 }
@@ -60,7 +58,7 @@ void DoubleStack<T>::assignSize(int max)
 }
 
 template <class T>
-int DoubleStack<T>::push(T element,int ch)
+int DoubleStack<T>::push(T element, int ch)
 {
     if (ch == 1)
     {
@@ -85,7 +83,7 @@ int DoubleStack<T>::push(T element,int ch)
         }
         else
         {
-            end = 1;
+            end -= 1;
             stack[end] = element;
             return 0;
         }
@@ -126,33 +124,31 @@ T DoubleStack<T>::pop(int ch)
 }
 
 template <class T>
-void DoubleStack<T>::displayFromTop()
+void DoubleStack<T>::high()
 {
-    if (top == -1)
+    if(top < (size - end))
+        for (int i = end; i < size; i++)
+            cout << stack[i] << "\t";
+    else
     {
-        cout << "Empty Stack\n";
-        return;
+        for()
     }
-    Stack<T> temp;
-    temp.assignSize(size);
-    while (top != -1)
-    {
-        T element = pop(1);
-        cout << "\n"
-             << element;
-        temp.push(element);
-    }
-    while (temp.top != -1)
-    {
-        T element = temp.pop();
-        push(element);
-    }
-    while(end != size){
-        T element = pop(2);
-        cout << "\n"
-             << element;
-        temp.push(element);
-    }
+    
 }
 
-// need work
+int main()
+{
+    DoubleStack<int> one;
+    one.assignSize(10);
+    one.push(1, 1);
+    one.push(2, 1);
+    one.push(3, 1);
+    one.push(4, 1);
+    one.push(5, 1);
+    one.push(6, 1);
+    one.push(7, 1);
+    one.push(8, 1);
+    one.push(9, 1);
+    one.push(0, 1);
+    one.displayFromTop();
+}
