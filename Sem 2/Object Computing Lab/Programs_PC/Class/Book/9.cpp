@@ -27,12 +27,12 @@ Population::Population(int pop, int births, int deaths)
 
 double Population::getBirthRate()
 {
-    return numberOfBirths / population;
+    return float(numberOfBirths) / population;
 }
 
 double Population::getDeathRate()
 {
-    return numberOfDeaths / population;
+    return float(numberOfDeaths) / population;
 }
 
 int main()
@@ -42,7 +42,7 @@ int main()
     cin >> pop;
     cout << "\nEnter the Number of Births :";
     cin >> births;
-    cout << "\nEnter the Number of Births :";
+    cout << "\nEnter the Number of Deaths :";
     cin >> deaths;
     Population a(pop, births, deaths);
     cout << "\nThe Birth and death rates are : " << a.getBirthRate() << " and  " << a.getDeathRate();
