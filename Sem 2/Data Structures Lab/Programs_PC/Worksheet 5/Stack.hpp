@@ -61,7 +61,7 @@ int Stack<T>::push(T element)
     if (top + 1 == size)
     {
         throw __throw_out_of_range;
-        return 0;
+        return -1;
     }
     else
     {
@@ -77,7 +77,7 @@ T Stack<T>::pop()
     if (top == -1)
     {
         throw __throw_out_of_range;
-        return 0;
+        return -1;
     }
     else
     {

@@ -65,7 +65,7 @@ int DoubleStack<T>::push(T element, int ch)
         if (top + 1 == end)
         {
             throw __throw_out_of_range;
-            return 0;
+            return -1;
         }
         else
         {
@@ -79,7 +79,7 @@ int DoubleStack<T>::push(T element, int ch)
         if (end - 1 == top)
         {
             throw __throw_out_of_range;
-            return 0;
+            return -1;
         }
         else
         {
@@ -98,7 +98,7 @@ T DoubleStack<T>::pop(int ch)
         if (top == -1)
         {
             throw __throw_out_of_range;
-            return 0;
+            return -1;
         }
         else
         {
@@ -112,7 +112,7 @@ T DoubleStack<T>::pop(int ch)
         if (end == size)
         {
             throw __throw_out_of_range;
-            return 0;
+            return -1;
         }
         else
         {
@@ -126,12 +126,27 @@ T DoubleStack<T>::pop(int ch)
 template <class T>
 void DoubleStack<T>::high()
 {
-    if(top < (size - end))
+    if(top + 1 < (size - end))
         for (int i = end; i < size; i++)
             cout << stack[i] << "\t";
     else
     {
-        for()
+        for(int i = 0; i <= top;i++)
+            cout << stack[i] << "\t";
+    }
+    
+}
+
+template <class T>
+void DoubleStack<T>::low()
+{
+    if(top + 1 > (size - end))
+        for (int i = end; i < size; i++)
+            cout << stack[i] << "\t";
+    else
+    {
+        for(int i = 0; i <= top;i++)
+            cout << stack[i] << "\t";
     }
     
 }
@@ -145,10 +160,13 @@ int main()
     one.push(3, 1);
     one.push(4, 1);
     one.push(5, 1);
-    one.push(6, 1);
-    one.push(7, 1);
-    one.push(8, 1);
-    one.push(9, 1);
-    one.push(0, 1);
-    one.displayFromTop();
+    one.push(6, 0);
+    one.push(7, 0);
+    one.push(8, 0);
+    one.push(9, 0);
+    one.push(0, 0);
+    cout<<endl;
+    one.high();
+    cout<<endl;
+    one.low();
 }
