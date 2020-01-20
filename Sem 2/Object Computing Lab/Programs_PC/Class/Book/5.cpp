@@ -2,14 +2,14 @@
 
 using namespace std;
 
-class Population
+class RetailItem
 {
     int units_on_hand;
     double price;
     string description;
 
 public:
-    Population(int units, string &des, double pri);
+    RetailItem(int units, string &des, double pri);
     void setPrice(double);
     void setDescription(string &);
     void setUnitsOnHand(int);
@@ -18,46 +18,46 @@ public:
     int getUnitsOnHand();
 };
 
-Population::Population(int units, string &des, double pri)
+RetailItem::RetailItem(int units, string &des, double pri)
 {
     setPrice(pri);
     setDescription(des);
     setUnitsOnHand(units);
 }
 
-void Population::setPrice(double pri)
+void RetailItem::setPrice(double pri)
 {
     price = pri;
 }
 
-void Population::setDescription(string &des)
+void RetailItem::setDescription(string &des)
 {
     description = des;
 }
 
-void Population::setUnitsOnHand(int units)
+void RetailItem::setUnitsOnHand(int units)
 {
     units_on_hand = units;
 }
 
-string Population::getDescription()
+string RetailItem::getDescription()
 {
     return description;
 }
 
-double Population::getPrice()
+double RetailItem::getPrice()
 {
     return price;
 }
 
-int Population::getUnitsOnHand()
+int RetailItem::getUnitsOnHand()
 {
     return units_on_hand;
 }
 
 int main()
 {
-    Population **arr = new Population *[3];
+    RetailItem **arr = new RetailItem *[3];
     for (int i = 1; i <= 3; i++)
     {
         string des;
@@ -70,6 +70,6 @@ int main()
         cout << "Enter the Description of Item " << i << '\0';
         cin.sync();
         getline(cin, des);
-        arr[i - 1] = new Population(units, des, pri);
+        arr[i - 1] = new RetailItem(units, des, pri);
     }
 }

@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": [],
+            "args": ["-std=c++11","-std=gnu++11"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

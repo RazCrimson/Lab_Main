@@ -14,6 +14,7 @@ public:
     int push(T);
     T pop();
     int count();
+    int getSize();
     void assignSize(int);
     void displayFromTop();
     void displayFromBottom();
@@ -50,9 +51,15 @@ template <class T>
 void Stack<T>::assignSize(int max)
 {
     delete[] stack;
+    size = max;
     stack = new T[size]();
     top = -1;
-    size = max;
+}
+
+template <class T>
+int Stack<T>::getSize()
+{
+    return size;
 }
 
 template <class T>
@@ -74,7 +81,7 @@ int Stack<T>::push(T element)
 template <class T>
 T Stack<T>::pop()
 {
-    if (top == -1)
+    if (top == -1 && top >= size)
     {
         throw __throw_out_of_range;
         return -1;

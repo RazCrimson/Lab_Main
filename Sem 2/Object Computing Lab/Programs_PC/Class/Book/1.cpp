@@ -65,9 +65,9 @@ void Date::display3()
 int main()
 {
     cout << "Enter the date to display it in diffrent formats.\n";
-    Date a;
-    a.read();
-    a.display1();
-    a.display2();
-    a.display3();
+    Date *ptr = new Date;
+    ptr->read();
+    ptr->display1();
+    ptr->display2();
+    ptr->display3();
 }
