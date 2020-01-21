@@ -27,12 +27,12 @@ Population::Population(int pop, int births, int deaths)
 
 double Population::getBirthRate()
 {
-    return float(numberOfBirths) / population;
+    return double(numberOfBirths) / population;
 }
 
 double Population::getDeathRate()
 {
-    return float(numberOfDeaths) / population;
+    return double(numberOfDeaths) / population;
 }
 
 int main()
