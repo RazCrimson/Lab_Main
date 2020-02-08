@@ -25,10 +25,10 @@ void Student::print()
     cout << "\nName : " << name << "\nMarks : " << marks;
 }
 
-float average(Student arr[],int len)
+float average(Student arr[], int len)
 {
     float res;
-    for(int i = 0;i<len;i++)
+    for (int i = 0; i < len; i++)
         res += arr[i].get_marks;
     res /= len;
     return res;
@@ -37,8 +37,8 @@ float average(Student arr[],int len)
 int main()
 {
     Student S1[10];
-    for(int i =0;i<10;i++)
+    for (int i = 0; i < 10; i++)
         S1[i].read();
-    cout<<"\nAverage : "<<average(S1,10);
+    cout << "\nAverage : " << average(S1, 10);
     return 0;
 }
