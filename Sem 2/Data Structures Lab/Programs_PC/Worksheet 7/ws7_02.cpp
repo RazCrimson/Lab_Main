@@ -9,13 +9,13 @@ template <class T>
 class Node
 {
     T data;
-    Node<T> *next;
+    Node<T> *prev, *next;
     friend class DoubleLinkedList<T>;
 
 public:
-    Node() : data(NULL), next(NULL) {}
-    Node(T key) : data(key), next(NULL) {}
-    Node(const Node &copy) : data(copy.data), next(copy.next) {}
+    Node() : data(NULL), prev(NULL), next(NULL) {}
+    Node(T key) : data(key), prev(NULL), next(NULL) {}
+    Node(const Node &copy) : data(copy.data), prev(copy.prev), next(copy.next) {}
 };
 
 template <class T>
@@ -28,9 +28,11 @@ public:
     DoubleLinkedList(int numberOfElements);
     void insertBeginning(Node<T> data);
     void insertEnd(Node<T> data);
+    bool insertBeforeData(Node<T> target, Node<T> data);
     bool insertAfterData(Node<T> target, Node<T> data);
     bool deleteFirst();
     bool deleteEnd();
+    bool deleteBeforeData(Node<T> target);
     bool deleteAfterData(Node<T> target);
     void display();
 };
@@ -75,14 +77,51 @@ DoubleLinkedList<T>::DoubleLinkedList(int numberOfElements)
         ptr = ptr->next;
     }
     ptr->next = NULL;
+    head->prev = NULL;
 }
 
 template <class T>
 void DoubleLinkedList<T>::insertBeginning(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
+    if (head == NULL)
+    {
+        head = element;
+        head->prev = NULL;
+        head->next = NULL;
+        return;
+    }
     element->next = head;
+    head->prev = element;
+    element->prev = NULL;
     head = element;
+}
+
+template <class T>
+bool DoubleLinkedList<T>::insertBeforeData(Node<T> target, Node<T> data)
+{
+    Node<T> *element = new Node<T>(data);
+    Node<T> *ptr = head;
+    if (head != NULL)
+    {
+        while (ptr != NULL)
+        {
+            if (ptr->data == target.data)
+            {
+                element->next = ptr;
+                element->prev = ptr->prev;
+                if (ptr == head)
+                    head = element;
+                else
+                    ptr->prev->next = element;
+                ptr->prev = element;
+                return true;
+            }
+            ptr = ptr->next;
+        }
+    }
+    cout << "Element is not found!\n";
+    return false;
 }
 
 template <class T>
@@ -97,6 +136,9 @@ bool DoubleLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
             if (ptr->data == target.data)
             {
                 element->next = ptr->next;
+                element->prev = ptr;
+                if (ptr->next != NULL)
+                    ptr->next->prev = element;
                 ptr->next = element;
                 return true;
             }
@@ -115,6 +157,7 @@ void DoubleLinkedList<T>::insertEnd(Node<T> data)
     if (head == NULL)
     {
         head = element;
+        head->prev = NULL;
         head->next = NULL;
         return;
     }
@@ -123,6 +166,7 @@ void DoubleLinkedList<T>::insertEnd(Node<T> data)
         ptr = ptr->next;
     }
     ptr->next = element;
+    element->prev = ptr;
     element->next = NULL;
 }
 
@@ -133,7 +177,10 @@ bool DoubleLinkedList<T>::deleteFirst()
         return false;
     Node<T> *ptr = head;
     head = head->next;
+    if( head != NULL)
+        head->prev = NULL;
     delete ptr;
+    return true;
 }
 
 template <class T>
@@ -148,12 +195,46 @@ bool DoubleLinkedList<T>::deleteEnd()
         return true;
     }
     Node<T> *ptr = head;
-    while (ptr->next->next != NULL)
+    while (ptr->next != NULL)
     {
         ptr = ptr->next;
     }
+    ptr->prev->next = NULL;
     delete ptr->next;
-    ptr->next = NULL;
+    return true;
+}
+
+template <class T>
+bool DoubleLinkedList<T>::deleteBeforeData(Node<T> target)
+{
+    Node<T> *ptr = head;
+    if (head != NULL)
+    {
+        while (ptr->next != NULL)
+        {
+            if (ptr->data == target.data)
+            {
+                Node<T> *del = ptr->prev;
+                if (del == NULL)
+                    break;
+                else if (del == NULL)
+                {
+                    head = ptr;
+                    head->prev = NULL;
+                }
+                else
+                {
+                    ptr->prev = del->prev;
+                    ptr->prev->next = ptr;
+                }
+                delete del;
+                return true;
+            }
+            ptr = ptr->next;
+        }
+    }
+    cout << "Element is not Found!\n";
+    return false;
 }
 
 template <class T>
@@ -168,6 +249,8 @@ bool DoubleLinkedList<T>::deleteAfterData(Node<T> target)
             {
                 Node<T> *del = ptr->next;
                 ptr->next = del->next;
+                if (ptr->next != NULL)
+                    ptr->next->prev = ptr;
                 delete del;
                 return true;
             }
@@ -180,17 +263,19 @@ bool DoubleLinkedList<T>::deleteAfterData(Node<T> target)
 
 int main()
 {
-    int ch, element;
+    int ch, element, data;
     DoubleLinkedList<int> list;
     while (1)
     {
         cout << "\n1. Insert a new node at beginning of  the list\n"
-                "2. Insert a new node after the node which has the element 'e'\n"
-                "3. Insert a new node at end to the list\n"
-                "4. Delete the first node of the list\n"
-                "5. Delete an existing node which is placed after the node which has the element 'e'\n"
-                "6. Delete the last node of the list\n"
-                "7. Display the elements of the list\n"
+                "2. Insert a new node before the node which has the element 'e'\n"
+                "3. Insert a new node after the node which has the element 'e'\n"
+                "4. Insert a new node at end to the list\n"
+                "5. Delete the first node of the list\n"
+                "6. Delete an existing node which is placed before the node which has the element 'e'\n"
+                "7. Delete an existing node which is placed after the node which has the element 'e'\n"
+                "8. Delete the last node of the list\n"
+                "9. Display the elements of the list\n"
                 "Other to Quit.\n"
                 "Enter your choice : ";
         cin >> ch;
@@ -202,30 +287,41 @@ int main()
             list.insertBeginning(element);
             break;
         case 2:
-            int data;
+            cout << "Enter the data to be inserted : ";
+            cin >> data;
+            cout << "Enter the element : ";
+            cin >> element;
+            list.insertBeforeData(element, data);
+            break;
+        case 3:
             cout << "Enter the data to be inserted : ";
             cin >> data;
             cout << "Enter the element : ";
             cin >> element;
             list.insertAfterData(element, data);
             break;
-        case 3:
+        case 4:
             cout << "Enter the element : ";
             cin >> element;
             list.insertEnd(element);
             break;
-        case 4:
+        case 5:
             list.deleteFirst();
             break;
-        case 5:
+        case 6:
+            cout << "Enter the element : ";
+            cin >> element;
+            list.deleteBeforeData(element);
+            break;
+        case 7:
             cout << "Enter the element : ";
             cin >> element;
             list.deleteAfterData(element);
             break;
-        case 6:
+        case 8:
             list.deleteEnd();
             break;
-        case 7:
+        case 9:
             list.display();
             break;
         default:
