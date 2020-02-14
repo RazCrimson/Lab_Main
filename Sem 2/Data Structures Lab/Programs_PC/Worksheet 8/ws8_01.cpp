@@ -25,7 +25,11 @@ class SinglyLinkedList
 
 public:
     SinglyLinkedList();
-    SinglyLinkedList(int numberOfElements);
+    SinglyLinkedList(Node<T> &list_head);
+    SinglyLinkedList(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T>& operator=(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T>& operator+(SinglyLinkedList<T> &list);
+
     void insertBeginning(Node<T> data);
     void insertEnd(Node<T> data);
     bool insertAfterData(Node<T> target, Node<T> data);
@@ -33,6 +37,22 @@ public:
     bool deleteEnd();
     bool deleteAfterData(Node<T> target);
     void display();
+
+    T sum();
+    void sort();
+    void free();
+    bool reverse();
+    bool deleteNth(int n);
+    int numberOfElements();
+    void append(Node<T> data);
+    void delete_every_nth(int n);
+    bool insertAfterNth(int n, Node<T> data);
+    bool moveNode(int n, Node<T> target);
+    SinglyLinkedList<T> &copy();
+    SinglyLinkedList<T> &concatenate(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &combine(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &set(const SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &intersection(const SinglyLinkedList<T> &list);
 };
 
 template <class T>
@@ -60,21 +80,63 @@ void SinglyLinkedList<T>::display()
 }
 
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(int numberOfElements)
+SinglyLinkedList<T>::SinglyLinkedList(Node<T> &list_head)
 {
-    if (numberOfElements < 1)
+    head = &list_head;
+}
+
+template <class T>
+SinglyLinkedList<T>::SinglyLinkedList(SinglyLinkedList<T> &list)
+{
+   *(this) = list;
+}
+
+template <class T>
+SinglyLinkedList<T>& SinglyLinkedList<T>::operator=(SinglyLinkedList<T> &list)
+{
+    free();
+    if (list.head == NULL)
     {
         head = NULL;
-        return;
+        return *this;
     }
     head = new Node<T>();
+    Node<T> *temp = list.head;
     Node<T> *ptr = head;
-    for (int i = 1; i < numberOfElements; i++)
+    while (temp != NULL)
     {
         ptr->next = new Node<T>();
         ptr = ptr->next;
+        ptr->data = temp->data;
+        temp = temp->next;
     }
     ptr->next = NULL;
+    ptr = head;
+    head = head->next;
+    delete ptr;
+    return *this;
+}
+
+template <class T>
+SinglyLinkedList<T>& SinglyLinkedList<T>::operator+(SinglyLinkedList<T> &list)
+{
+    if( list.head == NULL)
+        return *this;
+    Node<T>* ptr = head;
+    Node<T>* temp = list.head;
+
+    while(ptr->next != NULL)
+        ptr = ptr->next;
+
+    while(temp != NULL)
+    {
+        ptr->next = new Node<T>();
+        ptr = ptr->next;
+        ptr->data = temp->data;
+        temp = temp->next;
+    }
+    ptr->next = NULL;
+    return *this;    
 }
 
 template <class T>
@@ -178,58 +240,35 @@ bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
     return false;
 }
 
-int main()
+template <class T>
+T SinglyLinkedList<T>::sum()
 {
-    int ch, element;
-    SinglyLinkedList<int> list;
-    while (1)
+    T temp = 0;
+    Node<T>* ptr = head;
+    while(ptr != NULL)
     {
-        cout << "\n1. Insert a new node at beginning of  the list\n"
-                "2. Insert a new node after the node which has the element 'e'\n"
-                "3. Insert a new node at end to the list\n"
-                "4. Delete the first node of the list\n"
-                "5. Delete an existing node which is placed after the node which has the element 'e'\n"
-                "6. Delete the last node of the list\n"
-                "7. Display the elements of the list\n"
-                "Other to Quit.\n"
-                "Enter your choice : ";
-        cin >> ch;
-        switch (ch)
-        {
-        case 1:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertBeginning(element);
-            break;
-        case 2:
-            int data;
-            cout << "Enter the data to be inserted : ";
-            cin >> data;
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertAfterData(element, data);
-            break;
-        case 3:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertEnd(element);
-            break;
-        case 4:
-            list.deleteFirst();
-            break;
-        case 5:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.deleteAfterData(element);
-            break;
-        case 6:
-            list.deleteEnd();
-            break;
-        case 7:
-            list.display();
-            break;
-        default:
-            exit(0);
-        }
+        temp += ptr->data;
+        ptr = ptr->next;
+    }
+    return temp;
+}
+
+template <class T>
+void SinglyLinkedList<T>::sort()
+{
+
+}
+
+
+template <class T>
+void SinglyLinkedList<T>::free()
+{
+    Node<T>* ptr = head;
+    Node<T>* temp = NULL;
+    while(ptr != NULL)
+    {
+        temp = ptr;
+        ptr = ptr->next;
+        delete temp;
     }
 }

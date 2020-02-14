@@ -3,18 +3,36 @@
 
 using namespace std;
 
-class Point
+struct Point
 {
     int x_co, y_co;
 
-  public:
+public:
+    Point();
+    Point(int x, int y);
     void set(int x, int y);
-    Point add(Point b);
-    Point subtract(Point b);
+    Point operator+(Point &b);
+    Point operator-(Point &b);
+    Point& operator=(Point &b);
     void reset();
     bool isOrigin();
     void display();
 };
+
+
+Point::Point(int x, int y)
+{
+
+    cout << "conversion x " << x << "y "<<y<<endl;
+    x_co = x;
+    y_co = y;
+}
+
+Point::Point()
+{
+    x_co = 0;
+    y_co =0;
+}
 
 void Point::set(int x, int y)
 {
@@ -22,20 +40,21 @@ void Point::set(int x, int y)
     y_co = y;
 }
 
-Point Point::subtract(Point b)
+Point Point::operator-(Point &b)
 {
-    Point c;
-    c.x_co = x_co - b.x_co;
-    c.y_co = y_co - b.y_co;
-    return c;
+    return {x_co - b.x_co, y_co - b.y_co};
 }
 
-Point Point::add(Point b)
+Point Point::operator+(Point &b)
 {
-    Point c;
-    c.x_co = x_co + b.x_co;
-    c.y_co = y_co + b.y_co;
-    return c;
+    return {x_co + b.x_co, y_co + b.y_co};
+}
+
+Point& Point::operator=(Point &b)
+{
+    x_co = b.x_co;
+    y_co = b.y_co;
+    return *this;
 }
 
 void Point::reset()
@@ -60,13 +79,8 @@ void Point::display()
 
 int main()
 {
-    int num=NULL,*ptr=NULL;
-    Point p1, p2;
+    Point p1, p2 = {4,6};
     p1.set(1, 2);
-    p2.set(4, 6);
-    Point p3 = p1.add(p2);
+    Point p3 = p1 + p2;
     p3.display();
-    
-    
-    
 }
