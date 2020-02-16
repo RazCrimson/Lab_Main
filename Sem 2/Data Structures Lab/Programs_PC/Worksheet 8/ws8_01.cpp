@@ -369,22 +369,22 @@ void SinglyLinkedList<T>::append(Node<T> data)
 }
 
 template <class T>
-void SinglyLinkedList<T>::delete_every_nth(int n)       
+void SinglyLinkedList<T>::delete_every_nth(int n)
 {
     /* 
         Args: n = 2 to INT_MAX
         Deletes the nth elements in the linked list
     */
     Node<T> *cpy, *ptr = head;
-    while(ptr != NULL)
+    while (ptr != NULL)
     {
-        for(int i = 1; i < n - 1; i++)
+        for (int i = 1; i < n - 1; i++)
         {
-            if(ptr->next == NULL)
+            if (ptr->next == NULL)
                 return;
             ptr = ptr->next;
         }
-        if(ptr->next == NULL)
+        if (ptr->next == NULL)
             break;
         cpy = ptr->next;
         ptr->next = ptr->next->next;
@@ -539,8 +539,9 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::intersection(const SinglyLinkedList<T>
 
 int main()
 {
-    int ch, element;
-    SinglyLinkedList<int> list;
+    int ch, select = 0, element;
+    SinglyLinkedList<int> list[5];
+
     while (1)
     {
         cout << "1) Append an element to the end of a list\n"
@@ -564,43 +565,85 @@ int main()
         switch (ch)
         {
         case 1:
+            cout << "Select the list : ";
+            cin >> select;
             cout << "Append an element to the end of a list: ";
             cin >> element;
-            list.insertEnd(element);
+            list[select % 5].append(element);
             break;
         case 2:
-            int data;
-            cout << "Enter the data to be inserted : ";
-            cin >> data;
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertAfterData(element, data);
+            list[0].concatenate(list[1]);
             break;
         case 3:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertEnd(element);
+            cout << "Select the list : ";
+            cin >> select;
+            list[select % 5].free();
             break;
         case 4:
-            list.reverse();
+            cout << "Select the list : ";
+            cin >> select;
+            list[select % 5].reverse();
             break;
         case 5:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.deleteAfterData(element);
+            cout << "Select the list : ";
+            cin >> select;
+            list[select % 5].deleteEnd();
             break;
         case 6:
-            list.deleteEnd();
+            cout << "Select the list : ";
+            cin >> select;
+            cout << "Enter the value of data: ";
+            cin >> element;
+            list[select % 5].deleteAfterData(element);
+            break;
+        case 7:
+            list[3] = list[0].combine(list[1]);
+            break;
+        case 8:
+            list[4] = list[0].set(list[1]);
+            break;
+        case 9:
+            list[5] = list[0].intersection(list[1]);
+            break;
+        case 10:
+            int data;
+            cout << "Select the list : ";
+            cin >> select;
+            cout << "Enter the value of n: ";
+            cin >> element;
+            cout << "Enter the value of data ";
+            cin >> data;
+            list[select % 5].insertAfterNth(element, data);
+            break;
+        case 11:
+            cout << "Select the list : ";
+            cin >> select;
+            cout << "Enter the value of n: ";
+            cin >> element;
+            list[select % 5].delete_every_nth(element);
             break;
         case 12:
-            list.sort();
-            list.display();
+            cout << "Select the list : ";
+            cin >> select;
+            list[select % 5].sort();
             break;
-        case 0:
-            list.display();
+        case 13:
+            cout << "Select the list : ";
+            cin >> select;
+            cout << "\nThe sum is : " << list[select % 5].sum();
             break;
-
-        //case
+        case 14:
+            cout << "Select the list : ";
+            cin >> select;
+            cout << "\nThe Number of elements is : " << list[select % 5].numberOfElements();
+            break;
+        case 15:
+            //case
+            break;
+        case 16:
+            cout << "Select the list : ";
+            cin >> select;
+            list[5] = list[select % 5];
         default:
             exit(0);
         }
