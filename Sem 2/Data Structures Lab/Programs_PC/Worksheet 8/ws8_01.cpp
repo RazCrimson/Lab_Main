@@ -13,7 +13,7 @@ class Node
     friend class SinglyLinkedList<T>;
 
 public:
-    Node() : data(NULL), next(NULL) {}
+    Node() : data(0), next(NULL) {}
     Node(T key) : data(key), next(NULL) {}
     Node(const Node &copy) : data(copy.data), next(copy.next) {}
 };
@@ -26,6 +26,7 @@ class SinglyLinkedList
 public:
     SinglyLinkedList();
     SinglyLinkedList(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &operator+(SinglyLinkedList<T> &list);
     SinglyLinkedList<T> &operator=(SinglyLinkedList<T> &list);
     ~SinglyLinkedList();
 
@@ -50,8 +51,8 @@ public:
     SinglyLinkedList<T> &copy();
     SinglyLinkedList<T> &concatenate(SinglyLinkedList<T> &list);
     SinglyLinkedList<T> &combine(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &set(const SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &intersection(const SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &set(SinglyLinkedList<T> &list);
+    SinglyLinkedList<T> &intersection(SinglyLinkedList<T> &list);
 };
 
 template <class T>
@@ -94,12 +95,12 @@ SinglyLinkedList<T>::SinglyLinkedList(SinglyLinkedList<T> &list)
         return;
     }
     Node<T> *ptr = list.head;
-    head = new Node(ptr->data);
+    head = new Node<T>(ptr->data);
     Node<T> *tmp = head;
     while (ptr->next != NULL)
     {
-        tmp->next = new Node(ptr->next->data);
-        tmp = tmp->data;
+        tmp->next = new Node<T>(ptr->next->data);
+        tmp = tmp->next;
         ptr = ptr->next;
     }
 }
@@ -133,7 +134,7 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::operator=(SinglyLinkedList<T> &list)
 }
 
 template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::concatenate(SinglyLinkedList<T> &list)
+SinglyLinkedList<T> &SinglyLinkedList<T>::operator+(SinglyLinkedList<T> &list)
 {
     SinglyLinkedList<T> *ptr = new SinglyLinkedList<T>(*this);
     if (list.head == NULL)
@@ -314,6 +315,7 @@ void SinglyLinkedList<T>::free()
         ptr = ptr->next;
         delete temp;
     }
+    head = NULL;
 }
 
 template <class T>
@@ -341,14 +343,16 @@ bool SinglyLinkedList<T>::deleteNth(int n)
 {
     if (head == NULL)
         return false;
-    Node<T> *ptr = head;
-    while (n-- > 1)
+    Node<T> *tmp, *ptr = head;
+    while (n-- > 2)
     {
         ptr = ptr->next;
         if (ptr == NULL)
             return false;
     }
-    delete ptr;
+    tmp = ptr->next;
+    ptr->next = tmp->next;
+    delete tmp;
     return true;
 }
 
@@ -358,7 +362,10 @@ int SinglyLinkedList<T>::numberOfElements()
     Node<T> *ptr = head;
     int count = 0;
     while (ptr != NULL)
+    {
         ptr = ptr->next;
+        count++;
+    }
     return count;
 }
 
@@ -369,27 +376,40 @@ void SinglyLinkedList<T>::append(Node<T> data)
 }
 
 template <class T>
+SinglyLinkedList<T>& SinglyLinkedList<T>::concatenate(SinglyLinkedList<T> &list)
+{
+    *this = *this + list;
+    return *this;
+}
+
+template <class T>
 void SinglyLinkedList<T>::delete_every_nth(int n)
 {
     /* 
-        Args: n = 2 to INT_MAX
+        Args: n = 1 to INT_MAX
         Deletes the nth elements in the linked list
     */
-    Node<T> *cpy, *ptr = head;
-    while (ptr != NULL)
+    if (n == 1)
+        free();
+    else
     {
-        for (int i = 1; i < n - 1; i++)
+
+        Node<T> *cpy, *ptr = head;
+        while (ptr != NULL)
         {
+            for (int i = 1; i < n - 1; i++)
+            {
+                if (ptr->next == NULL)
+                    return;
+                ptr = ptr->next;
+            }
             if (ptr->next == NULL)
-                return;
+                break;
+            cpy = ptr->next;
+            ptr->next = ptr->next->next;
             ptr = ptr->next;
+            delete cpy;
         }
-        if (ptr->next == NULL)
-            break;
-        cpy = ptr->next;
-        ptr->next = ptr->next->next;
-        ptr = ptr->next;
-        delete cpy;
     }
 }
 
@@ -397,6 +417,7 @@ template <class T>
 bool SinglyLinkedList<T>::insertAfterNth(int n, Node<T> data)
 {
     Node<T> *ptr = head;
+    Node<T> *tmp = new Node<T>(data.data);
     if (head == NULL || n < 1)
         return false;
     while (n > 1)
@@ -406,13 +427,13 @@ bool SinglyLinkedList<T>::insertAfterNth(int n, Node<T> data)
         if (ptr == NULL)
             return false;
     }
-    data->next = ptr->next;
-    ptr->next = &data;
+    tmp->next = ptr->next;
+    ptr->next = tmp;
     return true;
 }
 
 template <class T>
-bool SinglyLinkedList<T>::moveNode(int n, Node<T> target)
+bool SinglyLinkedList<T>::moveNode(int p, int n)
 {
     Node<T> *ptr = head;
     if (head == NULL || n < 1)
@@ -447,7 +468,7 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::combine(SinglyLinkedList<T> &list)
         else
         {
             t3->next = t1;
-            t2 = t1->next;
+            t1 = t1->next;
         }
         t3 = t3->next;
     }
@@ -467,11 +488,13 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::combine(SinglyLinkedList<T> &list)
     t3 = ptr->head;
     ptr->head = ptr->head->next;
     delete t3;
+    list.head = head;
+    this->head = NULL;
     return *ptr;
 }
 
 template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::set(const SinglyLinkedList<T> &list)
+SinglyLinkedList<T> &SinglyLinkedList<T>::set(SinglyLinkedList<T> &list)
 {
     SinglyLinkedList<T> *ptr = new SinglyLinkedList(*this);
     ptr->concatenate(list);
@@ -494,7 +517,7 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::set(const SinglyLinkedList<T> &list)
 }
 
 template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::intersection(const SinglyLinkedList<T> &list)
+SinglyLinkedList<T> &SinglyLinkedList<T>::intersection(SinglyLinkedList<T> &list)
 {
     if (head == NULL || list.head == NULL)
         return *(new SinglyLinkedList<T>());
@@ -592,9 +615,9 @@ int main()
         case 6:
             cout << "Select the list : ";
             cin >> select;
-            cout << "Enter the value of data: ";
+            cout << "Enter the value of n: ";
             cin >> element;
-            list[select % 5].deleteAfterData(element);
+            list[select % 5].deleteNth(element);
             break;
         case 7:
             list[3] = list[0].combine(list[1]);
@@ -644,6 +667,11 @@ int main()
             cout << "Select the list : ";
             cin >> select;
             list[5] = list[select % 5];
+        case 0:
+            cout << "Select the list : ";
+            cin >> select;
+            list[select % 5].display();
+            break;
         default:
             exit(0);
         }
