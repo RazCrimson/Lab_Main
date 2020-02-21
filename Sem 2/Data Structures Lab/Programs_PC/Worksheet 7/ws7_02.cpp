@@ -3,14 +3,14 @@
 using namespace std;
 
 template <class T>
-class SinglyLinkedList;
+class DoublyLinkedList;
 
 template <class T>
 class Node
 {
     T data;
     Node<T> *prev, *next;
-    friend class SinglyLinkedList<T>;
+    friend class DoublyLinkedList<T>;
 
 public:
     Node() : data(NULL), prev(NULL), next(NULL) {}
@@ -19,13 +19,13 @@ public:
 };
 
 template <class T>
-class SinglyLinkedList
+class DoublyLinkedList
 {
     Node<T> *head;
 
 public:
-    SinglyLinkedList();
-    SinglyLinkedList(int numberOfElements);
+    DoublyLinkedList();
+    DoublyLinkedList(int numberOfElements);
     void insertBeginning(Node<T> data);
     void insertEnd(Node<T> data);
     bool insertBeforeData(Node<T> target, Node<T> data);
@@ -38,13 +38,13 @@ public:
 };
 
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList()
+DoublyLinkedList<T>::DoublyLinkedList()
 {
     head = NULL;
 }
 
 template <class T>
-void SinglyLinkedList<T>::display()
+void DoublyLinkedList<T>::display()
 {
     if (head == NULL)
     {
@@ -62,7 +62,7 @@ void SinglyLinkedList<T>::display()
 }
 
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(int numberOfElements)
+DoublyLinkedList<T>::DoublyLinkedList(int numberOfElements)
 {
     if (numberOfElements < 1)
     {
@@ -81,7 +81,7 @@ SinglyLinkedList<T>::SinglyLinkedList(int numberOfElements)
 }
 
 template <class T>
-void SinglyLinkedList<T>::insertBeginning(Node<T> data)
+void DoublyLinkedList<T>::insertBeginning(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     if (head == NULL)
@@ -98,7 +98,7 @@ void SinglyLinkedList<T>::insertBeginning(Node<T> data)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::insertBeforeData(Node<T> target, Node<T> data)
+bool DoublyLinkedList<T>::insertBeforeData(Node<T> target, Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     Node<T> *ptr = head;
@@ -125,7 +125,7 @@ bool SinglyLinkedList<T>::insertBeforeData(Node<T> target, Node<T> data)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
+bool DoublyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     Node<T> *ptr = head;
@@ -150,7 +150,7 @@ bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
 }
 
 template <class T>
-void SinglyLinkedList<T>::insertEnd(Node<T> data)
+void DoublyLinkedList<T>::insertEnd(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     Node<T> *ptr = head;
@@ -171,7 +171,7 @@ void SinglyLinkedList<T>::insertEnd(Node<T> data)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteFirst()
+bool DoublyLinkedList<T>::deleteFirst()
 {
     if (head == NULL)
         return false;
@@ -184,7 +184,7 @@ bool SinglyLinkedList<T>::deleteFirst()
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteEnd()
+bool DoublyLinkedList<T>::deleteEnd()
 {
     if (head == NULL)
         return false;
@@ -205,7 +205,7 @@ bool SinglyLinkedList<T>::deleteEnd()
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteBeforeData(Node<T> target)
+bool DoublyLinkedList<T>::deleteBeforeData(Node<T> target)
 {
     Node<T> *ptr = head;
     if (head != NULL)
@@ -238,7 +238,7 @@ bool SinglyLinkedList<T>::deleteBeforeData(Node<T> target)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
+bool DoublyLinkedList<T>::deleteAfterData(Node<T> target)
 {
     Node<T> *ptr = head;
     if (head != NULL)
@@ -264,7 +264,7 @@ bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
 int main()
 {
     int ch, element, data;
-    SinglyLinkedList<int> list;
+    DoublyLinkedList<int> list;
     while (1)
     {
         cout << "\n1. Insert a new node at beginning of  the list\n"
@@ -325,7 +325,7 @@ int main()
             list.display();
             break;
         default:
-            exit(0);
+            return 0;
         }
     }
 }

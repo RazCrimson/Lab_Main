@@ -28,10 +28,10 @@ public:
     SinglyLinkedList(int numberOfElements);
     void insertBeginning(Node<T> data);
     void insertEnd(Node<T> data);
-    bool insertAfterData(Node<T> target, Node<T> data);
     bool deleteFirst();
     bool deleteEnd();
-    bool deleteAfterData(Node<T> target);
+
+    bool swap(int p, int n);
     void display();
 };
 
@@ -86,28 +86,6 @@ void SinglyLinkedList<T>::insertBeginning(Node<T> data)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
-{
-    Node<T> *element = new Node<T>(data);
-    Node<T> *ptr = head;
-    if (head != NULL)
-    {
-        while (ptr != NULL)
-        {
-            if (ptr->data == target.data)
-            {
-                element->next = ptr->next;
-                ptr->next = element;
-                return true;
-            }
-            ptr = ptr->next;
-        }
-    }
-    cout << "Element is not found!\n";
-    return false;
-}
-
-template <class T>
 void SinglyLinkedList<T>::insertEnd(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
@@ -157,25 +135,21 @@ bool SinglyLinkedList<T>::deleteEnd()
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
+bool SinglyLinkedList<T>::swap(Node<T> * p1, Node<T>* p2)
 {
-    Node<T> *ptr = head;
-    if (head != NULL)
-    {
-        while (ptr->next != NULL)
-        {
-            if (ptr->data == target.data)
-            {
-                Node<T> *del = ptr->next;
-                ptr->next = del->next;
-                delete del;
-                return true;
-            }
-            ptr = ptr->next;
-        }
-    }
-    cout << "Element is not Found!\n";
-    return false;
+    Node<T> *t1, *t2;
+    if (p1 != NULL)
+        t1 = p1->next;
+    else
+        t1 = head;
+    if (p2 != NULL)
+        t2 = p2->next;
+    else
+        t2 = head;
+
+    
+
+    
 }
 
 int main()
@@ -185,12 +159,10 @@ int main()
     while (1)
     {
         cout << "\n1. Insert a new node at beginning of  the list\n"
-                "2. Insert a new node after the node which has the element 'e'\n"
-                "3. Insert a new node at end to the list\n"
-                "4. Delete the first node of the list\n"
-                "5. Delete an existing node which is placed after the node which has the element 'e'\n"
-                "6. Delete the last node of the list\n"
-                "7. Display the elements of the list\n"
+                "2. Insert a new node at end to the list\n"
+                "3. Delete the first node of the list\n"
+                "4. Delete the last node of the list\n"
+                "0. Display the elements of the list\n"
                 "Other to Quit.\n"
                 "Enter your choice : ";
         cin >> ch;
@@ -202,30 +174,18 @@ int main()
             list.insertBeginning(element);
             break;
         case 2:
-            int data;
-            cout << "Enter the data to be inserted : ";
-            cin >> data;
-            cout << "Enter the element : ";
-            cin >> element;
-            list.insertAfterData(element, data);
-            break;
-        case 3:
             cout << "Enter the element : ";
             cin >> element;
             list.insertEnd(element);
             break;
-        case 4:
+        case 3:
             list.deleteFirst();
             break;
-        case 5:
-            cout << "Enter the element : ";
-            cin >> element;
-            list.deleteAfterData(element);
-            break;
-        case 6:
+
+        case 4:
             list.deleteEnd();
             break;
-        case 7:
+        case 0:
             list.display();
             break;
         default:

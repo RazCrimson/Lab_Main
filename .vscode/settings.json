@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "WS6_25.C": "cpp",
         "stdio.h": "c",
         "iostream": "cpp",
         "array": "cpp",
@@ -64,5 +63,5 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
 }

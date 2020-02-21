@@ -47,7 +47,7 @@ public:
     void append(Node<T> data);
     void delete_every_nth(int n = 2);
     bool insertAfterNth(int n, Node<T> data);
-    bool moveNode(int n, Node<T> target);
+    bool moveNode(int p, int n);
     SinglyLinkedList<T> &copy();
     SinglyLinkedList<T> &concatenate(SinglyLinkedList<T> &list);
     SinglyLinkedList<T> &combine(SinglyLinkedList<T> &list);
@@ -673,7 +673,7 @@ int main()
             list[select % 5].display();
             break;
         default:
-            exit(0);
+            return 0;
         }
     }
 }
