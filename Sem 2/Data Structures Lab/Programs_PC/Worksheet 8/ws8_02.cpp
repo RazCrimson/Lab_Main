@@ -2,81 +2,76 @@
 
 using namespace std;
 
-template <class T>
 class SinglyLinkedList;
 
-template <class T>
 class Node
 {
-    T data;
-    Node<T> *next;
-    friend class SinglyLinkedList<T>;
+    int data;
+    Node *next;
+    friend class SinglyLinkedList;
 
 public:
     Node() : data(0), next(NULL) {}
-    Node(T key) : data(key), next(NULL) {}
+    Node(int key) : data(key), next(NULL) {}
     Node(const Node &copy) : data(copy.data), next(copy.next) {}
 };
 
-template <class T>
 class SinglyLinkedList
 {
-    Node<T> *head;
+    Node *head;
 
 public:
     SinglyLinkedList();
-    SinglyLinkedList(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &operator+(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &operator=(SinglyLinkedList<T> &list);
+    SinglyLinkedList(SinglyLinkedList &list);
+    SinglyLinkedList &operator+(SinglyLinkedList &list);
+    SinglyLinkedList &operator=(SinglyLinkedList &list);
     ~SinglyLinkedList();
 
-    void insertBeginning(Node<T> data);
-    void insertEnd(Node<T> data);
-    bool insertAfterData(Node<T> target, Node<T> data);
+    void insertBeginning(Node data);
+    void insertEnd(Node data);
+    bool insertAfterData(Node target, Node data);
     bool deleteFirst();
     bool deleteEnd();
-    bool deleteAfterData(Node<T> target);
+    bool deleteAfterData(Node target);
     void display();
 
-    T sum();
+    int sum();
     void sort();
     void free();
     bool reverse();
     bool deleteNth(int n);
     int numberOfElements();
-    void append(Node<T> data);
+    void append(Node data);
     void delete_every_nth(int n = 2);
-    bool insertAfterNth(int n, Node<T> data);
+    bool insertAfterNth(int n, Node data);
     bool moveNode(int p, int n);
-    SinglyLinkedList<T> &copy();
-    SinglyLinkedList<T> &concatenate(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &combine(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &set(SinglyLinkedList<T> &list);
-    SinglyLinkedList<T> &intersection(SinglyLinkedList<T> &list);
+    SinglyLinkedList &copy();
+    SinglyLinkedList &concatenate(SinglyLinkedList &list);
+    SinglyLinkedList &combine(SinglyLinkedList &list);
+    SinglyLinkedList &set(SinglyLinkedList &list);
+    SinglyLinkedList &intersection(SinglyLinkedList &list);
 };
 
-template <class T>
-SinglyLinkedList<T>::SinglyLinkedList()
+SinglyLinkedList::SinglyLinkedList()
 {
-    head = NULL;
+    head = new Node(0);
 }
 
-template <class T>
-SinglyLinkedList<T>::~SinglyLinkedList()
+SinglyLinkedList::~SinglyLinkedList()
 {
     free();
+    delete head;
     delete this;
 }
 
-template <class T>
-void SinglyLinkedList<T>::display()
+void SinglyLinkedList::display()
 {
     if (head == NULL)
     {
         cout << "List is Empty!\n";
         return;
     }
-    Node<T> *ptr = head;
+    Node *ptr = head;
     cout << "List : ";
     while (ptr != NULL)
     {
@@ -86,98 +81,85 @@ void SinglyLinkedList<T>::display()
     cout << "\n";
 }
 
-template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(SinglyLinkedList<T> &list)
+SinglyLinkedList::SinglyLinkedList(SinglyLinkedList &list)
 {
-    if (list.head == NULL)
+    if (list.head->next == NULL)
     {
-        head = NULL;
+        head = new Node(0);
         return;
     }
-    Node<T> *ptr = list.head;
-    head = new Node<T>(ptr->data);
-    Node<T> *tmp = head;
+    Node *ptr = list.head->next;
+    head = new Node(list.head->data);
+    Node *tmp = head;
     while (ptr->next != NULL)
     {
-        tmp->next = new Node<T>(ptr->next->data);
+        tmp->next = new Node(ptr->next->data);
         tmp = tmp->next;
         ptr = ptr->next;
     }
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::operator=(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::operator=(SinglyLinkedList &list)
 {
     if (this->head == list.head)
         return *this;
     free();
-    if (list.head == NULL)
+    if (list.head->next == NULL)
     {
-        head = NULL;
+        head->data = 0;
         return *this;
     }
-    head = new Node<T>();
-    Node<T> *temp = list.head;
-    Node<T> *ptr = head;
+    head->data = list.head->data;
+    Node *temp = list.head->next;
+    Node *ptr = head;
     while (temp != NULL)
     {
-        ptr->next = new Node<T>();
+        ptr->next = new Node();
         ptr = ptr->next;
         ptr->data = temp->data;
         temp = temp->next;
     }
     ptr->next = NULL;
-    ptr = head;
-    head = head->next;
-    delete ptr;
     return *this;
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::operator+(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::operator+(SinglyLinkedList &list) // needs edit
 {
-    SinglyLinkedList<T> *ptr = new SinglyLinkedList<T>(*this);
-    if (list.head == NULL)
+    SinglyLinkedList *ptr = new SinglyLinkedList(*this);
+    if (list.head->next == NULL)
         return *this;
 
-    Node<T> *temp = list.head;
-    Node<T> *tmp = head;
-
-    if (head == NULL)
-    {
-        head = new Node<T>(temp->data);
-        tmp = head;
-        temp = temp->next;
-    }
+    Node *temp = list.head->next;
+    Node *tmp = head->next;
 
     while (tmp->next != NULL)
         tmp = tmp->next;
 
     while (temp != NULL)
     {
-        tmp->next = new Node<T>();
+        tmp->next = new Node();
         tmp = tmp->next;
         tmp->data = temp->data;
         temp = temp->next;
     }
     tmp->next = NULL;
+    head->data = numberOfElements();
     return *this;
 }
 
-template <class T>
-void SinglyLinkedList<T>::insertBeginning(Node<T> data)
+void SinglyLinkedList::insertBeginning(Node data)
 {
-    Node<T> *element = new Node<T>(data);
-    element->next = head;
-    head = element;
+    Node *element = new Node(data);
+    element->next = head->next;
+    head->next = element;
+    head->data += 1;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
+bool SinglyLinkedList::insertAfterData(Node target, Node data)
 {
-    Node<T> *element = new Node<T>(data);
-    Node<T> *ptr = head;
-    if (head != NULL)
+    Node *element = new Node(data);
+    Node *ptr = head->next;
+    if (head->next != NULL)
     {
         while (ptr != NULL)
         {
@@ -185,6 +167,7 @@ bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
             {
                 element->next = ptr->next;
                 ptr->next = element;
+                head->data += 1;
                 return true;
             }
             ptr = ptr->next;
@@ -194,68 +177,56 @@ bool SinglyLinkedList<T>::insertAfterData(Node<T> target, Node<T> data)
     return false;
 }
 
-template <class T>
-void SinglyLinkedList<T>::insertEnd(Node<T> data)
+void SinglyLinkedList::insertEnd(Node data)
 {
-    Node<T> *element = new Node<T>(data);
-    Node<T> *ptr = head;
-    if (head == NULL)
-    {
-        head = element;
-        head->next = NULL;
-        return;
-    }
+    Node *element = new Node(data);
+    Node *ptr = head;
     while (ptr->next != NULL)
     {
         ptr = ptr->next;
     }
     ptr->next = element;
     element->next = NULL;
+    head->data += 1;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::deleteFirst()
+bool SinglyLinkedList::deleteFirst()
 {
-    if (head == NULL)
+    if (head->next == NULL)
         return false;
-    Node<T> *ptr = head;
-    head = head->next;
+    Node *ptr = head->next;
+    head->next = head->next->next;
+    head->data -= 1;
     delete ptr;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::deleteEnd()
+bool SinglyLinkedList::deleteEnd()
 {
-    if (head == NULL)
+    if (head->next == NULL)
         return false;
-    else if (head->next == NULL)
-    {
-        delete head;
-        head = NULL;
-        return true;
-    }
-    Node<T> *ptr = head;
+    Node *ptr = head;
     while (ptr->next->next != NULL)
     {
         ptr = ptr->next;
     }
     delete ptr->next;
     ptr->next = NULL;
+    head->data -= 1;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
+bool SinglyLinkedList::deleteAfterData(Node target)
 {
-    Node<T> *ptr = head;
-    if (head != NULL)
+    Node *ptr = head->next;
+    if (head->next != NULL)
     {
         while (ptr->next != NULL)
         {
             if (ptr->data == target.data)
             {
-                Node<T> *del = ptr->next;
+                Node *del = ptr->next;
                 ptr->next = del->next;
                 delete del;
+                head->data -= 1;
                 return true;
             }
             ptr = ptr->next;
@@ -265,11 +236,10 @@ bool SinglyLinkedList<T>::deleteAfterData(Node<T> target)
     return false;
 }
 
-template <class T>
-T SinglyLinkedList<T>::sum()
+int SinglyLinkedList::sum()
 {
-    T temp = 0;
-    Node<T> *ptr = head;
+    int temp = 0;
+    Node *ptr = head->next;
     while (ptr != NULL)
     {
         temp += ptr->data;
@@ -278,53 +248,50 @@ T SinglyLinkedList<T>::sum()
     return temp;
 }
 
-template <class T>
-void SinglyLinkedList<T>::sort()
+void SinglyLinkedList::sort()
 {
-    if (head == NULL)
+    if (head->next == NULL)
         return;
-    Node<T> *t, *end;
-    T tmp;
-    t = head;
+    Node *ptr, *end;
+    int tmp;
+    ptr = head->next;
     end = NULL;
-    while (t->next != end)
+    while (ptr->next != end)
     {
-        while (t->next != end)
+        while (ptr->next != end)
         {
-            if (t->data > t->next->data)
+            if (ptr->data > ptr->next->data)
             {
-                tmp = t->data;
-                t->data = t->next->data;
-                t->next->data = tmp;
+                tmp = ptr->data;
+                ptr->data = ptr->next->data;
+                ptr->next->data = tmp;
             }
-            t = t->next;
+            ptr = ptr->next;
         }
-        end = t;
-        t = head;
+        end = ptr;
+        ptr = head->next;
     }
 }
 
-template <class T>
-void SinglyLinkedList<T>::free()
+void SinglyLinkedList::free()
 {
-    Node<T> *ptr = head;
-    Node<T> *temp = NULL;
+    Node *ptr = head->next;
+    Node *temp = NULL;
     while (ptr != NULL)
     {
         temp = ptr;
         ptr = ptr->next;
         delete temp;
     }
-    head = NULL;
+    head->data = 0;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::reverse()
+bool SinglyLinkedList::reverse()
 {
-    if (head == NULL || head->next == NULL)
+    if (head->next == NULL || head->next->next == NULL)
         return false;
-    Node<T> *t1, *t2, *t3;
-    t1 = head;
+    Node *t1, *t2, *t3;
+    t1 = head->next;
     t2 = t1->next;
     t1->next = NULL;
     while (t2 != NULL)
@@ -334,16 +301,15 @@ bool SinglyLinkedList<T>::reverse()
         t1 = t2;
         t2 = t3;
     }
-    head = t1;
+    head->next = t1;
     return true;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::deleteNth(int n)
+bool SinglyLinkedList::deleteNth(int n)
 {
-    if (head == NULL)
+    if (head->next == NULL)
         return false;
-    Node<T> *tmp, *ptr = head;
+    Node *tmp, *ptr = head->next;
     while (n-- > 2)
     {
         ptr = ptr->next;
@@ -356,10 +322,9 @@ bool SinglyLinkedList<T>::deleteNth(int n)
     return true;
 }
 
-template <class T>
-int SinglyLinkedList<T>::numberOfElements()
+int SinglyLinkedList::numberOfElements()
 {
-    Node<T> *ptr = head;
+    Node *ptr = head->next;
     int count = 0;
     while (ptr != NULL)
     {
@@ -369,21 +334,18 @@ int SinglyLinkedList<T>::numberOfElements()
     return count;
 }
 
-template <class T>
-void SinglyLinkedList<T>::append(Node<T> data)
+void SinglyLinkedList::append(Node data)
 {
     insertEnd(data);
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::concatenate(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::concatenate(SinglyLinkedList &list) // edit +
 {
     *this = *this + list;
     return *this;
 }
 
-template <class T>
-void SinglyLinkedList<T>::delete_every_nth(int n)
+void SinglyLinkedList::delete_every_nth(int n)
 {
     /* 
         Args: n = 1 to INT_MAX
@@ -394,7 +356,7 @@ void SinglyLinkedList<T>::delete_every_nth(int n)
     else
     {
 
-        Node<T> *cpy, *ptr = head;
+        Node *cpy, *ptr = head->next;
         while (ptr != NULL)
         {
             for (int i = 1; i < n - 1; i++)
@@ -409,16 +371,16 @@ void SinglyLinkedList<T>::delete_every_nth(int n)
             ptr->next = ptr->next->next;
             ptr = ptr->next;
             delete cpy;
+            head->data -= 1;
         }
     }
 }
 
-template <class T>
-bool SinglyLinkedList<T>::insertAfterNth(int n, Node<T> data)
+bool SinglyLinkedList::insertAfterNth(int n, Node data)
 {
-    Node<T> *ptr = head;
-    Node<T> *tmp = new Node<T>(data.data);
-    if (head == NULL || n < 1)
+    Node *ptr = head->next;
+    Node *tmp = new Node(data.data);
+    if (head->next == NULL || n < 1)
         return false;
     while (n > 1)
     {
@@ -429,45 +391,43 @@ bool SinglyLinkedList<T>::insertAfterNth(int n, Node<T> data)
     }
     tmp->next = ptr->next;
     ptr->next = tmp;
+    head->data += 1;
     return true;
 }
 
-template <class T>
-bool SinglyLinkedList<T>::moveNode(int p, int n)
+bool SinglyLinkedList::moveNode(int p, int n)
 {
-    Node<T> *ptr, *tmp, dummy;
-    dummy.next = head;
+    Node *ptr, *tmp, dummy;
+    dummy.next = head->next;
     ptr = &dummy;
-    if (head == NULL || p < 1 || n < 1 || n + p > numberOfElements())
+    if (head->next == NULL || p < 1 || n < 1 || n + p > numberOfElements())
         return false;
     for (int i = 0; i < p; i++)
         ptr = ptr->next;
     tmp = ptr->next;
     if (p == 1)
-        head = ptr->next->next;
+        head->next = ptr->next->next;
     else
         ptr->next = ptr->next->next;
     insertAfterNth(n + p, *tmp);
     delete tmp;
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::copy()
+SinglyLinkedList &SinglyLinkedList::copy()
 {
-    return *(new SinglyLinkedList<T>(*this));
+    return *(new SinglyLinkedList(*this));
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::combine(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::combine(SinglyLinkedList &list) // needs check
 {
     this->sort();
     list.sort();
-    SinglyLinkedList<T> *ptr = new SinglyLinkedList<T>();
-    Node<T> *t1, *t2, *t3;
-    t1 = head;
-    t2 = list.head;
-    t3 = new Node<T>();
-    ptr->head = t3;
+    SinglyLinkedList *ptr = new SinglyLinkedList();
+    Node *t1, *t2, *t3;
+    t1 = head->next;
+    t2 = list.head->next;
+    t3 = new Node();
+    ptr->head->next = t3;
     while (t1 != NULL && t2 != NULL)
     {
         if (t1->data > t2->data)
@@ -503,22 +463,21 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::combine(SinglyLinkedList<T> &list)
     return *ptr;
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::set(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::set(SinglyLinkedList &list)
 {
-    SinglyLinked<T> *result = new SinglyLinked<T>();
+    SinglyLinkedList *result = new SinglyLinkedList();
     this->sort();
     list.sort();
-    Node<T> *t1 = head;
-    Node<T> *t2 = S.head;
-    Node<T> *t3 = result->head;
+    Node *t1 = head->next;
+    Node *t2 = list.head->next;
+    Node *t3 = result->head->next;
     while (t1 != NULL || t2 != NULL)
     {
-        Node<T> *temp = new Node<T>();
+        Node *temp = new Node();
         if (t1->data < t2->data)
         {
             temp->data = t1->data;
-            t1 = t->next;
+            t1 = t1->next;
         }
         else if (t2->data < t1->data)
         {
@@ -531,17 +490,13 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::set(SinglyLinkedList<T> &list)
             t1 = t1->next;
             t2 = t2->next;
         }
-        if (result->head == NULL)
-            result->head = temp;
-        else
-            t3->next = temp;
+        t3->next = temp;
         t3 = temp;
     }
     return *result;
 }
 
-template <class T>
-SinglyLinkedList<T> &SinglyLinkedList<T>::intersection(SinglyLinkedList<T> &list)
+SinglyLinkedList &SinglyLinkedList::intersection(SinglyLinkedList &list)
 {
     //sdfghj
 }
@@ -549,7 +504,7 @@ SinglyLinkedList<T> &SinglyLinkedList<T>::intersection(SinglyLinkedList<T> &list
 int main()
 {
     int ch, select = 0, element;
-    SinglyLinkedList<int> list[6];
+    SinglyLinkedList list[6];
 
     while (1)
     {
