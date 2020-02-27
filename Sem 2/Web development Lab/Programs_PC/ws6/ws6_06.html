@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_5</title>
+</head>
+<script>
+    function callback() {
+        var str = prompt("Enter a string : ");
+        str = str.split(" ");
+        for (word in str)
+           str[word] = str[word].toUpperCase()[0] + str[word].slice(1,str[word].length);
+        str = str.join().replace(/,/g,' ');
+        document.getElementById("para").innerHTML = str;
+
+    }
+</script>
+
+<body onload="callback()">
+    <p id="para"></p>
+</body>
+
+</html>

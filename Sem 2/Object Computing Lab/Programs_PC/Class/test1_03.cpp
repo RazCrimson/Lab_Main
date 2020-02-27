@@ -72,7 +72,8 @@ bool Point::isOrigin()
 
 ostream &operator<<(ostream &out, const Point P)
 {
-    cout << "(" << P.x_co << "," << P.y_co << ")";
+    out << "(" << P.x_co << "," << P.y_co << ")";
+    return out;
 }
 
 int main()

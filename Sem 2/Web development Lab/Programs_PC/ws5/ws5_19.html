@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws5_19</title>
+    <script>
+        function getval(str) {
+            var n = NaN;
+            do {
+                n = parseInt(prompt(str));
+                if (n == NaN)
+                    alert("Enter a valid Integer.");
+                else
+                    break;
+            } while (1);
+            return n;
+        }
+
+        function callback() {
+            var n = getval("Enter the number of integers : ");
+            var arr = [];
+            for (i = 0; i < n; i++) 
+                arr[i] = getval("Enter the Integer No."+ (i + 1) + " : ");
+            document.getElementById("p").innerHTML = "The Minimum value is : " + Math.min(...arr);
+            
+        }
+    </script>
+</head>
+
+<body onload="callback()">
+    <h2>Minminum Integer</h2>
+    <p id="p"></p>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws5_18</title>
+    <script>
+    function replaceAt(str,index, replacement) {
+    return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
+}
+        function callback() {
+            var pal = document.getElementById("pal").value;
+            if (pal.length != 4)
+            {
+                alert("Please enter 4 characters!");
+                return;
+            }
+            else if(Number(pal) == NaN)
+            {
+                alert("Please enter valid characters!");
+                return;
+            }  
+            var tmp = "";
+            tmp +=(Number(pal[2])+7)%10;
+            tmp +=(Number(pal[3])+7)%10;
+            tmp +=(Number(pal[0])+7)%10;
+            tmp +=(Number(pal[1])+7)%10;
+            
+            document.getElementById("p").innerHTML = tmp +" is the Encrypted value.";
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Palindrome Checker</h2>
+    <input type="text" name="pal" id="pal">
+    <button onclick="callback()">Encrypt</button>
+    <p id="p">
+</body>
+
+</html>

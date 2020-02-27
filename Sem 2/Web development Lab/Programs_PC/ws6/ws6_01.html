@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_01</title>
+    <script>
+        function circleArea(radius)
+        {
+            if(typeof(radius) != undefined)
+                return Math.PI * radius * radius;
+            else    
+                return 0;
+        }
+        function handleclick()
+        {
+            radius = document.getElementById("inp").value;
+            document.getElementById("para").innerHTML = circleArea(radius);
+        }
+    </script>
+</head>
+<body>
+    <p>Enter the radius : </p>
+    <input type="text" name="inp" id="inp">
+    <button onclick="handleclick()">Calculate the Area of Circle</button>
+    <p id="para"></p>
+
+
+</body>
+</html>
