@@ -3,14 +3,14 @@
 using namespace std;
 
 template <class T>
-class SinglyLinkedList;
+class SinglyLinked;
 
 template <class T>
 class Node
 {
     T data;
     Node<T> *next;
-    friend class SinglyLinkedList<T>;
+    friend class SinglyLinked<T>;
 
 public:
     Node() : data(NULL), next(NULL) {}
@@ -19,13 +19,13 @@ public:
 };
 
 template <class T>
-class SinglyLinkedList
+class SinglyLinked
 {
     Node<T> *head;
 
 public:
-    SinglyLinkedList();
-    SinglyLinkedList(int numberOfElements);
+    SinglyLinked();
+    SinglyLinked(int numberOfElements);
     void insertBeginning(Node<T> data);
     void insertEnd(Node<T> data);
     bool deleteFirst();
@@ -36,13 +36,13 @@ public:
 };
 
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList()
+SinglyLinked<T>::SinglyLinked()
 {
     head = NULL;
 }
 
 template <class T>
-void SinglyLinkedList<T>::display()
+void SinglyLinked<T>::display()
 {
     if (head == NULL)
     {
@@ -60,7 +60,7 @@ void SinglyLinkedList<T>::display()
 }
 
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(int numberOfElements)
+SinglyLinked<T>::SinglyLinked(int numberOfElements)
 {
     if (numberOfElements < 1)
     {
@@ -78,7 +78,7 @@ SinglyLinkedList<T>::SinglyLinkedList(int numberOfElements)
 }
 
 template <class T>
-void SinglyLinkedList<T>::insertBeginning(Node<T> data)
+void SinglyLinked<T>::insertBeginning(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     element->next = head;
@@ -86,7 +86,7 @@ void SinglyLinkedList<T>::insertBeginning(Node<T> data)
 }
 
 template <class T>
-void SinglyLinkedList<T>::insertEnd(Node<T> data)
+void SinglyLinked<T>::insertEnd(Node<T> data)
 {
     Node<T> *element = new Node<T>(data);
     Node<T> *ptr = head;
@@ -105,7 +105,7 @@ void SinglyLinkedList<T>::insertEnd(Node<T> data)
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteFirst()
+bool SinglyLinked<T>::deleteFirst()
 {
     if (head == NULL)
         return false;
@@ -115,7 +115,7 @@ bool SinglyLinkedList<T>::deleteFirst()
 }
 
 template <class T>
-bool SinglyLinkedList<T>::deleteEnd()
+bool SinglyLinked<T>::deleteEnd()
 {
     if (head == NULL)
         return false;
@@ -135,7 +135,7 @@ bool SinglyLinkedList<T>::deleteEnd()
 }
 
 template <class T>
-bool SinglyLinkedList<T>::swap(Node<T> * p1, Node<T>* p2)
+bool SinglyLinked<T>::swap(Node<T> * p1, Node<T>* p2)
 {
     Node<T> *t1, *t2;
     if (p1 != NULL)
@@ -155,7 +155,7 @@ bool SinglyLinkedList<T>::swap(Node<T> * p1, Node<T>* p2)
 int main()
 {
     int ch, element;
-    SinglyLinkedList<int> list;
+    SinglyLinked<int> list;
     while (1)
     {
         cout << "\n1. Insert a new node at beginning of  the list\n"

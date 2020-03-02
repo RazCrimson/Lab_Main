@@ -66,7 +66,7 @@ SinglyLinkedList::~SinglyLinkedList()
 
 void SinglyLinkedList::display()
 {
-    if (head == NULL)
+    if (head->data == 0)
     {
         cout << "List is Empty!\n";
         return;
@@ -466,11 +466,15 @@ SinglyLinkedList &SinglyLinkedList::combine(SinglyLinkedList &list) // needs che
 SinglyLinkedList &SinglyLinkedList::set(SinglyLinkedList &list)
 {
     SinglyLinkedList *result = new SinglyLinkedList();
-    this->sort();
-    list.sort();
-    Node *t1 = head->next;
-    Node *t2 = list.head->next;
-    Node *t3 = result->head->next;
+    SinglyLinkedList *list1 = new SinglyLinkedList();
+    SinglyLinkedList *list2 = new SinglyLinkedList();
+    *list1 = *this;
+    *list2 = list;
+    list1->sort();
+    list2->sort();
+    Node *t1 = list1->head;
+    Node *t2 = list2->head;
+    Node *t3 = result->head;
     while (t1 != NULL || t2 != NULL)
     {
         Node *temp = new Node();
@@ -490,9 +494,29 @@ SinglyLinkedList &SinglyLinkedList::set(SinglyLinkedList &list)
             t1 = t1->next;
             t2 = t2->next;
         }
+        if (result->head == NULL)
+            result->head = temp;
+        else
+            t3->next = temp;
+        t3 = temp;
+    }
+    while (t1 != NULL)
+    {
+        Node *temp = new Node();
+        temp->data = t1->data;
+        t1 = t1->next;
         t3->next = temp;
         t3 = temp;
     }
+    while (t2 != NULL)
+    {
+        Node *temp = new Node();
+        temp->data = t2->data;
+        t2 = t2->next;
+        t3->next = temp;
+        t3 = temp;
+    }
+    delete list1, list2;
     return *result;
 }
 
