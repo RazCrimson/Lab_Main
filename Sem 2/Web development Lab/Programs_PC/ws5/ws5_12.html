@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function display()
+        {
+            var str = document.getElementById("str").value;
+            var substr = document.getElementById("substr").value;
+            var ind = document.getElementById("ind").value;
+            var index1 = str.indexOf(substr);
+            var index2 = str.lastIndexOf(substr);
+            if(index1 == -1)
+                document.getElementById("result1").innerHTML = "Substring not found";
+            else
+            {
+                document.getElementById("result1").innerHTML = "First occurace located at index: " + index1;
+                document.getElementById("result2").innerHTML = "Last occurance located at index: " + index2;
+                var index3 = str.indexOf(substr,ind);
+                var index4 = str.lastIndexOf(substr,ind);
+                if(index3 == -1)
+                    document.getElementById("result3").innerHTML = "Substring not found from the given index";
+                else
+                    document.getElementById("result3").innerHTML = "First occurance from index " + ind + " located at index: " + index3;
+                if(index4 == -1)
+                    document.getElementById("result4").innerHTML = "Substring not found from the given index";
+                else
+                    document.getElementById("result4").innerHTML = "Last occurance from index " + ind + " located at index: " + index4;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Enter the string</p>
+    <input type="text" id="str">
+    <p>Enter the substring</p>
+    <input type="text" id="substr">
+    <p>Enter the index to seach for</p>
+    <input type="number" id="ind"> <br> <br>
+    <button onclick="display()">Search</button>
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+    <p id="result4"></p>
+</body>
+</html>

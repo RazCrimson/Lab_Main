@@ -15,7 +15,7 @@ public:
     ~Matrix();
     void read();
     void display();
-    Matrix multiply(Matrix &);
+    Matrix operator*(Matrix &);
     Matrix operator +(Matrix &);
     Matrix transpose();
 };

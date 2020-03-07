@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws5_14</title>
+
+</head>
+
+<body>
+    <h1 id="tag"></h1>
+    Enter the substring to search for : <input type="text" id="substr"> <input type="button" onclick="calc()">
+    <p id="res"></p>
+    <script>
+        var string = "";
+        var pos = 0;
+        string = prompt("Enter the string : ");
+        pos = Number(prompt("Enter the index to search from : "));
+        if (pos == undefined || pos == NaN || pos == null)
+            pos = 0;
+        document.getElementById("tag").innerHTML = "The string is " + string;
+        function calc() {
+            var substr = document.getElementById("substr").value;
+            document.getElementById("res").innerHTML = 'First occurance located at index : <input type="text" width="35" value="' + string.indexOf(substr) + '"><br/>\
+                                                        Last occurance located at index : <input type="text" width="35" value="'+ string.lastIndexOf(substr) + '"><br/>\
+                                                        First occurance from '+ pos + ' located at index : <input type="text" width="35" value="' + string.indexOf(substr, pos) + '"><br/>\
+                                                        Last occurance from '+ pos + ' located at index : <input type="text" width="35" value="' + string.lastIndexOf(substr, pos) + '"><br/>';
+        }
+    </script>
+</body>
+
+</body>
+
+</html>

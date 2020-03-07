@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_15</title>
+</head>
+
+<body>
+    <h1>Some test</h1>
+    <script>
+        function handle(event) {
+            var text = "";
+            if (event.shiftKey)
+                text += "Event Name : " + event.type + "\n";
+            if (event.ctrlKey)
+                text += "Element that triggerred: " + event.srcElement.localName + " " + event.srcElement.className + "\n";
+            alert(text);
+        }
+        document.addEventListener("click", handle);
+    </script>
+</body>
+
+</html>

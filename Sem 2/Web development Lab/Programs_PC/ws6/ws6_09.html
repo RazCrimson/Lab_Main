@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_09</title>
+    <script>
+        function isDomain(str)
+        {
+            regexp = /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}$/i;
+            if(regexp.test(str))
+                return true;
+            else
+                return false;
+        }
+
+        function callback()
+        {
+            str = document.getElementById("in").value;
+            if(isDomain(str))
+                document.getElementById("result").innerHTML = "Its is a domain";
+            else
+                document.getElementById("result").innerHTML = "Its is not a domain";                
+        }
+    </script>
+</head>
+<body>
+    <p>Enter the domain</p>
+    <input type="text" id="in" onkeypress="callback()">
+    <p id = "result"></p>
+</body>
+</html>

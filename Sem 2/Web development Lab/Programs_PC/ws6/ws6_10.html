@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_10</title>
+    <script>
+        function isDomain(str)
+        {
+            regexp = /^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$/;
+            if(regexp.test(str))
+                return true;
+            else
+                return false;
+        }
+
+        function callback()
+        {
+            str = document.getElementById("in").value;
+            if(isDomain(str))
+                document.getElementById("result").innerHTML = "Its is a credit card number";
+            else
+                document.getElementById("result").innerHTML = "Its is not a card card number";                
+        }
+    </script>
+</head>
+<body>
+    <p>Enter the card number</p>
+    <input type="text" id="in" onkeypress="callback()">
+    <p id = "result"></p>
+</body>
+</html>

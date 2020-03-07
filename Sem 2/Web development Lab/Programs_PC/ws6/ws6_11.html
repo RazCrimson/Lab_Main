@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ws6_11</title>
+    <script>
+        function callTable() {
+            var tab = document.getElementById("myTable");
+            var row = document.createElement("tr");
+            var dat = document.createElement("td");
+            var node = document.createTextNode("Product");
+            dat.appendChild(node);
+            row.appendChild(dat);
+            for (i = 1; i <= 5; i++) {
+                var dat = document.createElement("td");
+                var node = document.createTextNode(i);
+                dat.appendChild(node);
+                row.appendChild(dat);
+            }
+            var dat = document.createElement("td");
+            var node = document.createTextNode("Total");
+            dat.appendChild(node);
+            row.appendChild(dat);
+            tab.appendChild(row);
+            for (i = 0; i < 4; i++) {
+                var row = document.createElement("tr");
+                var dat = document.createElement("td");
+                var node = document.createTextNode("Product " + parseInt(i + 1));
+                dat.appendChild(node);
+                row.appendChild(dat);
+                var total = 0;
+                for (j = 0; j < 5; j++) {
+                    total += arr[i][j];
+                    var dat = document.createElement("td");
+                    var node = document.createTextNode(arr[i][j]);
+                    dat.appendChild(node);
+                    row.appendChild(dat);
+                }
+                var dat = document.createElement("td");
+                var node = document.createTextNode(total);
+                dat.appendChild(node);
+                row.appendChild(dat);
+                tab.appendChild(row);
+            }
+            var row = document.createElement("tr");
+            var dat = document.createElement("td");
+            var node = document.createTextNode("Total");
+            dat.appendChild(node);
+            row.appendChild(dat);
+            for (i = 0; i < 5; i++) {
+                var total = 0;
+                for (j = 0; j < 4; j++)
+                    total += arr[j][i];
+                var dat = document.createElement("td");
+                var node = document.createTextNode(total);
+                dat.appendChild(node);
+                row.appendChild(dat);
+            }
+            tab.appendChild(row);
+        }
+        function callback() {
+            arr[parseInt(document.getElementById("in1").value) - 1][parseInt(document.getElementById("in2").value) - 1] = parseInt(document.getElementById("in3").value);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        var arr = new Array(4);
+        for (i = 0; i < 4; i++)
+            arr[i] = new Array(5);
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 5; j++) {
+                arr[i][j] = 0;
+            }
+        }
+    </script>
+    <p>Enter salseperson number</p>
+    <input type="text" id="in1">
+    <p>Enter product number</p>
+    <input type="text" id="in2">
+    <p>Enter sales amount</p>
+    <input type="text" id="in3"> <br> <br>
+    <button onclick="callback()">Submit</button>
+    <button onclick="callTable()">Finish</button>
+    <table id="myTable"></table>
+</body>
+
+</html>
