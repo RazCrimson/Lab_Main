@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #c3c3c3;
+        }
+
+        .color {
+            min-width: 30px;
+            min-height: 30px;
+            margin: 0%;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .brown {
+            background-color: brown;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+
+        .palette {
+            min-width: 30px;
+            width: 5%;
+            float: right;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <canvas id="draw-board" width="800" height="600">
+                </canvas>
+            </td>
+            <td>
+                <table class="palette">
+                    <tr>
+                        <div class="color red"></div>
+                    </tr>
+                    <tr>
+                        <div class="color blue"></div>
+                    </tr>
+                    <tr>
+                        <div class="color green"></div>
+                    </tr>
+                    <tr>
+                        <div class="color yellow"></div>
+                    </tr>
+                    <tr>
+                        <div class="color pink"></div>
+                    </tr>
+                    <tr>
+                        <div class="color brown"></div>
+                    </tr>
+                    <tr>
+                        <div class="color black"></div>
+                    </tr>
+                    <tr>
+                        <div class="color purple"></div>
+                    </tr>
+            
+                </table>
+            </td>
+        </tr><td>
+            <button id="clear">Clear</button>
+        </td>
+        </tr>
+    </table>
+    <script>
+        var color = { brush: "#000000" };
+        var drawBoard = document.getElementById('draw-board');
+        var canvas2D = drawBoard.getContext('2d');
+        canvas2D.lineJoin = "line"
+        canvas2D.lineWidth = 1;
+        canvas2D.globalCompositeOperation = "source-over";
+        canvas2D.strokeStyle = color.brush;
+        var isDrawing, lastPoint;
+        drawBoard.onmousedown = function (e) {
+            isDrawing = true;
+            lastPoint = { x: e.clientX, y: e.clientY };
+        };
+        drawBoard.onmousemove = function (e) {
+            if (!isDrawing) return;
+            var currentPoint = { x: e.clientX, y: e.clientY };
+            canvas2D.beginPath();
+            canvas2D.moveTo(lastPoint.x, lastPoint.y);
+            canvas2D.lineTo(currentPoint.x, currentPoint.y);
+            canvas2D.closePath();
+            canvas2D.stroke();
+            lastPoint = currentPoint;
+        };
+        drawBoard.onmouseup = function () {
+            isDrawing = false;
+        };
+
+        palette = document.getElementsByClassName("color");
+        for (x in palette) {
+            palette[x].onmousedown = function (e) { canvas2D.strokeStyle = e.toElement.classList[1]; }
+        }
+        document.getElementById("clear").onclick = function (){canvas2D.clearRect(0,0,drawBoard.width,drawBoard.height);}
+    </script>
+</body>
+
+</html>
