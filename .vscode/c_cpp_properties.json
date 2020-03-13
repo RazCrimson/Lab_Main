@@ -12,11 +12,9 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.17763.0",
-            "compilerPath": "C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe",
-        
+            "compilerPath": "\"C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe\"",
             "intelliSenseMode": "msvc-x64"
         }
-        
     ],
     "version": 4
 }

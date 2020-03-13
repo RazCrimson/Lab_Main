@@ -7,45 +7,39 @@
     <title>ws6_19</title>
     <script>
         function currentTime() {
-            if(state == true)
-            {
+            if (state == true) {
                 write();
                 second += 1;
-                setTimeout(currentTime,1000);
+                setTimeout(currentTime, 1000);
             }
         }
-        function start()
-        {
+        function start() {
             state = true;
             currentTime();
         }
-        function stop()
-        {
+        function stop() {
             state = false;
         }
-        function reset(){
+        function reset() {
             second = 0;
             write();
         }
-        function write()
-        {
+        function write() {
             var sec = second, min = 0, hour = 0;
-            if(sec >= 86400 )
+            if (sec >= 86400)
                 sec %= 86400;
-            if(sec >= 3600)
-            {
+            if (sec >= 3600) {
                 hour = parseInt(sec / 3600);
                 sec -= hour * 3600;
             }
-            if(sec >= 60)
-            {
+            if (sec >= 60) {
                 min = parseInt(sec / 60);
-                sec -= min * 60; 
+                sec -= min * 60;
             }
-            document.getElementById("clock").innerHTML = hour + " : " + min + " : " + sec;  
+            document.getElementById("clock").innerHTML = hour + " : " + min + " : " + sec;
         }
     </script>
-    
+
 </head>
 
 <body onload="currentTime()">

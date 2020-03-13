@@ -10,7 +10,6 @@
             var a = Number(document.getElementById('side1').value);
             var b = Number(document.getElementById('side2').value);
             var c = Number(document.getElementById('side3').value);
-            console.log(a, b, c, typeof (a), typeof (b), typeof (c));
             var s = (a + b + c) / 2;
             var area = (s * (s - a) * (s - b) * (s - c)) ** 0.5;
             document.getElementById('result').innerHTML = "The area of the triangle is: " + area;
