@@ -1,35 +1,135 @@
 {
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe",
-                "-std=c++0x",
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "gcc.exe build active file",
-            "command": "C:/Program Files (x86)/CodeBlocks/MinGW/bin/gcc.exe",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe",
-                "-std=c++0x",
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ]
-        }
-    ],
-    "version": "2.0.0"
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: g++ build active file",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "C/C++: gcc build active file",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "C/C++: gcc build active file",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "Assembly(x8086): nasm build active file",
+			"command": "/usr/bin/nasm",
+			"args": [
+				"-f",
+				"elf32",
+				"-g3",
+				"-F",
+				"dwarf",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "Assembly(x8086): link active file",
+			"command": "/usr/bin/ld",
+			"args": [
+				"-Ttext=0x7c00",
+				"-melf_i386",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				 "-o",
+				 "${fileDirname}/${fileBasenameNoExtension}.elf"				
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "Assembly(x8086): image active file",
+			"command": "/usr/bin/objcopy",
+			"args": [
+				"-O",
+				"binary",
+				"${fileDirname}/${fileBasenameNoExtension}.elf",				
+				"${fileDirname}/${fileBasenameNoExtension}.img",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "Assembly(x8086): qemu VM - i386",
+			"command": "/usr/bin/qemu-system-i386",
+			"args": [
+				"-hda",
+				"${fileDirname}/${fileBasenameNoExtension}.img",
+				"-S",
+				"-s",
+				"&"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+		},
+		{
+			"label": "Assembly(x8086): Build and run VM",
+			"dependsOn": [
+				"Assembly(x8086): nasm build active file",
+				"Assembly(x8086): link active file",
+				"Assembly(x8086): image active file",
+				"Assembly(x8086): qemu VM - i386"
+			],
+		}
+		
+
+	]
 }

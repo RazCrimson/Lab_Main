@@ -63,7 +63,7 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "cstdatomic": "cpp",
-        "hashtable": "cpp"
+        "hashtable": "cpp",
+        "charconv": "cpp"
     },
-    
 }
