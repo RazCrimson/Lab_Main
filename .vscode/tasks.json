@@ -9,7 +9,7 @@
 				"-g",
 				"${file}",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${fileDirname}/${fileBasenameNoExtension}.bin"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -27,25 +27,7 @@
 				"-g",
 				"${file}",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": "build"
-		},
-		{
-			"type": "shell",
-			"label": "C/C++: gcc build active file",
-			"command": "/usr/bin/gcc",
-			"args": [
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${fileDirname}/${fileBasenameNoExtension}.bin"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -67,7 +49,7 @@
 				"dwarf",
 				"${file}",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${fileDirname}/${fileBasenameNoExtension}.bin"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -81,7 +63,7 @@
 			"args": [
 				"-Ttext=0x7c00",
 				"-melf_i386",
-				"${fileDirname}/${fileBasenameNoExtension}",
+				"${fileDirname}/${fileBasenameNoExtension}.bin",
 				 "-o",
 				 "${fileDirname}/${fileBasenameNoExtension}.elf"				
 			],
