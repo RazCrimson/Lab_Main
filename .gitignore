@@ -1,4 +1,12 @@
+# Build Files:
+
 *.exe
 *.out
+*.bin
+*.elf
+*.img
+
 .vscode/*
+
+# Temp Files
 ~$*
