@@ -59,7 +59,6 @@ public:
     int heightOfTree();
     int numberOfNodesInTree();
     int numberOfLeafNodesInTree();
-    
 };
 
 template <class T>
@@ -78,10 +77,10 @@ Node<T> *BST<T>::insert(Node<T> *&ptr, T value)
     }
     if (value > ptr->data)
         ptr->right = insert(ptr->right, value);
-    else if(value < ptr->data)
+    else if (value < ptr->data)
         ptr->left = insert(ptr->left, value);
     else
-        ptr = NULL;    
+        ptr = NULL;
     return ptr;
 }
 
@@ -242,7 +241,8 @@ template <class T>
 void BST<T>::printAllLevels()
 {
     int h = height(root);
-    for (int i = 1; i <= h; i++){
+    for (int i = 1; i <= h; i++)
+    {
         cout << "Level " << i << " - ";
         printGivenLevel(root, i);
         cout << endl;
