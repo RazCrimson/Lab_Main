@@ -8,12 +8,12 @@ int main()
     BST<int> bst;
     int n, m, temp;
     n = m = temp = 0;
-    
+
     cout << "Enter the number of students in the class: ";
     cin >> n;
 
     cout << "Enter the number of students who are yet to come: ";
-    cin >> m; 
+    cin >> m;
 
     for (int i = 0; i < n; i++)
     {
@@ -26,9 +26,9 @@ int main()
 
     for (int i = 0; i < m; i++)
     {
-        cout << "Enter the number of Candles with the " << i + 1<< "th student who came : ";
+        cout << "Enter the number of Candles with the " << i + 1 << "th student who came : ";
         cin >> temp;
-        if(bst.findNodeWithValue(temp))
+        if (bst.findNodeWithValue(temp))
             cout << "Monk: YES\n";
         else
             cout << "Monk: NO\n";

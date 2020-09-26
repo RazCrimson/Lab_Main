@@ -4,7 +4,8 @@
 using namespace std;
 
 int main()
-{    BST<int> bst;
+{
+    BST<int> bst;
     bst.insertIntoTree(0x50);
     bst.insertIntoTree(0x30);
     bst.insertIntoTree(0x20);
@@ -15,8 +16,8 @@ int main()
     bst.insertIntoTree(0x90);
     bst.insertIntoTree(0x10);
 
-    cout<< "\nTree :\n";
+    cout << "\nTree :\n";
     bst.printAllLevels();
-    
+
     return 0;
 }
