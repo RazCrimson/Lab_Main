@@ -64,7 +64,7 @@ WHERE TIMESTAMPDIFF(YEAR, DOB, CURRENT_TIMESTAMP) < 30;
 # QN 3
 SELECT *
 FROM Employee
-WHERE LNAME LIKE '%er';
+WHERE LNAME LIKE '%er%';
 
 # QN 4
 SELECT FNAME, LNAME
@@ -138,7 +138,7 @@ FROM Employee;
 SELECT *
 FROM Employee
 WHERE Commission IS NOT NULL
-ORDER BY DOB
+ORDER BY DOB DESC
 LIMIT 1;
 
 # QN 18
@@ -329,7 +329,7 @@ WHERE MGR = 110;
 
 # QN 49
 UPDATE Employee
-SET Commission = Commission + (Salary * 1.1)
+SET Commission = Commission + (Salary * 0.1)
 WHERE MONTH(DOB) = MONTH(CURRENT_DATE);
 
 # QN 50
