@@ -4,38 +4,40 @@
 
 using namespace std;
 
-void inorder(int a[], vector<int> &v, int n, int index)
+void inorder(int arr[], vector<int> &vec, int n, int index)
 {
     if (index >= n)
         return;
-    inorder(a, v, n, 2 * index + 1);
-    v.push_back(a[index]);
-    inorder(a, v, n, 2 * index + 2);
+    inorder(arr, vec, n, 2 * index + 1);
+    vec.push_back(arr[index]);
+    inorder(arr, vec, n, 2 * index + 2);
 }
 
-int minSwaps(vector<int> &v)
+int minSwaps(vector<int> &vec)
 {
-    vector<pair<int, int>> t(v.size());
-    int ans = 0;
-    for (int i = 0; i < v.size(); i++)
-        t[i].first = v[i], t[i].second = i;
-
-    sort(t.begin(), t.end());
-    for (int i = 0; i < t.size(); i++)
+    vector<pair<int, int>> arrAndPos(vec.size());
+    int swapCount = 0;
+    for (int i = 0; i < vec.size(); i++)
     {
-        if (i == t[i].second)
+        arrAndPos[i].first = vec[i];
+        arrAndPos[i].second = i;
+    }
+    sort(arrAndPos.begin(), arrAndPos.end());
+    for (int i = 0; i < arrAndPos.size(); i++)
+    {
+        if (i == arrAndPos[i].second)
             continue;
         else
         {
-            swap(t[i].first, t[t[i].second].first);
-            swap(t[i].second, t[t[i].second].second);
+            swap(arrAndPos[i].first, arrAndPos[arrAndPos[i].second].first);
+            swap(arrAndPos[i].second, arrAndPos[arrAndPos[i].second].second);
         }
 
-        if (i != t[i].second)
+        if (i != arrAndPos[i].second)
             --i;
-        ans++;
+        swapCount++;
     }
-    return ans;
+    return swapCount;
 }
 
 int main()
@@ -44,13 +46,9 @@ int main()
     cout << "Enter the number of elements : " << endl;
     cin >> n;
     int *arr = new int[n];
-    int count = 0;
-    while (count < n)
-    {
-        cin >> arr[count];
-        count++;
-    }
-
+    cout << "Enter the elements in the In Order representation : " << endl;
+    for (int i = 0; i < n; i++)
+        cin >> arr[1];
     vector<int> v;
     inorder(arr, v, n, 0);
     cout << minSwaps(v) << endl;
