@@ -4,15 +4,6 @@
 
 using namespace std;
 
-void inorder(int arr[], vector<int> &vec, int n, int index)
-{
-    if (index >= n)
-        return;
-    inorder(arr, vec, n, 2 * index + 1);
-    vec.push_back(arr[index]);
-    inorder(arr, vec, n, 2 * index + 2);
-}
-
 int minSwaps(vector<int> &vec)
 {
     vector<pair<int, int>> arrAndPos(vec.size());
@@ -42,14 +33,15 @@ int minSwaps(vector<int> &vec)
 
 int main()
 {
-    int n;
+    int n, temp;
+    vector<int> v;
     cout << "Enter the number of elements : " << endl;
     cin >> n;
-    int *arr = new int[n];
-    cout << "Enter the elements in the In Order representation : " << endl;
+    cout << "Enter the elements of BST in the In Order representation : " << endl;
     for (int i = 0; i < n; i++)
-        cin >> arr[1];
-    vector<int> v;
-    inorder(arr, v, n, 0);
+    {
+        cin >> temp;
+        v[i] = temp;
+    }
     cout << minSwaps(v) << endl;
 }
