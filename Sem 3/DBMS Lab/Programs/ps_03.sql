@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS Employee
     HDATE      DATE,
     Salary     NUMERIC(8, 2),
     Commission NUMERIC(8, 2),
-    PRIMARY KEY (ENO),
-    FOREIGN KEY (MGR) REFERENCES Employee (ENO),
+    CONSTRAINT pkey PRIMARY KEY (ENO),
+    CONSTRAINT foreign_key FOREIGN KEY (MGR) REFERENCES Employee (ENO),
     CONSTRAINT DOB_Check CHECK ( YEAR(DOB) <= 1980 ),
     CONSTRAINT Salary_Check CHECK ( Salary BETWEEN 20000 AND 100000 )
 );
