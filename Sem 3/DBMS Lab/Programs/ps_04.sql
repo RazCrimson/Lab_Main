@@ -202,12 +202,14 @@ SELECT C.*, I.quantity
 FROM Customer C
          INNER JOIN Items_ordered I on C.customerid = I.customerid;
 
-# QN 25
-SELECT MONTH(order_date)
-FROM Items_ordered
-GROUP BY MONTH(order_date)
-ORDER BY COUNT(DISTINCT customerid) DESC
-LIMIT 1;
+# QN 25 (Used MySQL 8.0)
+SELECT Month
+FROM (SELECT MONTHNAME(order_date)                                  AS 'Month',
+             RANK() OVER (ORDER BY COUNT(DISTINCT customerid) DESC) AS ranking
+      FROM Items_ordered
+      GROUP BY MONTHNAME(order_date)
+     ) selection
+WHERE ranking = 1;
 
 # QN 26
 SELECT DISTINCT I.item
@@ -239,8 +241,3 @@ WHERE C.state = 'Colorado'
 SELECT DISTINCT customerid
 FROM Items_ordered
 WHERE YEAR(order_date) BETWEEN 1999 AND 2000;
-
-
-
-
-
