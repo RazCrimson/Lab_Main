@@ -59,7 +59,7 @@ SELECT Empid, Name, City, Salary
 FROM EMPTABLE;
 
 # QN 3-03
-SELECT *
+SELECT Empid
 FROM EMPTABLE
 WHERE Name = 'Bala';
 
