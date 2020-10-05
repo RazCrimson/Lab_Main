@@ -28,7 +28,7 @@ class BST
 protected:
     Node<T> *root;
 
-    int height(Node<T> *&);
+    int findHeight(Node<T> *&);
     int numberOfNodes(Node<T> *&);
     int numberOfLeafNodes(Node<T> *&);
     void inOrder(Node<T> *&);
@@ -85,14 +85,14 @@ Node<T> *BST<T>::insert(Node<T> *&ptr, T value)
 }
 
 template <class T>
-int BST<T>::height(Node<T> *&node)
+int BST<T>::findHeight(Node<T> *&node)
 {
     if (node == NULL)
         return 0;
     else
     {
-        int leftHeight = height(node->left);
-        int rightHeight = height(node->right);
+        int leftHeight = findHeight(node->left);
+        int rightHeight = findHeight(node->right);
 
         return (leftHeight > rightHeight) ? leftHeight + 1 : rightHeight + 1;
     }
@@ -240,7 +240,7 @@ void BST<T>::printL2R(Node<T> *root, int space)
 template <class T>
 void BST<T>::printAllLevels()
 {
-    int h = height(root);
+    int h = findHeight(root);
     for (int i = 1; i <= h; i++)
     {
         cout << "Level " << i << " - ";
@@ -273,7 +273,7 @@ template <class T>
 int BST<T>::numberOfLeafNodesInTree() { return numberOfLeafNodes(root); }
 
 template <class T>
-int BST<T>::heightOfTree() { return height(root); }
+int BST<T>::heightOfTree() { return findHeight(root); }
 
 template <class T>
 void BST<T>::traverseInOrder() { inOrder(root); }
