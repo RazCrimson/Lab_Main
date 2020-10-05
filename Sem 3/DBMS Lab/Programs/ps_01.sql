@@ -3,11 +3,11 @@ use 19pw08;
 # QN 1
 CREATE TABLE IF NOT EXISTS employee
 (
-    Name          VARCHAR(15),
-    Designation VARCHAR(15),
-    Dept        VARCHAR(15),
-    Salary        INT(11),
-    Phone_number  BIGINT(10)
+    Name         VARCHAR(15),
+    Designation  VARCHAR(15),
+    Dept         VARCHAR(15),
+    Salary       INT(11),
+    Phone_number BIGINT(10)
 );
 
 

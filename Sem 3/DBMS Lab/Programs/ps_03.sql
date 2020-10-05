@@ -142,7 +142,7 @@ ORDER BY DOB DESC
 LIMIT 1;
 
 # QN 18
-SELECT CONCAT('Dear \'',FNAME,'\', you were born on ',DATE_FORMAT(DOB, '%d, %D - %M - %Y'))
+SELECT CONCAT('Dear \'', FNAME, '\', you were born on ', DATE_FORMAT(DOB, '%d, %D - %M - %Y'))
 FROM Employee;
 
 # QN 19
@@ -266,10 +266,10 @@ ORDER BY (Salary + COALESCE(Commission, 0))
 LIMIT 5;
 
 # QN 39
-SELECT CONCAT(FNAME, ' ', LNAME)        AS Name,
+SELECT CONCAT(FNAME, ' ', LNAME)                    AS Name,
        Salary,
        COALESCE(Commission, NOT ISNULL(Commission)) AS 'Commission',
-       Salary + COALESCE(Commission, 0) AS 'Netpay'
+       Salary + COALESCE(Commission, 0)             AS 'Netpay'
 FROM Employee
 WHERE (Salary + COALESCE(Commission, 0)) = (SELECT MAX(Salary + COALESCE(Commission, 0)) FROM Employee);
 
