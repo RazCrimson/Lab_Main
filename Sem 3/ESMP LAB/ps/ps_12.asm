@@ -3,7 +3,7 @@
 
 org 100h
 
-mov ax, 600h            
+mov ax, 6000h            
 mov ds, ax           
 mov si, 0
 mov bp, 300h
