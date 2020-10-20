@@ -1,4 +1,4 @@
-use db;
+use 19pw08;
 
 CREATE TABLE EMP
 (
@@ -133,7 +133,7 @@ FROM EMP
          INNER JOIN DEPARTMENT D ON EMP.Empno = D.MgrId;
 
 # QN 3
-SELECT itemname, sum(Saleqty) AS 'Total Quantity'
+SELECT itemname, SUM(Saleqty) AS 'Total Quantity'
 FROM SALES
 GROUP BY itemname;
 
@@ -222,7 +222,7 @@ WHERE itemname NOT IN (SELECT DISTINCT itemname FROM SALES WHERE Deptname = 'Clo
   AND itemtype = 'C';
 
 # QN 19
-# TODO
+# TODO: An Item cant appear in all Sales, as each sale is related only one Dept to only item.
 
 # QN 20
 SELECT *
@@ -235,7 +235,9 @@ FROM SALES
 WHERE Saleqty > 1;
 
 # QN 22
-# TODO
+# TODO: Needs more context on how to compare the quantity of Sales
+# Listing all sales in a Descending order for now.
+SELECT * FROM SALES ORDER BY Saleqty DESC;
 
 # QN 23
 SELECT itemname

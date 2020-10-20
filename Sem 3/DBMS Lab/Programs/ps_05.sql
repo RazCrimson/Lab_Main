@@ -45,15 +45,13 @@ VALUES ('A01', 'MOBILE', 'BLACK', 100, 'Cbe'),
 
 INSERT INTO Delivery
 VALUES ('S003', 'A01', 1000),
-       ('S002', 'A02', 200),
        ('S003', 'A02', 500),
        ('S004', 'A03', 10),
-       ('S002', 'A04', 50),
        ('S003', 'A03', 25),
+       ('S002', 'A04', 50),
+       ('S002', 'A02', 200),
        ('S001', 'A02', 55),
-       ('S001', 'A03', 200),
-       ('S001', 'A04', 78),
-       ('S001', 'A01', 67);
+       ('S001', 'A04', 78);
 
 
 # QN 1
@@ -69,14 +67,19 @@ WHERE ANr IN (SELECT ANr
               WHERE ranking = 1);
 
 # QN 3
-SELECT DISTINCT SNr
-FROM Delivery
-WHERE ANr IN (
-    SELECT DISTINCT ANr
-    FROM Delivery
-    WHERE SNr IN (SELECT DISTINCT SNr
-                  FROM Delivery
-                           INNER JOIN Article ON Delivery.ANr = Article.ANr AND Article.Color = 'RED'));
+SELECT *
+FROM Supplier AS S
+WHERE SNr NOT IN (
+    SELECT DISTINCT SNr
+    FROM (SELECT SNr, ANr
+          FROM (SELECT DISTINCT ANr
+                FROM Delivery
+                WHERE SNr IN (SELECT DISTINCT SNr
+                              FROM Delivery
+                                       INNER JOIN Article ON Delivery.ANr = Article.ANr AND Article.Color = 'RED')) AS Cond
+                   CROSS JOIN (SELECT DISTINCT SNr FROM Delivery) AS Suppliers) AS Result
+    WHERE (SNr, ANr) NOT IN (SELECT SNr, ANr FROM Delivery));
+
 # QN 4
 SELECT ANr
 FROM Delivery
