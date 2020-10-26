@@ -1,57 +1,60 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-int findSpecial(vector<int> sequence, int start, int end, int k, int index)
+int wrapper(vector<int> &, int);
+int findSpl(vector<int> &, int, int, int, int);
+
+int wrapper(vector<int> &v, int k)
+{
+    int count = 0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (findSpl(v, k, i, 0, i - 1) || findSpl(v, k, i, i + 1, v.size() - 1))
+            count += v[i];
+    }
+    return count;
+}
+
+int findSpl(vector<int> &v, int k, int index, int start, int end)
 {
     if (end - start + 1 < k)
+    {
         return 0;
+    }
     if (end - start + 1 == k)
     {
         bool flag = true;
-        for (unsigned i = start; i <= end; i++)
+        for (int i = start; i <= end; i++)
         {
-            if (sequence[i] < sequence[index])
-            {
+            if (v[i] < v[index])
                 flag = false;
-                break;
-            }
         }
         if (flag)
-            return sequence[index];
+        {
+            return 1;
+        }
         else
+        {
             return 0;
+        }
     }
-    return findSpecial(sequence, start, end - 1, k, index) || findSpecial(sequence, start + 1, end, k, index);
-}
-
-int wrapper(vector<int> sequence, int k)
-{
-    int sum = 0;
-    for (unsigned i = 0; i < sequence.size(); i++)
-    {
-        if (findSpecial(sequence, 0, i - 1, k, i) || findSpecial(sequence, i + 1, sequence.size() - 1, k, i))
-            sum += sequence[i];
-    }
-    return sum;
+    return findSpl(v, k, index, start, end - 1) || findSpl(v, k, index, start + 1, end);
 }
 
 int main()
 {
-    vector<int> sequence;
-    int val;
-    int k;
-    cout << "Please enter the sequence and press -1 to stop" << endl;
-    while (true)
+    int length, number, k;
+    vector<int> vec;
+    cout << "Enter the number of elements: ";
+    cin >> length;
+    cout << "Enter the elements\n";
+    for (int i = 0; i < length; i++)
     {
-        cin >> val;
-        if (val == -1)
-            break;
-        sequence.push_back(val);
+        cin >> number;
+        vec.push_back(number);
     }
-    cout << "Please enter the value of k: ";
+    cout << "Enter the number: ";
     cin >> k;
-    int ans = wrapper(sequence, k);
-    cout << "The speciality of the sequence is " << ans << endl;
+    cout << "The speciality of the sequence is" << wrapper(vec, k) << endl;
 }
