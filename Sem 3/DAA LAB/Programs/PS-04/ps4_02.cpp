@@ -5,7 +5,7 @@ using namespace std;
 
 unsigned int Log5n(unsigned int n)
 {
-    return (n > 5) ? 1 + Log5n(n / 5) : 0;
+    return (n >= 5) ? 1 + Log5n(n / 5) : 0; 
 }
 
 int minimumNumber(int present, int sum, int value)
@@ -23,7 +23,6 @@ int main()
 {
     int val;
     cout << "Please enter the value: ";
-    cout << "Log5n is " << Log5n(124) << endl;
     cin >> val;
     int ans = minimumNumber(1, 0, val);
     cout << "The answer is " << ans << endl;
