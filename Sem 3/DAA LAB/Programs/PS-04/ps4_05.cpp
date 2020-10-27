@@ -1,6 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <cmath>
 #include <limits.h>
 
 using namespace std;
@@ -79,8 +78,17 @@ int main()
             index++;
         }
         mergeSort(arr, 0, n-1);
+
+        // Not considering Fractional parts
         int minWidth = findMinWidth(arr, 0, INT_MAX, n);
         int minimumCost = 2 * cost * minWidth * (arr[n - 1] - arr[0]);
         cout << minimumCost << endl;
+
+        // Considering Fractional parts
+        double sum = 0.0;
+        sum = (arr[n - 1] - arr[1] + arr[n - 2] - arr[0]) * 2.0;
+        sum = sum + sqrt(2.0) * (arr[n - 1] - arr[n - 2] + arr[1] - arr[0]);
+        long long rounded = ceil(sum);
+        cout << rounded * cost << endl;
     }
 }
