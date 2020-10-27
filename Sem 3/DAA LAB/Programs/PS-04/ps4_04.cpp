@@ -3,13 +3,21 @@
 using namespace std;
 
 
-int getIndex(int arr[], int size, int val)
-{
-    for(int i = 0; i < size; i++)
-        if(arr[i] == val)
-            return i;
-    return -1;
-}
+int binarySearch(int arr[], int l, int r, int val) 
+{ 
+    if (r >= l) { 
+        int mid = l + (r - l) / 2; 
+  
+        if (arr[mid] == val) 
+            return mid; 
+  
+        if (arr[mid] > val) 
+            return binarySearch(arr, l, mid - 1, val); 
+  
+        return binarySearch(arr, mid + 1, r, val); 
+    } 
+    return -1; 
+} 
 
 void merge(int arr[], int l, int m, int r)
 {
@@ -70,11 +78,11 @@ void mergeSort(int arr[], int l, int r)
 
  int filter(int arr[], int size, int x)
  {
-    int available = getIndex(arr, size, x+1);
+    int available = binarySearch(arr, 0, size, x+1);
     if(available == -1)
         return x+1;
     while(available != -1)
-        available = getIndex(arr, size, ++x);
+        available = binarySearch(arr, 0, size, ++x);
     return x;
  }
 

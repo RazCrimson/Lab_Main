@@ -19,9 +19,7 @@ int wrapper(vector<int> &v, int k)
 int findSpl(vector<int> &v, int k, int index, int start, int end)
 {
     if (end - start + 1 < k)
-    {
         return 0;
-    }
     if (end - start + 1 == k)
     {
         bool flag = true;
@@ -31,13 +29,9 @@ int findSpl(vector<int> &v, int k, int index, int start, int end)
                 flag = false;
         }
         if (flag)
-        {
             return 1;
-        }
         else
-        {
             return 0;
-        }
     }
     return findSpl(v, k, index, start, end - 1) || findSpl(v, k, index, start + 1, end);
 }
