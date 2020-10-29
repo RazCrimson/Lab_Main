@@ -87,7 +87,8 @@ int main()
         // Considering Fractional parts
         double sum = 0.0;
         sum = (arr[n - 1] - arr[1] + arr[n - 2] - arr[0]) * 2.0;
-        sum = sum + sqrt(2.0) * (arr[n - 1] - arr[n - 2] + arr[1] - arr[0]);
+        sum += (arr[n - 1] - arr[n - 2] + arr[1] - arr[0]) * sqrt(2.0);
+        
         long long rounded = ceil(sum);
         cout << rounded * cost << endl;
     }

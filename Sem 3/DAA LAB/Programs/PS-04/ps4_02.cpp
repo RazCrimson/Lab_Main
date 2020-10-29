@@ -3,9 +3,14 @@
 
 using namespace std;
 
-unsigned int Log5n(unsigned int n)
+unsigned int log5n(unsigned int n)
 {
-    return (n >= 5) ? 1 + Log5n(n / 5) : 0; 
+    return (n >= 5) ? 1 + log5n(n / 5) : 0;
+}
+
+unsigned int numberOfTimesDivisibleBy5(unsigned int n)
+{
+    return (n % 5 == 0) ? 1 + numberOfTimesDivisibleBy5(n / 5) : 0;
 }
 
 int minimumNumber(int present, int sum, int value)
@@ -14,7 +19,7 @@ int minimumNumber(int present, int sum, int value)
         return present - 1;
     else
     {
-        sum += Log5n(present);
+        sum += numberOfTimesDivisibleBy5(present);
         return minimumNumber(present + 1, sum, value);
     }
 }
