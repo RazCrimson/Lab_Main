@@ -64,7 +64,12 @@
         "valarray": "cpp",
         "cstdatomic": "cpp",
         "hashtable": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp",
+        "*.inc": "cpp"
     },
     "C_Cpp.dimInactiveRegions": false,
 }
