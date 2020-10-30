@@ -40,7 +40,7 @@ public:
     bool hasPath(int, int);
     void BFS(int node);
     void DFS(int node);
-    map<int, set<int>> kruskalMinSpanTree();
+    Graph kruskalMinSpanTree();
 };
 
 void Graph::insert(int value, set<EdgeTo> connectedNodes)
@@ -172,7 +172,7 @@ void Graph::DFS(int node)
     }
 }
 
-map<int, set<int>> Graph::kruskalMinSpanTree()
+Graph Graph::kruskalMinSpanTree()
 {
     // List of all edges to be considered
     list<pair<int, EdgeTo>> allEdges;
@@ -193,7 +193,7 @@ map<int, set<int>> Graph::kruskalMinSpanTree()
     });
 
     // A map to store the resulting minimum spanning tree
-    map<int, set<int>> minSpanTree;
+    Graph minSpanTree;
 
     // Return if we have no edges
     if (allEdges.size() == 0)
@@ -228,40 +228,19 @@ map<int, set<int>> Graph::kruskalMinSpanTree()
             if (srcRep == -1 && destRep == -1)
             {
                 makeset(sets, srcAndEdge.first, srcAndEdge.second.content);
-                minSpanTree.insert(pair<int, set<int>>(srcAndEdge.first, {srcAndEdge.second.content}));
+                minSpanTree.insert(srcAndEdge.first, {srcAndEdge.second});
             }
         }
         else
         {
+            minSpanTree.insert(srcAndEdge.first, {srcAndEdge.second});
+
             if (srcRep == -1)
-            {
                 sets.find(destRep)->second.insert(srcAndEdge.first);
-
-                map<int, set<int>>::iterator iterator = minSpanTree.find(srcAndEdge.second.content);
-                if (iterator == minSpanTree.end())
-                    minSpanTree.insert(pair<int, set<int>>(srcAndEdge.second.content, {srcAndEdge.first}));
-                else
-                    iterator->second.insert(srcAndEdge.first);
-            }
             else if (destRep == -1)
-            {
-
                 sets.find(srcRep)->second.insert(srcAndEdge.second.content);
-
-                map<int, set<int>>::iterator iterator = minSpanTree.find(srcAndEdge.first);
-                if (iterator == minSpanTree.end())
-                    minSpanTree.insert(pair<int, set<int>>(srcAndEdge.first, {srcAndEdge.second.content}));
-                else
-                    iterator->second.insert(srcAndEdge.second.content);
-            }
             else
-            {
-
-                map<int, set<int>>::iterator iterator = minSpanTree.find(srcRep);
-                iterator->second.insert(destRep);
-
                 joinSets(sets, srcRep, destRep);
-            }
         }
     }
 

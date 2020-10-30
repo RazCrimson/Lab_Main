@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'raz'
+      MYSQL_PASSWORD: 'somerandompassword'
+      MYSQL_ROOT_PASSWORD: 'test_password'
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+      
+  postgres:
+    container_name: PostgreSQL
+    restart: always
+    image: "postgres" 
+    ports:
+      - '5432:5432'
+    environment: 
+      POSTGRES_USER: 'raz'
+      POSTGRES_PASSWORD: 'somerandompassword'
+      POSTGRES_DB: raz
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+volumes:
+  database-data: 
+  my-db:
