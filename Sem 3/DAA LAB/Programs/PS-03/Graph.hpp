@@ -40,7 +40,10 @@ public:
     bool hasPath(int, int);
     void BFS(int node);
     void DFS(int node);
+    int numberOfNodes();
+    set<int> allNodes();
     Graph kruskalMinSpanTree();
+    Graph Djikstras(int);
 };
 
 void Graph::insert(int value, set<EdgeTo> connectedNodes)
@@ -118,6 +121,21 @@ bool Graph::hasPath(int src, int dest)
     set<int> visited;
     bool isConnected = hasPathTo(src, dest, visited);
     return isConnected;
+}
+
+int Graph::numberOfNodes()
+{
+    return adjacencyLists.size();
+}
+
+set<int> Graph::allNodes()
+{
+    set<int> nodes;
+    for (auto node : adjacencyLists)
+    {
+        nodes.insert(node.first);
+    }
+    return nodes;
 }
 
 void Graph::BFS(int node)
@@ -259,4 +277,66 @@ void Graph::joinSets(map<int, set<int>> &sets, int srcRep, int destRep)
 
     src->second.insert(dest->second.begin(), dest->second.end());
     sets.erase(dest);
+}
+
+Graph Graph::Djikstras(int sourceVertex)
+{
+    Graph shortestDistanceTree;
+
+    map<int, int> nodesWithTotalWeight;
+    shortestDistanceTree.insert(sourceVertex, {});
+    nodesWithTotalWeight.insert(pair<int, int>(sourceVertex, 0));
+
+    while (shortestDistanceTree.allNodes() != this->allNodes())
+    {
+        map<int, pair<int, int>> shortDistList;
+
+        //Step 1 -> Select all the possible additions to the minDistTree
+        //Use a recursive function to set the best edge wich should be considered based on the sum of the edges from the source
+        //Do this for all the modes
+        //If the element for which we are searching for is already in the constructed graph update the sum of it as 0
+        //If the element for which searching for is not a  adjacent element of the nodes whoch are in the graph we are constructing update the sum as a big ass number move on
+        //else update the minimum sum which we get from the recursive function
+        //Step 2 -> After refreshing the minDistList select the least sum from the edges and then add it to the minDistTree
+        //Step 3 -> Repeat this till all the nodes that are in the actual graph are in the the graph that is getting constructed
+
+        //Recursive Function Idea: Make up a list of all the adjacent of the elements then find the min sum path from source to the each element in the list we made up just now
+        //put it in the minDistList
+
+        for (int nodeToCheckEdges : shortestDistanceTree.allNodes())
+        {
+            set<EdgeTo> connectedEdges = this->returnAdjacentVertices(nodeToCheckEdges);
+
+            for (auto connectedEdge : connectedEdges)
+            {
+                if (nodesWithTotalWeight.find(connectedEdge.content) != nodesWithTotalWeight.end())
+                {
+                    int totalWeight = nodesWithTotalWeight.find(nodeToCheckEdges)->second + connectedEdge.weight;
+                    pair<int, int> nodeWithWeight = pair<int, int>(nodeToCheckEdges, totalWeight);
+
+                    if (shortDistList.find(connectedEdge.content) != shortDistList.end())
+                        shortDistList.insert(pair<int,pair<int,int>>(connectedEdge.content, nodeWithWeight));
+                        
+                    else
+                    {
+                            auto nodeToCheck = shortDistList.find(connectedEdge.content);
+                            if (totalWeight < nodeToCheck->second.second)
+                                shortDistList.find(connectedEdge.content)->second = nodeWithWeight;
+                    }
+                }
+            }
+        }
+
+        pair<int, int> keyWithtotalWeight = pair<int, int>(-1, 10000);
+        for (auto keyPair : shortDistList)
+        {
+            if (keyPair.second.second < keyWithtotalWeight.second)
+
+                pair<int, int> keyWithtotalWeight = keyPair.second;
+        }
+        if (keyWithtotalWeight.second != 10000)
+            nodesWithTotalWeight.insert(keyWithtotalWeight);
+    }
+
+    return shortestDistanceTree;
 }
