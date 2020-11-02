@@ -29,6 +29,7 @@ services:
       - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
 
   mongo:
+    container_name: MongoDB
     image: mongo
     restart: always
     ports:
