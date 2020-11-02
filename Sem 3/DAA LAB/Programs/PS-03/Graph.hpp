@@ -200,6 +200,7 @@ Graph Graph::kruskalMinSpanTree()
     {
         for (EdgeTo edge : adjacencyList.second)
         {
+            // Insert one direction(due to Raz's implementation of AdajencyLists)
             if (find(allEdges.begin(), allEdges.end(), pair<int, EdgeTo>(edge.content, {adjacencyList.first, edge.weight})) == allEdges.end())
                 allEdges.push_back(pair<int, EdgeTo>(adjacencyList.first, edge));
         }
@@ -217,14 +218,15 @@ Graph Graph::kruskalMinSpanTree()
     if (allEdges.size() == 0)
         return minSpanTree;
 
-    // Union find
+    // Union-find:
 
-    // map with will store all the representatives as keys and elements in the sets
+    // A map to store all the representatives as keys and elements in the sets
     map<int, set<int>> sets;
 
     // Trying to insert each edge
     for (auto srcAndEdge : allEdges)
     {
+        // Finding the reps
         int srcRep = -1, destRep = -1;
         for (auto setWithKey : sets)
         {
@@ -238,11 +240,13 @@ Graph Graph::kruskalMinSpanTree()
             if (it != setWithKey.second.end())
                 destRep = setWithKey.first;
 
-            if (srcRep != -1 && destRep != -1)
+            if (srcRep != -1 && destRep != -1) // To avoid extra checks
                 break;
         }
+        // If both reps are same, do nothing
         if (srcRep == destRep)
         {
+            // If we dont have both reps(which are same), we make a new set and insert both nodes and insert into MinSapntree
             if (srcRep == -1 && destRep == -1)
             {
                 makeset(sets, srcAndEdge.first, srcAndEdge.second.content);
@@ -251,12 +255,16 @@ Graph Graph::kruskalMinSpanTree()
         }
         else
         {
+            // Insert the edge into Minspann tree as it remains same for all cases
             minSpanTree.insert(srcAndEdge.first, {srcAndEdge.second});
 
+            // No source rep, then add node to the set of destination rep
             if (srcRep == -1)
                 sets.find(destRep)->second.insert(srcAndEdge.first);
+            // The inverse of above
             else if (destRep == -1)
                 sets.find(srcRep)->second.insert(srcAndEdge.second.content);
+            // If both have reps, then merge the sets
             else
                 joinSets(sets, srcRep, destRep);
         }
@@ -281,33 +289,43 @@ void Graph::joinSets(map<int, set<int>> &sets, int srcRep, int destRep)
 
 Graph Graph::Djikstras(int sourceVertex)
 {
+    // Graph to store the resulting MinSpanTree, other Data structures -> complicated(coz no direction btw nodes)
     Graph shortestDistanceTree;
+    // Map (int to int), key->node and value->weight from source(total weight), for nodes which are shortestDistanceTree
     map<int, int> nodesWithTotalWeight;
 
+    // Insert sourceVertex
     shortestDistanceTree.insert(sourceVertex, {});
     nodesWithTotalWeight.insert(pair<int, int>(sourceVertex, 0));
 
+    // Terminate loop when all nodes are added into the shortestDistanceTree
     while (shortestDistanceTree.allNodes() != this->allNodes())
     {
+        // Temporary map to select the edge with minimum totalWeight to a node
         map<int, pair<int, int>> shortDistList;
 
+        
         for (int nodeToCheckEdges : shortestDistanceTree.allNodes())
         {
+            // Checking all edges from a node present in graph
             set<EdgeTo> connectedEdges = this->returnAdjacentVertices(nodeToCheckEdges);
 
             for (auto connectedEdge : connectedEdges)
             {
-                // Condition to insert a node into the SHT
+                // Check if a edge should be inserted if its not connected to a node in graph
                 if (nodesWithTotalWeight.find(connectedEdge.content) == nodesWithTotalWeight.end())
                 {
+                    // Calculate the totalWeight from source vertex
                     int totalWeight = nodesWithTotalWeight.find(nodeToCheckEdges)->second + connectedEdge.weight;
                     pair<int, int> nodeWithWeight = pair<int, int>(nodeToCheckEdges, totalWeight);
 
+                    // Insert into shortDistList if we dont have a entry
                     if (shortDistList.find(connectedEdge.content) == shortDistList.end())
                         shortDistList.insert(pair<int, pair<int, int>>(connectedEdge.content, nodeWithWeight));
 
                     else
                     {
+                        // If we have a entry, compare the weight, place the smallest one into shortDistList
                         auto nodeToCheck = shortDistList.find(connectedEdge.content);
                         if (totalWeight < nodeToCheck->second.second)
                             shortDistList.find(connectedEdge.content)->second = nodeWithWeight;
@@ -316,6 +334,7 @@ Graph Graph::Djikstras(int sourceVertex)
             }
         }
 
+        // List the edge with minimum totalWeight from the list of possible connections
         pair<int, int> keyWithtotalWeight = pair<int, int>(-1, 10000);
         for (auto keyPair : shortDistList)
         {
@@ -323,6 +342,7 @@ Graph Graph::Djikstras(int sourceVertex)
 
                 pair<int, int> keyWithtotalWeight = keyPair.second;
         }
+        // Insert it into the Graph and add its totalWeight
         if (keyWithtotalWeight.second != 10000)
         {
             nodesWithTotalWeight.insert(keyWithtotalWeight);
