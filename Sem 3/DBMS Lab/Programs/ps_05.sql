@@ -1,4 +1,4 @@
-use 19pw08;
+use db;
 
 CREATE TABLE IF NOT EXISTS Supplier
 (
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Article
     CONSTRAINT article_color_check CHECK (Color IN ('WHITE', 'BLACK', 'RED'))
 );
 
-CREATE TABLE IF NOT EXISTS Delivery
+CREATE TABLE Delivery
 (
     SNr VARCHAR(4),
     ANr VARCHAR(4),

@@ -4,7 +4,7 @@
 using namespace std;
 
 //returns max of 2 binary numbers
-list<bool> getBigger(list<bool> list_1, list<bool> list_2)
+list<bool> getMax(list<bool> list_1, list<bool> list_2)
 {
     list<bool>::iterator first = list_1.begin(), second = list_2.begin();
     while (first != list_1.end())
@@ -47,7 +47,7 @@ int main()
 
     list<bool> max = binaryNums.front();
     for (auto eachList : binaryNums)
-        max = getBigger(max, eachList);
+        max = getMax(max, eachList);
 
     cout << "\nMax Binary Digit : " << endl;
     for(auto digit: max)

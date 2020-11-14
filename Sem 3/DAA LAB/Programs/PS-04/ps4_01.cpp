@@ -12,10 +12,7 @@ int merge(int arr[], int leftIndex, int mid, int end)
     while (leftIndex <= mid && rightIndex <= end)
     {
         if (arr[leftIndex] <= arr[rightIndex])
-        {
             leftIndex++;
-
-        }
         else
         {
             int value = arr[rightIndex];
