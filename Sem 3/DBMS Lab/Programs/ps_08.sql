@@ -291,7 +291,7 @@ WHERE ItemNo NOT IN (
     FROM LINEITEMS
     WHERE OrdNo IN (SELECT OrdNo
                     FROM ORDERS
-                    WHERE DATEDIFF(CURRENT_DATE, OrdDate) < 30));
+                    WHERE TIMESTAMPDIFF(MONTH, OrdDate, CURRENT_DATE) = 1));
 
 # QN 31
 SELECT *
@@ -307,7 +307,7 @@ WHERE ItemNo IN (SELECT DISTINCT ItemNo FROM LINEITEMS WHERE OrdNo IN (SELECT Or
 
 # QN 33
 UPDATE ORDERS
-SET ShipDate = (SELECT MAX(ShipDate) FROM ORDERS)
+SET ShipDate = (SELECT * FROM (SELECT MAX(ShipDate) FROM ORDERS) O)
 WHERE OrdNo = 1004;
 
 # QN 34
@@ -381,7 +381,7 @@ WHERE MONTH(OrdDate) = MONTH(CURRENT_DATE)
 
 # QN 47
 # OrdDate cant store a time.
-INSERT INTO ORDERS VALUE (1010, STR_TO_DATE('13-July-2001', '%d-%b-%Y'), NULL, 105, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO ORDERS VALUE (1010, STR_TO_DATE('13-Jul-2001', '%d-%b-%Y'), NULL, 105, NULL, NULL, NULL, NULL, NULL, NULL);
 
 # QN 48
 SELECT OrdNo, OrdDate, DATEDIFF(CURRENT_DATE, COALESCE(ShipDate, CURRENT_DATE))
@@ -491,22 +491,152 @@ WHERE O.CustNo = C.CustNo
   AND C.City = 'VIZAG'
 GROUP BY C.CustNo;
 
+# QN 66
+SELECT OrdNo, CustName, DATEDIFF(CURRENT_DATE, OrdDate)
+FROM ORDERS
+         INNER JOIN CUSTOMERS USING (CustNo)
+WHERE DATEDIFF(CURRENT_DATE, OrdDate) < 10
+  AND ShipDate IS NULL;
 
+# QN 67
+SELECT CustName, SUM(Qty * Price)
+FROM CUSTOMERS
+         INNER JOIN ORDERS USING (CustNo)
+         INNER JOIN LINEITEMS USING (OrdNo)
+GROUP BY CustNo;
+
+# QN 68
+SELECT *
+FROM ITEMS
+WHERE Rate = (SELECT MAX(Rate) FROM ITEMS);
+
+# QN 69
+SELECT *
+FROM CUSTOMERS
+WHERE CustNo IN (SELECT CustNo FROM ORDERS GROUP BY CustNo HAVING COUNT(*) > 5);
+
+# QN 70
+SELECT *
+FROM CUSTOMERS
+WHERE CustNo NOT IN (SELECT DISTINCT CustNo FROM ORDERS);
+
+# QN 71
+SELECT *
+FROM CUSTOMERS
+WHERE CustNo IN (SELECT DISTINCT CustNo FROM ORDERS WHERE TIMESTAMPDIFF(MONTH, OrdDate, CURRENT_DATE) <= 6);
+
+# QN 72
+SELECT *
+FROM ITEMS
+WHERE ItemNo IN (SELECT ItemNo FROM LINEITEMS WHERE Price > 5000 GROUP BY ItemNo HAVING SUM(Qty) > 50);
+
+# QN 73
+SELECT *
+FROM ORDERS
+WHERE OrdNo IN (SELECT OrdNo FROM LINEITEMS GROUP BY OrdNo HAVING COUNT(*) > 5)
+   OR CustNo IN (SELECT CustNo FROM CUSTOMERS WHERE CUSTOMERS.Phone LIKE '541%');
+
+# QN 74
+UPDATE ITEMS
+SET Rate = (SELECT * FROM (SELECT MAX(Rate) FROM ITEMS) R)
+WHERE ItemNo = 1;
+
+# QN 75
+DELETE
+FROM CUSTOMERS
+WHERE CustNo NOT IN (SELECT DISTINCT CustNo FROM ORDERS);
+
+# QN 76
+ALTER TABLE ITEMS
+    CHANGE Rate Price Numeric(8, 2);
+
+# Changed Items.Price back to Items.Rate
+ALTER TABLE ITEMS
+    CHANGE Price Rate Numeric(8, 2);
+
+# QN 77 - Same as 27
+
+# QN 78
+SELECT *
+FROM CUSTOMERS
+WHERE CustNo NOT IN (SELECT DISTINCT CustNo
+                     FROM ORDERS
+                     WHERE TIMESTAMPDIFF(MONTH, OrdDate, CURRENT_DATE) = 0);
+
+# QN 79
+SELECT *
+FROM ITEMS
+WHERE ItemNo NOT IN (
+    SELECT ItemNo
+    FROM LINEITEMS
+    WHERE OrdNo IN (SELECT OrdNo
+                    FROM ORDERS
+                    WHERE TIMESTAMPDIFF(MONTH, OrdDate, CURRENT_DATE) = 1)
+      AND OrdNo NOT IN (SELECT OrdNo
+                        FROM ORDERS
+                        WHERE TIMESTAMPDIFF(MONTH, OrdDate, CURRENT_DATE) = 0));
+
+# QN 80
+SELECT *
+FROM ITEMS
+WHERE ItemNo IN (Select DISTINCT ItemNo
+                 FROM LINEITEMS
+                 WHERE OrdNo IN (SELECT OrdNo
+                                 FROM ORDERS
+                                 WHERE CustNo IN (SELECT CustNo FROM ORDERS GROUP BY CustNo HAVING COUNT(*) > 3)));
+
+# QN 81
+SELECT *
+FROM ORDERS
+WHERE ShipDate IS NOT NULL
+  AND TIMESTAMPDIFF(DAY, OrdDate, ShipDate) > (SELECT AVG(TIMESTAMPDIFF(DAY, OrdDate, ShipDate)) FROM ORDERS);
+
+# QN 82
+SELECT *
+FROM ITEMS
+WHERE Rate > (SELECT MAX(Price) FROM LINEITEMS WHERE ITEMS.ItemNo = LINEITEMS.ItemNo);
+
+# QN 83
+SELECT *
+FROM ITEMS
+WHERE Rate IN;
+
+# QN 84
+SELECT *
+FROM ITEMS
+WHERE ItemNo IN
+      (SELECT DISTINCT Rate FROM (SELECT DISTINCT Rate FROM ITEMS ORDER BY Rate LIMIT 2) T ORDER BY Rate DESC LIMIT 1);
+
+# QN 85
+CREATE TABLE 'COMPORDERS'
+(
+    OrdNo         numeric(5) REFERENCES ORDERS (OrdNo),
+    CustName      varchar(20) NOT NULL,
+    OrdDate       date,
+    ShipDate      date,
+    OrderShipDiff TIMESTAMP
+);
 
 
 # PL/SQL Procedures/funcitons and Triggers
 
 # 1
 DELIMITER //
-
 CREATE PROCEDURE UpdateListItems()
 BEGIN
     DECLARE order_no NUMERIC(5);
     DECLARE current_rate NUMERIC(8, 2);
 
-    SELECT MAX(OrdNo) INTO order_no FROM ORDERS WHERE CustNo = 106;
-    SELECT Rate INTO current_rate FROM ITEMS WHERE ItemNo = 3;
-    INSERT INTO LINEITEMS VALUES (order_no, 3, 2, current_rate, 8);
+    SELECT MAX(OrdNo)
+    INTO order_no
+    FROM ORDERS
+    WHERE CustNo = 106;
+    SELECT Rate
+    INTO current_rate
+    FROM ITEMS
+    WHERE ItemNo = 3;
+    INSERT INTO LINEITEMS
+    VALUES (order_no, 3, 2, current_rate, 8);
 END //
 
 DELIMITER ;
@@ -541,9 +671,7 @@ BEGIN
     ELSE
         SET item_discount = 0;
     END IF;
-    INSERT INTO LINEITEMS
-    VALUES (order_no, item_no, 2, item_rate, item_discount);
-
+    INSERT INTO LINEITEMS VALUE (order_no, item_no, 2, item_rate, item_discount);
 END //
 DELIMITER ;
 
@@ -554,8 +682,7 @@ BEGIN
     DECLARE min_order_no, max_order_no NUMERIC(5);
     DECLARE x NUMERIC(5);
     DECLARE cnt NUMERIC(2);
-    SELECT MIN(OrdNo) INTO min_order_no FROM ORDERS;
-    SELECT MAX(OrdNo) INTO max_order_no FROM ORDERS;
+    SELECT MIN(OrdNo), MAX(OrdNo) INTO min_order_no, max_order_no FROM ORDERS;
     SET x = max_order_no;
     loop_label:
     LOOP
@@ -564,7 +691,7 @@ BEGIN
             SELECT x;
             LEAVE loop_label;
         ELSE
-            SET x = x + 1;
+            SET x = x - 1;
             ITERATE loop_label;
         END IF;
     END LOOP;
@@ -587,12 +714,9 @@ BEGIN
     DECLARE finished INTEGER DEFAULT 0;
     DECLARE item_no NUMERIC(5);
     DECLARE avg_rate, current_rate NUMERIC(8, 2);
-    DECLARE itemCursor CURSOR FOR SELECT ItemNo FROM ITEMS;
     DECLARE item_count NUMERIC(2);
-
+    DECLARE itemCursor CURSOR FOR SELECT ItemNo FROM ITEMS;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
-
-    OPEN itemCursor;
 
     getItem:
     LOOP
@@ -837,9 +961,9 @@ BEGIN
     SELECT MAX(OrdNo) + 1
     INTO order_no
     FROM ORDERS;
-    SET order_date := SUBDATE(CURRENT_DATE, 1);
-    SET customer_no := 103;
-    SET ship_date := ADDDATE(@order_date, 15);
+    SET order_date = SUBDATE(CURRENT_DATE, 1);
+    SET customer_no = 103;
+    SET ship_date = ADDDATE(order_date, 15);
     SELECT Address1, Address2, City, State, Pincode, Phone
     INTO address1, address2, city, state, pincode, phone
     FROM CUSTOMERS;
@@ -1006,7 +1130,7 @@ CREATE TRIGGER PreventIncrease
     ON LINEITEMS
     FOR EACH ROW
 BEGIN
-    IF NEW.Price != OLD.Price THEN;
+    IF NEW.Price > OLD.Price THEN;
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Not allowed to change price of items';
     END IF;
 END //
