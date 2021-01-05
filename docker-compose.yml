@@ -1,18 +1,18 @@
 version: '3.3'
 services:
   mysql:
-    container_name: mysql
-    image: mysql
+    container_name: MySQL
+    image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'raz'
-      MYSQL_PASSWORD: 'somerandompassword'
-      MYSQL_ROOT_PASSWORD: 'test_password'
+      MYSQL_DATABASE: db
+      MYSQL_USER: raz
+      MYSQL_PASSWORD: test_password
+      MYSQL_ROOT_PASSWORD: test_password
     ports:
       - '3306:3306'
     volumes:
-      - my-db:/var/lib/mysql
+      - mydb:/var/lib/mysql
 
       
   postgres:
@@ -22,9 +22,9 @@ services:
     ports:
       - '5432:5432'
     environment: 
-      POSTGRES_USER: 'raz'
-      POSTGRES_PASSWORD: 'somerandompassword'
-      POSTGRES_DB: raz
+      POSTGRES_USER: raz
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: db
     volumes:
       - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
 
@@ -35,9 +35,18 @@ services:
     ports:
       - '27017:27017'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: raz
+      MONGO_INITDB_ROOT_PASSWORD: test_password
+
+  redis:
+    container_name: Redis
+    image: redis
+    volumes:
+      - redisdata:/data
+    ports:
+      - '6379:6379'
 
 volumes:
   database-data: 
-  my-db:
+  mydb:
+  redisdata:
