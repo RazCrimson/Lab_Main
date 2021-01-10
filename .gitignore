@@ -6,6 +6,9 @@
 *.elf
 *.img
 
+# Zips
+*.zip 
+
 .vscode/*
 
 # Temp Files
