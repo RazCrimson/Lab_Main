@@ -21,29 +21,10 @@ class AESCipher(object):
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
     def _pad(self, s):
-        return s + (AES.block_size - len(s) % AES.block_size) * chr(AES.block_size - len(s) % AES.block_size)
+        return s + bytes((AES.block_size - len(s) % AES.block_size) * chr(AES.block_size - len(s) % AES.block_size), 'utf-8')
 
     @staticmethod
     def _unpad(s):
         return s[:-ord(s[len(s)-1:])]
 
 
-if __name__ == '__main__':
-    f = open('input.txt', 'rb')
-    data = f.read()
-    f.close()
-
-    aes_cipher = AESCipher(b'12345678901234567890123456789012')
-    encrypted_result = aes_cipher.encrypt(data)
-
-    f = open('output.txt', 'wb+')
-    data = f.write(encrypted_result)
-    f.close()
-
-    f = open('output.txt', 'wb+')
-    data = f.read()
-    f.close()
-
-    decrypted_result = aes_cipher.decrypt(data)
-    
-    print(data)
