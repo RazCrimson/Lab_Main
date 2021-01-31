@@ -2,6 +2,7 @@ import socket
 
 
 def run(host, port, phase_1, phase_2, data):
+    '''runs the client prog'''
     print('Running Client')
     print('Reading FileA')
 
