@@ -1,7 +1,7 @@
 import sys
 
-from .ps1_module.aes_256_encryption_decryption import AESCipher
-from .ps1_module.caesar_cipher import CaesarCipher
+from ps1_module.aes_256_encryption_decryption import AESCipher
+from ps1_module.caesar_cipher import CaesarCipher
 
 args = sys.argv
 host = "127.0.0.1"
