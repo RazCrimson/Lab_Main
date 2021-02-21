@@ -37,7 +37,7 @@ def get_possible_elements(board, i, j):
     for x in range(3):
         for y in range(3):
             if board[i + x][j + y] != 0:
-                current_elements.add(board[i * 3 + x][j*3 + y])
+                current_elements.add(board[i + x][j + y])
     return list(ALL_ELEMENTS.difference(current_elements))
 
 def solve_sudoku(board, i = 0, j = 0):
