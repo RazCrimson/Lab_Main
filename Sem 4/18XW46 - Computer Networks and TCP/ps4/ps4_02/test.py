@@ -8,7 +8,7 @@ if len(args) == 2 and args[1][0] == 's':
     from module.server import TCPServer
 
     server = TCPServer(host, port)
-    server.wait_for_client()
+    server.handle_clients()
 
 else:
     from module.client import TCPClient

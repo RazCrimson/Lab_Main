@@ -17,7 +17,7 @@ class TCPServer(object):
 
     def wait_for_client(self):
         self.socket.listen()
-        while self.socket.fileno != -1:
+        while self.socket.fileno() != -1:
             conn, addr = self.socket.accept()
             print(f'New client - {addr}')
             thread = Thread(target=self.handle_client, args=(conn, addr))
