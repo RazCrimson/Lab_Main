@@ -31,6 +31,7 @@ class TCPServer(object):
             if msg_bytes != b'':
                 self.broadcast_message(msg_bytes, addr)
             else:
+                print(f'Closing connection - {addr}')
                 conn.close()
                 del self.connections[addr]
                 exit(0)
@@ -38,8 +39,9 @@ class TCPServer(object):
     def broadcast_message(self, msg: bytes, addr):
         for key in self.connections:
             if key is not addr:
-                self.connections[key].sendall(msg)
-                self.connections[key].sendall(str(addr).encode('utf-8'))
+                data = bytearray((str(addr) + ': ').encode('utf-8')) + bytearray(msg)
+                self.connections[key].sendall(data)
+                
                 
 
 

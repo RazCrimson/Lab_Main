@@ -17,8 +17,7 @@ class TCPClient(object):
     def print_messages(self):
         while self.socket.fileno != -1:
             msg_bytes = self.socket.recv(TCPClient.BUFFER_SIZE)
-            addr = self.socket.recv(TCPClient.BUFFER_SIZE)
-            print('\nMessage from : ', addr.decode('utf-8'), ' - ', msg_bytes.decode('utf-8'))
+            print(msg_bytes.decode('utf-8'))
 
     def start_interactive_mode(self):
         '''runs the client prog'''
