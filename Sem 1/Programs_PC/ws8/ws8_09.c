@@ -3,7 +3,7 @@
 
 void main()
 {
-    int *p1=malloc(sizeof(int)), *p2=malloc(sizeof(int)), *p3=malloc(s$
+    int *p1=malloc(sizeof(int)), *p2=malloc(sizeof(int)), *p3=malloc(sizeof(int));
     printf("\nEnter nos:");
     scanf("%d%d", p1, p2);
     *p3=(*p1)+(*p2);

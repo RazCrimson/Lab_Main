@@ -4,20 +4,20 @@
 
 int main()
 {
-	int arr[1000]={0};
-	scanf("%[^\n]s",arr);
-    for(int i=0;arr[i]!=0;i++)
+    int arr[1000] = {0};
+    scanf("%[^\n]s", arr);
+    for (int i = 0; arr[i] != 0; i++)
     {
-        if(isalpha(arr[i]))
+        if (isalpha(arr[i]))
         {
-            if(arr[i]==90||arr[i]==122)
-                arr[i]-=25;
+            if (arr[i] == 90 || arr[i] == 122)
+                arr[i] -= 25;
             else
             {
                 arr[i]++;
             }
         }
     }
-    printf("%[^\0]s",arr);
+    printf("%[^\0]s", arr);
     return 0;
 }

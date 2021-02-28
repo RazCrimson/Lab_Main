@@ -68,15 +68,11 @@ int main()
         for (i = 0; i < m1; i++)
         {
             for (j = 0; j < n2; j++)
-            {
                 printf("\t%d", mult[i][j]);
-            }
             printf("\n");
         }
     }
     else
-    {
         printf("Cannot multiply both the arrays\n");
-    }
     return 0;
 }
