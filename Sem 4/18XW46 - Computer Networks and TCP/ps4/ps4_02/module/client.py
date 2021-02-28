@@ -12,7 +12,7 @@ class TCPClient(object):
         self.port = port
         self.socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
         self.socket.connect((self.ip_address, self.port))
-        self.socket.setblocking(0)
+        # self.socket.setblocking(0)
         print(f'Connected to server - {ip_address}:{port}')
 
 
@@ -40,7 +40,10 @@ class TCPClient(object):
                 self.socket.sendall(msg)
                 if msg == b'':
                     raise KeyboardInterrupt
-                    
+
+                msg_bytes = self.socket.recv(TCPClient.BUFFER_SIZE)
+                print(msg_bytes.decode('utf-8'))
+
         except KeyboardInterrupt:
             print("Client Terminated")
         except Exception as e:
