@@ -54,6 +54,74 @@ echo "Cabum\nFizzle\nRaz Crimson\nTeiwaze\nTetto\nTsukin" > name02.txt
 comm -12 name01.txt name02.txt
 comm -3 name01.txt name02.txt
 
+# QN 7
+# Create two files with list of names in each file.
+echo "Cabum\nEiri Chlo\nFizzle\nLessa\nMort\nRaz Crimson\nTsukin" > name01.txt
+echo "Cabum\nFizzle\nRaz Crimson\nTeiwaze\nTetto\nTsukin" > name02.txt
+
+# Combine the two files without duplicate and store it in a new file.(sort,uniq)
+cat name01.txt name02.txt | sort | uniq > newfile.txt
+
+# To view only the files in a directory.(find)
+find . -type f -maxdepth 1
+
+# Concatenate 3 list files, sort them, remove duplicate lines and finally writes the result to an output file.
+echo "Cabum\nEiri Chlo\nFizzle\nLessa\nMort\nRaz Crimson\nTsukin" > name01.txt
+echo "Cabum\nFizzle\nRaz Crimson\nTeiwaze\nTetto\nTsukin" > name02.txt
+echo "AJPK\nSorkha\nRaz Crimson\nJeros\nTetto\nTsukin" > name03.txt
+cat name01.txt name02.txt name03.txt | sort | uniq > newfile1.txt
+
+# Print a file from the second line to the 10th line
+sed -n 2,10p newfile1.txt
+
+# Show the 15 most recent items in your command history
+history | tail -n 15
+
+# Store the history into file hfile. Merge the lines 11-15 from Hfile and lines 26-30 from the
+# same file Hfile and save them both to another 
+history > hfile
+sed -n 11,15p hfile > newfile
+sed -n 26,30p hfile >> newfile
 
 
+# How to check for full word “is” in a file, not for sub-strings using grep
+echo "grep -w is <file>"
 
+# How to display N lines after match of the “is” word in the file
+echo "grep -w is -A 10 <file>"
+
+# Display N lines before match
+echo "grep -w is -B 10 <file>"
+
+# Display N lines around match
+echo "grep -w is -C 10 file"
+
+# Searching in all files recursively
+echo "grep -r <regex> <folder path>"
+
+# To display the lines which does not matches the given string/pattern,
+echo "grep -v <regex> <file path>"
+
+# Display the lines which does not matches all the given pattern.
+echo "grep -v -e <regex1> -e <regex2> <file path>"
+
+# Counting the number of matches to a word in a file using grep -c
+echo "grep -c <regex> <file path>"
+
+# Show line number while displaying the output using grep -n
+echo "grep -n <regex> <file path>"
+
+# Show the position of match in the line
+echo "awk -v s=\"<string>\" 'i=index($0, s) {print NR, i}' <file path>"
+
+# Search for the lines which starts with a number.
+grep -e '[0-9].*' newfile
+
+# Display the file names that do not contain the pattern.
+echo "grep -L -r <regex> <folder path>"
+
+# Write a sed command that deletes the first character in each line in a file.
+sed 's/^.//' newfile
+
+# Write a sed command that deletes the last character in each line in a file.
+sed 's/.$//' newfile
