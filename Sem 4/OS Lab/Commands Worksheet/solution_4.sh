@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Print the disk usage of directory OS in bytes.
 du -bs ~/OS
 
@@ -51,7 +53,7 @@ grep -nR "length"
 
 # Compare the files "1.txt", "2.txt" and "3.txt". Which one
 # is different from the others?
-diff 1.txt 2.txt 3.txt
+vim -d 1.txt 2.txt 3.txt
 
 # Put the first 7 and last 7 lines of the file "verylong.seq" 
 # into a file called "first-and-last".
@@ -60,7 +62,7 @@ tail -7 verylong.seq >> first-and-last
 
 # List the names of all files in your whole account that 
 # end with "seq" in their filename.
-ls "*seq"
+find ~ -name "*seq"
 
 # List all files created or changed during the last 24 hours.
 find . -type -f -mtime -1 -ls

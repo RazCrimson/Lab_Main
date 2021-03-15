@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Create a file dfile.txt with the following contents
 # 123                                                                                        
 # 123                                                                                                                

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Question 3 Manipulate using wildcards
 
 #Change your current working directory 

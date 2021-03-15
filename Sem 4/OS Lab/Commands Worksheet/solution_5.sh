@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Create several empty files 'File1', 'mypersonaldetails', 'myfrienddetails',
 # 'file2', 'file3' quickly by one command.
 touch File1.txt mypersonaldetails.txt myfrienddetails.txt file2.txt file3.txt

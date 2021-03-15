@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Question 2 Manipulate files.
 
 # Change your current working directory to OS
@@ -41,4 +43,3 @@ rm t_1.txt
 
 # Display the contents of the directory assign1.
 ls ~/OS/assign1
-

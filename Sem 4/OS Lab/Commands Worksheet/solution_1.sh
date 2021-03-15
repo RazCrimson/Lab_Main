@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # Question 1 Manipulate directory structures
 
 # Display the absolute path of your home directory
@@ -23,4 +25,3 @@ rmdir OS/assign2
 
 # Display the contents of the directory OS
 ls OS
-

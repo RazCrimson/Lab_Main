@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Author: Raz_Crimson  (19PW08)"
+
 # To print the name of operating system
 uname -r
 
@@ -31,7 +33,7 @@ echo 'Repeat of 5th Qn 35'
 echo 'Repeat of 5th Qn 36'
 
 # Display the message “GOOD MORNING” in enlarged characters.
-banner 'GOOD MORNING'
+banner 'GOOD MORNING' # Does not work by default on Arch
 
 # Display the name of your home directory.
 echo $HOME
@@ -117,6 +119,8 @@ rm -r ~/SAMPLE/TRIAL/*
 
 # Is there any command available to get back a deleted file?
 # extundelete is a possible choice for ext filesystems
+# btrfs filesystems generally has periodic backup which can be used to restore
+# Needs more research on other filesystems
 
 # Rename TRIAL as DATA.
 mv ~/SAMPLE/TRIAL ~/SAMPLE/DATA
@@ -130,7 +134,6 @@ ln -T ~/SAMPLE/TRIAL/dummy ~/SAMPLE/TRIAL/star
 
 # Print “Hello Welcome to OS Class” ?
 echo 'Hello Welcome to OS Class'
-
 
 # Get a value from the user and store it in a variable.
 read RANDOM_VAR
@@ -234,8 +237,10 @@ lsblk
 fdisk -l
 
 # Login as a normal user
+su user1
+
 # Create file test
-touch test # after logging in
+touch test
 
 # Find the permissions of file test
 ls -l
@@ -245,7 +250,6 @@ chown test user1
 
 # Find the current umask setting
 umask
-
 
 # Change the umask setting
 umask 0002
@@ -342,14 +346,3 @@ ipcs -a
 # Check Unused Memory in the server.
 # Check Swap Activities
 free
-
-
-
-
-
-
-
-
-
-
-
