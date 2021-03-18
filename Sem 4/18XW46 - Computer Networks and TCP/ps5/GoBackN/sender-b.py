@@ -39,6 +39,10 @@ class TCPServer(object):
                 # Trasmitting frame if window is not full
                 if window_end_index - window_start_index < window_size:
                     window_end_index += 1
+                    if window_end_index >= len(data):
+                        conn.sendall(b'')
+                        print('Data Transmission completed!')
+                        raise KeyboardInterrupt
                     frame_to_send = data[window_end_index - 1]
                     if counter not in frame_drop_list:
                         conn.sendall(frame_to_send)
@@ -52,6 +56,9 @@ class TCPServer(object):
                     msg_string = msg_bytes.decode(
                         'utf-8').removesuffix('\n').removeprefix('ACK ')
                     print(f'Message from Receiver : {msg_string}')
+
+                    if msg_string == '':
+                        raise KeyboardInterrupt
 
                     # Handling Acknowledgements
                     try:
@@ -77,10 +84,10 @@ class TCPServer(object):
 
 
 if __name__ == '__main__':
-    port = input("Enter a port number(empty for default) : ") or 10237
-    window_size = input("Enter a window size(empty for default) : ") or 3
-    frame_count = input("Enter a frames count(empty for default) : ") or 21
-    frames_to_drop = input("Enter the frames to drop seperated by commas : ")
+    port = int(input("Enter a port number(empty for default) : "))
+    window_size = int(input("Enter a window size(empty for default) : "))
+    frame_count = int(input("Enter a frames count(empty for default) : "))
+    frames_to_drop = int(input("Enter the frames to drop seperated by commas : "))
     frame_drop_list = [int(num) for num in frames_to_drop.split(',')]
 
     server = TCPServer('127.0.0.1', port)

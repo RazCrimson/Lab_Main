@@ -39,6 +39,10 @@ class TCPServer(object):
                 # Trasmitting frame if window is not full
                 if window_end_index - window_start_index + 1 < window_size:
                     window_end_index += 1
+                    if window_end_index >= len(data):
+                        conn.sendall(b'')
+                        print('Data Transmission completed!')
+                        raise KeyboardInterrupt
                     frame_to_send = data[window_end_index]
                     conn.sendall(frame_to_send)
 
