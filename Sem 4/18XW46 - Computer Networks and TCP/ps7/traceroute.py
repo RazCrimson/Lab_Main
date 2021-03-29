@@ -45,7 +45,7 @@ class PingClient:
                 print(f'{self.__ttl_counter}: {ans[0].src} | RTT: {rtt}')           
 
                 # Terminating if we reach destination
-                if ans[1].type == 0:
+                if ans[ICMP].type == 0:
                     print(f"Destination Reached!")
                     break
 
@@ -55,10 +55,10 @@ class PingClient:
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('ERROR: No destination to Ping')
+        print('ERROR: No destination to To trace')
         exit(1)
     else:
-        print(f'Using {sys.argv[1]} as the destination...\nPress Ctrl + C To Terminate')
+        print(f'Press Ctrl + C To Terminate\nDestination: {sys.argv[1]}')
 
     if len(sys.argv) >= 3 and isinstance(int(sys.argv[3]), int):
         print(f'Setting {sys.argv[3]} as the max ttl...')

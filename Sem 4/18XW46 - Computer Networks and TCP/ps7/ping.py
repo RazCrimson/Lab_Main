@@ -1,5 +1,5 @@
 '''
-A program that performs ICMP tracerouting
+A program that performs ICMP ping
 
 Author: Raz Crimson
 '''
@@ -15,6 +15,7 @@ TIME_INTERVAL = 1
 
 
 class ClientPayload:
+    '''A class denoting the Client payload'''
 
     def __init__(self, message, seq_number):
         self.message = message
@@ -32,6 +33,7 @@ class PingClient:
         self.__last_generated_sequence_number = -1
         self.__sniffer = AsyncSniffer(
             prn=self.__handle_filtered_pkts, filter=f'src {self.dst} and icmp')
+        self.__received_count = 0
 
     def __generate_next_packet(self):
         self.__last_generated_sequence_number += 1
@@ -43,18 +45,19 @@ class PingClient:
         # TODO: crappy improve later - raz
         received_time = time.time()
         
-        ping_string = pkt[3].load.decode('utf-8')
-        if ping_string.startswith('<"MY_PING", '):
-            _, seq_no, sent_time = ping_string.strip('>').split(',')
+        payload = pkt[ICMP].load.decode('utf-8')
+        if payload.startswith('<"MY_PING", '):
+            _, seq_no, sent_time = payload.strip('>').split(',')
 
             rtt = round((received_time - float(sent_time)) * 1000, 4)
             if rtt > 1000:
                 return
 
             if self.__last_received_sequence_number + 1 == int(seq_no):
-                print(f'<{self.__last_generated_sequence_number}, {received_time}, {ping_string}, "Successfully_Received", {rtt} ms >')
+                print(f'<{self.__last_generated_sequence_number}, {received_time}, {payload}, "Successfully_Received", {rtt} ms>')
+                self.__received_count += 1
             elif self.__last_received_sequence_number + 1 < int(seq_no):
-                print(f'<{self.__last_generated_sequence_number}, {ping_string}, "Received_out_of_order">')
+                print(f'<{self.__last_generated_sequence_number}, {payload}, "Received_out_of_order">')
             else:
                 return
 
@@ -81,6 +84,8 @@ class PingClient:
         except KeyboardInterrupt:
             print('\nPacket Transmission Terminated!')
         self.__sniffer.stop()
+        packet_loss = round(((self.__last_generated_sequence_number + 1 - self.__received_count)/(self.__last_generated_sequence_number+1))*100,2)    
+        print(f'Packet Loss: {packet_loss}% \t | Packets Sent : {self.__last_generated_sequence_number + 1} \t | Packets Received : {self.__received_count}')
 
 
 
@@ -89,7 +94,11 @@ if __name__ == '__main__':
         print('ERROR: No destination to Ping')
         exit(1)
     else:
-        print(f'Using {sys.argv[1]} as the destination...\nPress Ctrl + C To Terminate')
+        print(f'Press Ctrl + C To Terminate\nDestination: {sys.argv[1]}')
+
+        if sys.argv[1] in ['localhost', '127.0.0.1']:
+            from scapy.config import conf
+            conf.iface = 'lo'
 
     if len(sys.argv) >= 3 and isinstance(int(sys.argv[3]), int):
         print(f'Setting {sys.argv[3]} as the ping count...(Negative indicated infinite requests)')
