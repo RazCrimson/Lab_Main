@@ -33,7 +33,6 @@ class TCPClient(object):
                 if len(r) != 0:
                     msg_bytes = self.socket.recv(TCPClient.BUFFER_SIZE)
                     msg = msg_bytes.decode('utf-8')
-                    print(msg)
                     if msg == '':
                         print("Data Received!")
                         exit()
@@ -52,6 +51,7 @@ class TCPClient(object):
                     if frame_num == counter % (2 * window_size):
                         reply = f'ACK {(counter % (2 * window_size)) + 1}'
                         data.append(frame_num)
+                        print(data)
                         timestamp = time.time()
                         counter += 1
                         if send_ack:
