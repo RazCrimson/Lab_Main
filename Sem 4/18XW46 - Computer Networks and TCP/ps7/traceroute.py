@@ -1,7 +1,7 @@
 '''
 A program that performs ICMP tracerouting
 
-Author: Raz Crimson
+Author: Raz Crimson(19PW08)
 '''
 from os import times
 import time
@@ -22,6 +22,7 @@ class PingClient:
         self.__ttl_counter = 0
         
     def __generate_next_packet(self):
+        '''function to generate the next pkt to transmit'''
         self.__ttl_counter += 1
         sent_time = time.time()
         pkt = IP(dst=self.dst, ttl=self.__ttl_counter)/ICMP()/str(sent_time)

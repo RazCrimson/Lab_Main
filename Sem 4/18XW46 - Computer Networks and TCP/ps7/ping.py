@@ -1,7 +1,7 @@
 '''
 A program that performs ICMP ping
 
-Author: Raz Crimson
+Author: Raz Crimson(19PW08)
 '''
 import time
 import sys
@@ -26,7 +26,7 @@ class ClientPayload:
         return f'<"{self.message}", {self.icmp_seq}, {self.created_at}>'
         
 class PingClient:
-
+    '''Class representing the client'''
     def __init__(self, dst: str):
         self.dst = dst
         self.__last_received_sequence_number = -1
@@ -36,13 +36,14 @@ class PingClient:
         self.__received_count = 0
 
     def __generate_next_packet(self):
+        '''function to generate the next pkt to transmit'''
         self.__last_generated_sequence_number += 1
         payload = ClientPayload("MY_PING", self.__last_generated_sequence_number)
         pkt = IP(dst=self.dst)/ICMP()/str(payload)
         return pkt
 
     def __handle_filtered_pkts(self, pkt):
-        # TODO: crappy improve later - raz
+        '''captured pkts handler'''
         received_time = time.time()
         
         payload = pkt[ICMP].load.decode('utf-8')
@@ -109,3 +110,7 @@ if __name__ == '__main__':
         pg.start_transmission(PING_REQUEST_COUNT)
     except PermissionError:
         print('ERROR: Please run it as root user.')
+
+
+# What transport layer protocol the standard Ping command uses.
+# Normal Ping just work on Layer 3
