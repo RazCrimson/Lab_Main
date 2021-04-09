@@ -1,11 +1,10 @@
 /*
-A simple file server
+A simple HTTP file server
 
-Author: Raz Crimson
+Author: Raz Crimson(19PW08)
 */
 
 const http = require('http');
-const Url = require('url-parse')
 const handlers = require("./handlers")
 
 const PORT = 3000;

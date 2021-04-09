@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const { ENOENT } = require('constants');  // Using ENOENT as indicator for Resource Not found
-const formidable = require('formidable')
 
 
 const mimeType = {
