@@ -11,7 +11,7 @@ from scapy.layers.inet import IP, ICMP, raw
 from scapy.sendrecv import sr1
 
 
-TIMEOUT = 1
+TIMEOUT = 10
 TTL_MAX = 64
 
 

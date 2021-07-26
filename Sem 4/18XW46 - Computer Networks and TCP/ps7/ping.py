@@ -112,5 +112,3 @@ if __name__ == '__main__':
         print('ERROR: Please run it as root user.')
 
 
-# What transport layer protocol the standard Ping command uses.
-# Normal Ping just work on Layer 3
