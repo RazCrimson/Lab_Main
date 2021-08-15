@@ -23,7 +23,7 @@ grep '\((312)\|(708)\) [0-9]\{3\}\-[0-9]\{4\}$' sample.txt
 grep '\.' sample.txt
 
 # QN 9  - Line has a human-readable IP Address
-grep '\(\(25[0-5]\|2[0-4][0-9]\|1\?[1-9]\?[0-9]\)\.\)\{3\}\(25[0-5]\|2[0-4][0-9]\|1\?[1-9]\?[0-9]\)' sample.txt
+grep '\(\(25[0-5]\|2[0-4][0-9]\|[01]\?[0-9][0-9]\?\)\(\.\|\s\|$\)\)\{4\}' sample.txt
 
 # QN 10 - Line with only an email address
 grep "[a-zA-Z0-9+_.-]\+@[a-zA-Z0-9.-]\+" sample.txt # Simple mail address
@@ -45,13 +45,13 @@ grep '^.\{,9\}$' sample.txt
 grep 'b[a-z]\{3\}da[a-z]' sample.txt
 
 # QN 16 - All words, exclusively lower-case, in which i immediately follows q.
-grep '^[a-z]*qi[a-z]*$\| [a-z]*qi[a-z]* \|^[a-z]*qi[a-z]* \| [a-z]*qi[a-z]*$' sample.txt
+grep '\(^\|\s\)[a-z]*qi[a-z]*\($\|\s\)' sample.txt
 
 # QN 17 - All words with either 22 or 23 letters
-grep '^[a-z]\{22,23\}$\| [a-z]\{22,23\} \|^[a-z]\{22,23\} \| [a-z]\{22,23\}$' sample.txt
+grep '\(^\|\s\)[a-z]\{22,23\}\($\|\s\)' sample.txt
 
 # QN 18 - All words which have all five vowels (a, e, i, o, and u) - in that order, interspersed with other non-vowels
-grep '[a-zA-Z]*[aA][^aeiouAEIOU]\+[eE][^aeiouAEIOU]\+[iI][^aeiouAEIOU]\+[oO][^aeiouAEIOU]\+[uU][a-zA-Z]*' sample.txt
+grep '\(^\|\s\)[a-zA-Z]*[aA][^aeiouAEIOU]\+[eE][^aeiouAEIOU]\+[iI][^aeiouAEIOU]\+[oO][^aeiouAEIOU]\+[uU][a-zA-Z]*\($\|\s\)' sample.txt
 
 
 
