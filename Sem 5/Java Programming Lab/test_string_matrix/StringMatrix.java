@@ -91,13 +91,14 @@ public class StringMatrix {
         return result;
     }
 
-    public boolean equals(Object obj) {
-        if (this == obj)
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        else if (obj == null || obj.getClass() != this.getClass())
+        else if (o == null || o.getClass() != getClass())
             return false;
 
-        StringMatrix m = (StringMatrix) obj;
+        StringMatrix m = (StringMatrix) o;
         if (!hasEqualDimensions(m))
             return false;
 
