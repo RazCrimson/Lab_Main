@@ -1,4 +1,6 @@
-package test_complex_matrix;
+package matrixoperations;
+
+import mathdatatypes.ComplexNumber;
 
 public class TestComplexMatrix {
 
@@ -22,25 +24,25 @@ public class TestComplexMatrix {
                 }
             }
             System.out.println("Matrix A:");
-            m1.print();
+            System.out.println(m1);
 
             System.out.println("Matrix B:");
-            m2.print();
+            System.out.println(m2);
 
             System.out.println("Matrix C:");
-            m3.print();
+            System.out.println(m3);
 
             System.out.println("Matrix B + A:");
-            m2.add(m1).print();
+            System.out.println(m2.add(m1));
 
             System.out.println("Matrix B - A:");
-            m1.subtract(m2).print();
+            System.out.println(m1.subtract(m2));
 
             System.out.println("Matrix BA:");
-            m2.multiply(m1).print();
+            System.out.println(m2.multiply(m1));
 
             System.out.println("Matrix B Transpose:");
-            m2.getTranspose().print();
+            System.out.println(m2.getTranspose());
 
             assert m2.multiply(m1).equals(m3);
             assert m2.equals(m2.getTranspose().getTranspose());

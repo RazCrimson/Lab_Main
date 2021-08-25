@@ -1,4 +1,4 @@
-package test_complex_matrix;
+package mathdatatypes;
 
 import java.util.Objects;
 
@@ -56,6 +56,29 @@ public class ComplexNumber {
         double realPart = (c1.real * c2.real) + (c1.imaginary * c2.imaginary);
         double imgPart = (c1.real * c2.imaginary) + (c2.real * c1.imaginary);
         return new ComplexNumber(realPart, imgPart);
+    }
+
+    public void add(ComplexNumber c) {
+        real += c.real;
+        imaginary += c.imaginary;
+    }
+
+    public void subtract(ComplexNumber c) {
+        real -= c.real;
+        imaginary -= c.imaginary;
+    }
+
+    public void multiply(ComplexNumber c) {
+        double realPart = (real * c.real) + (imaginary * imaginary);
+        double imgPart = (real * c.imaginary) + (c.real * imaginary);
+        real = realPart;
+        imaginary = imgPart;
+    }
+
+    public String toString() {
+        if (imaginary > 0)
+            return real + "+" + imaginary + "i";
+        return real + "" + imaginary + "i";
     }
 
 }

@@ -1,4 +1,6 @@
-package test_complex_matrix;
+package matrixoperations;
+
+import mathdatatypes.ComplexNumber;
 
 import java.util.Arrays;
 
@@ -6,7 +8,7 @@ public class ComplexMatrix {
     private final int rows, cols;
     private final ComplexNumber[][] elements;
 
-    ComplexMatrix(int rows, int cols) {
+    public ComplexMatrix(int rows, int cols) {
         if (rows < 1 || cols < 1) {
             throw new IndexOutOfBoundsException("A Matrix requires minimum of 1 row and 1 column");
         }
@@ -21,7 +23,7 @@ public class ComplexMatrix {
         }
     }
 
-    ComplexMatrix(ComplexNumber[][] elements) {
+    public ComplexMatrix(ComplexNumber[][] elements) {
         if (elements.length < 1)
             throw new IndexOutOfBoundsException("Matrix requires a minimum of 1 row");
         if (elements[0].length < 1)
@@ -49,8 +51,8 @@ public class ComplexMatrix {
         return 0 <= row && row < rows && 0 <= col && col < cols;
     }
 
-    private boolean hasEqualDimensions(ComplexMatrix m) {
-        return rows == m.rows && cols == m.cols;
+    private boolean hasInEqualDimensions(ComplexMatrix m) {
+        return rows != m.rows || cols != m.cols;
     }
 
     private boolean isCompatible(ComplexMatrix m) {
@@ -71,34 +73,36 @@ public class ComplexMatrix {
         return false;
     }
 
-    public void print() {
+    public String toString() {
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++)
-                System.out.print("(" + elements[i][j].real + ", " + elements[i][j].imaginary + ")");
-            System.out.println();
+                res.append(elements[i][j]).append(" ");
+            res.append('\n');
         }
+        return res.toString();
     }
 
     public ComplexMatrix add(ComplexMatrix m) throws Exception {
-        if (!hasEqualDimensions(m))
+        if (hasInEqualDimensions(m))
             throw new Exception("Matrix sizes differ!");
 
         ComplexMatrix result = new ComplexMatrix(rows, cols);
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < cols; j++)
-                result.elements[i][j] = ComplexNumber.add(elements[i][j], m.elements[i][j]);
+                result.elements[i][j].add(m.elements[i][j]);
 
         return result;
     }
 
     public ComplexMatrix subtract(ComplexMatrix m) throws Exception {
-        if (!hasEqualDimensions(m))
+        if (hasInEqualDimensions(m))
             throw new Exception("Matrix sizes differ!");
 
         ComplexMatrix result = new ComplexMatrix(rows, cols);
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < cols; j++)
-                result.elements[i][j] = ComplexNumber.subtract(elements[i][j], m.elements[i][j]);
+                result.elements[i][j].subtract(m.elements[i][j]);
 
         return result;
     }
@@ -111,8 +115,7 @@ public class ComplexMatrix {
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < m.cols; j++)
                 for (int k = 0; k < m.rows; k++)
-                    result.elements[i][j] = ComplexNumber.add(ComplexNumber.multiply(elements[i][k], m.elements[k][j]),
-                            result.elements[i][j]);
+                    result.elements[i][j].add(ComplexNumber.multiply(elements[i][k], m.elements[k][j]));
 
         return result;
     }
@@ -133,7 +136,7 @@ public class ComplexMatrix {
             return false;
 
         ComplexMatrix m = (ComplexMatrix) obj;
-        if (!hasEqualDimensions(m))
+        if (hasInEqualDimensions(m))
             return false;
 
         return Arrays.deepEquals(elements, m.elements);
