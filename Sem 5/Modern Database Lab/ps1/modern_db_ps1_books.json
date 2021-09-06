@@ -1,6 +1,8 @@
 [
   {
-    "_id": {"$oid": "6102ce343535635627d11b8a"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8a"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -36,7 +38,12 @@
       }
     ],
     "book_id": "b0",
-    "category": ["Biology", "Fiction", "Chemistry", "Biology"],
+    "category": [
+      "Biology",
+      "Fiction",
+      "Chemistry",
+      "Biology"
+    ],
     "edition": 4,
     "price": 1716,
     "publisher_id": "p6",
@@ -45,7 +52,9 @@
     "year": 2019
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b8b"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8b"
+    },
     "authors": [
       {
         "author_id": "a16",
@@ -57,7 +66,9 @@
       }
     ],
     "book_id": "b1",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 2033,
     "publisher_id": "p1",
@@ -66,7 +77,9 @@
     "year": 2012
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b8c"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8c"
+    },
     "authors": [
       {
         "author_id": "a7",
@@ -102,7 +115,12 @@
       }
     ],
     "book_id": "b2",
-    "category": ["Biology", "Biology", "Fiction", "Programming"],
+    "category": [
+      "Biology",
+      "Biology",
+      "Fiction",
+      "Programming"
+    ],
     "edition": 4,
     "price": 825,
     "publisher_id": "p4",
@@ -111,7 +129,9 @@
     "year": 2021
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b8d"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8d"
+    },
     "authors": [
       {
         "author_id": "a26",
@@ -123,7 +143,9 @@
       }
     ],
     "book_id": "b3",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 526,
     "publisher_id": "p5",
@@ -132,7 +154,9 @@
     "year": 2016
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b8e"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8e"
+    },
     "authors": [
       {
         "author_id": "a12",
@@ -168,7 +192,12 @@
       }
     ],
     "book_id": "b4",
-    "category": ["Biology", "Chemistry", "Fiction", "Programming"],
+    "category": [
+      "Biology",
+      "Chemistry",
+      "Fiction",
+      "Programming"
+    ],
     "edition": 4,
     "price": 2967,
     "publisher_id": "p4",
@@ -177,7 +206,9 @@
     "year": 2020
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b8f"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b8f"
+    },
     "authors": [
       {
         "author_id": "a14",
@@ -197,7 +228,10 @@
       }
     ],
     "book_id": "b5",
-    "category": ["Chemistry", "Fiction"],
+    "category": [
+      "Chemistry",
+      "Fiction"
+    ],
     "edition": 2,
     "price": 1037,
     "publisher_id": "p2",
@@ -206,7 +240,9 @@
     "year": 2006
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b90"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b90"
+    },
     "authors": [
       {
         "author_id": "a5",
@@ -234,7 +270,11 @@
       }
     ],
     "book_id": "b6",
-    "category": ["Fiction", "Programming", "Math"],
+    "category": [
+      "Fiction",
+      "Programming",
+      "Math"
+    ],
     "edition": 3,
     "price": 1907,
     "publisher_id": "p0",
@@ -243,7 +283,9 @@
     "year": 2009
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b91"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b91"
+    },
     "authors": [
       {
         "author_id": "a29",
@@ -255,7 +297,9 @@
       }
     ],
     "book_id": "b7",
-    "category": ["Chemistry"],
+    "category": [
+      "Chemistry"
+    ],
     "edition": 1,
     "price": 1748,
     "publisher_id": "p6",
@@ -264,7 +308,9 @@
     "year": 2009
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b92"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b92"
+    },
     "authors": [
       {
         "author_id": "a20",
@@ -276,7 +322,9 @@
       }
     ],
     "book_id": "b8",
-    "category": ["Fiction"],
+    "category": [
+      "Fiction"
+    ],
     "edition": 1,
     "price": 2563,
     "publisher_id": "p5",
@@ -285,7 +333,9 @@
     "year": 2018
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b93"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b93"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -297,7 +347,9 @@
       }
     ],
     "book_id": "b9",
-    "category": ["Fiction"],
+    "category": [
+      "Fiction"
+    ],
     "edition": 1,
     "price": 984,
     "publisher_id": "p2",
@@ -306,7 +358,9 @@
     "year": 2014
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b94"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b94"
+    },
     "authors": [
       {
         "author_id": "a27",
@@ -326,7 +380,10 @@
       }
     ],
     "book_id": "b10",
-    "category": ["Biology", "Math"],
+    "category": [
+      "Biology",
+      "Math"
+    ],
     "edition": 2,
     "price": 1822,
     "publisher_id": "p6",
@@ -335,7 +392,9 @@
     "year": 2016
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b95"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b95"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -363,7 +422,11 @@
       }
     ],
     "book_id": "b11",
-    "category": ["Fiction", "Math", "Programming"],
+    "category": [
+      "Fiction",
+      "Math",
+      "Programming"
+    ],
     "edition": 3,
     "price": 1598,
     "publisher_id": "p1",
@@ -372,7 +435,9 @@
     "year": 2022
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b96"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b96"
+    },
     "authors": [
       {
         "author_id": "a18",
@@ -392,7 +457,10 @@
       }
     ],
     "book_id": "b12",
-    "category": ["Programming", "Fiction"],
+    "category": [
+      "Programming",
+      "Fiction"
+    ],
     "edition": 2,
     "price": 734,
     "publisher_id": "p2",
@@ -401,7 +469,9 @@
     "year": 2013
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b97"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b97"
+    },
     "authors": [
       {
         "author_id": "a18",
@@ -421,7 +491,10 @@
       }
     ],
     "book_id": "b13",
-    "category": ["Programming", "Biology"],
+    "category": [
+      "Programming",
+      "Biology"
+    ],
     "edition": 2,
     "price": 1012,
     "publisher_id": "p1",
@@ -430,7 +503,9 @@
     "year": 2013
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b98"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b98"
+    },
     "authors": [
       {
         "author_id": "a2",
@@ -450,7 +525,10 @@
       }
     ],
     "book_id": "b14",
-    "category": ["Biology", "Biology"],
+    "category": [
+      "Biology",
+      "Biology"
+    ],
     "edition": 2,
     "price": 863,
     "publisher_id": "p1",
@@ -459,7 +537,9 @@
     "year": 2010
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b99"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b99"
+    },
     "authors": [
       {
         "author_id": "a11",
@@ -487,7 +567,11 @@
       }
     ],
     "book_id": "b15",
-    "category": ["Math", "Fiction", "Fiction"],
+    "category": [
+      "Math",
+      "Fiction",
+      "Fiction"
+    ],
     "edition": 3,
     "price": 1301,
     "publisher_id": "p4",
@@ -496,7 +580,9 @@
     "year": 2009
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9a"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9a"
+    },
     "authors": [
       {
         "author_id": "a18",
@@ -524,7 +610,11 @@
       }
     ],
     "book_id": "b16",
-    "category": ["Programming", "Fiction", "Biology"],
+    "category": [
+      "Programming",
+      "Fiction",
+      "Biology"
+    ],
     "edition": 3,
     "price": 1100,
     "publisher_id": "p2",
@@ -533,7 +623,9 @@
     "year": 2005
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9b"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9b"
+    },
     "authors": [
       {
         "author_id": "a7",
@@ -569,7 +661,12 @@
       }
     ],
     "book_id": "b17",
-    "category": ["Biology", "Programming", "Fiction", "Programming"],
+    "category": [
+      "Biology",
+      "Programming",
+      "Fiction",
+      "Programming"
+    ],
     "edition": 4,
     "price": 533,
     "publisher_id": "p0",
@@ -578,7 +675,9 @@
     "year": 2022
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9c"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9c"
+    },
     "authors": [
       {
         "author_id": "a21",
@@ -614,7 +713,12 @@
       }
     ],
     "book_id": "b18",
-    "category": ["Math", "Programming", "Fiction", "Math"],
+    "category": [
+      "Math",
+      "Programming",
+      "Fiction",
+      "Math"
+    ],
     "edition": 4,
     "price": 529,
     "publisher_id": "p2",
@@ -623,7 +727,9 @@
     "year": 2022
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9d"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9d"
+    },
     "authors": [
       {
         "author_id": "a10",
@@ -635,7 +741,9 @@
       }
     ],
     "book_id": "b19",
-    "category": ["Fiction"],
+    "category": [
+      "Fiction"
+    ],
     "edition": 1,
     "price": 2287,
     "publisher_id": "p2",
@@ -644,7 +752,9 @@
     "year": 2018
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9e"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9e"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -656,7 +766,9 @@
       }
     ],
     "book_id": "b20",
-    "category": ["Fiction"],
+    "category": [
+      "Fiction"
+    ],
     "edition": 1,
     "price": 2031,
     "publisher_id": "p5",
@@ -665,7 +777,9 @@
     "year": 2006
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11b9f"},
+    "_id": {
+      "$oid": "6102ce343535635627d11b9f"
+    },
     "authors": [
       {
         "author_id": "a12",
@@ -677,7 +791,9 @@
       }
     ],
     "book_id": "b21",
-    "category": ["Biology"],
+    "category": [
+      "Biology"
+    ],
     "edition": 1,
     "price": 2088,
     "publisher_id": "p4",
@@ -686,7 +802,9 @@
     "year": 2010
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba0"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba0"
+    },
     "authors": [
       {
         "author_id": "a26",
@@ -698,7 +816,9 @@
       }
     ],
     "book_id": "b22",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 1233,
     "publisher_id": "p6",
@@ -707,7 +827,9 @@
     "year": 2020
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba1"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba1"
+    },
     "authors": [
       {
         "author_id": "a21",
@@ -719,7 +841,9 @@
       }
     ],
     "book_id": "b23",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 1331,
     "publisher_id": "p2",
@@ -728,7 +852,9 @@
     "year": 2021
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba2"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba2"
+    },
     "authors": [
       {
         "author_id": "a11",
@@ -756,7 +882,11 @@
       }
     ],
     "book_id": "b24",
-    "category": ["Math", "Math", "Fiction"],
+    "category": [
+      "Math",
+      "Math",
+      "Fiction"
+    ],
     "edition": 3,
     "price": 852,
     "publisher_id": "p1",
@@ -765,7 +895,9 @@
     "year": 2024
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba3"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba3"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -793,7 +925,11 @@
       }
     ],
     "book_id": "b25",
-    "category": ["Fiction", "Programming", "Chemistry"],
+    "category": [
+      "Fiction",
+      "Programming",
+      "Chemistry"
+    ],
     "edition": 3,
     "price": 300,
     "publisher_id": "p1",
@@ -802,7 +938,9 @@
     "year": 2021
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba4"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba4"
+    },
     "authors": [
       {
         "author_id": "a4",
@@ -814,7 +952,9 @@
       }
     ],
     "book_id": "b26",
-    "category": ["Chemistry"],
+    "category": [
+      "Chemistry"
+    ],
     "edition": 1,
     "price": 2959,
     "publisher_id": "p3",
@@ -823,7 +963,9 @@
     "year": 2023
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba5"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba5"
+    },
     "authors": [
       {
         "author_id": "a10",
@@ -835,7 +977,9 @@
       }
     ],
     "book_id": "b27",
-    "category": ["Fiction"],
+    "category": [
+      "Fiction"
+    ],
     "edition": 1,
     "price": 2907,
     "publisher_id": "p4",
@@ -844,7 +988,9 @@
     "year": 2011
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba6"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba6"
+    },
     "authors": [
       {
         "author_id": "a13",
@@ -856,7 +1002,9 @@
       }
     ],
     "book_id": "b28",
-    "category": ["Programming"],
+    "category": [
+      "Programming"
+    ],
     "edition": 1,
     "price": 1004,
     "publisher_id": "p6",
@@ -865,7 +1013,9 @@
     "year": 2017
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba7"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba7"
+    },
     "authors": [
       {
         "author_id": "a4",
@@ -885,7 +1035,10 @@
       }
     ],
     "book_id": "b29",
-    "category": ["Chemistry", "Math"],
+    "category": [
+      "Chemistry",
+      "Math"
+    ],
     "edition": 2,
     "price": 751,
     "publisher_id": "p1",
@@ -894,7 +1047,9 @@
     "year": 2014
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba8"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba8"
+    },
     "authors": [
       {
         "author_id": "a19",
@@ -914,7 +1069,10 @@
       }
     ],
     "book_id": "b30",
-    "category": ["Chemistry", "Biology"],
+    "category": [
+      "Chemistry",
+      "Biology"
+    ],
     "edition": 2,
     "price": 745,
     "publisher_id": "p5",
@@ -923,7 +1081,9 @@
     "year": 2021
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11ba9"},
+    "_id": {
+      "$oid": "6102ce343535635627d11ba9"
+    },
     "authors": [
       {
         "author_id": "a27",
@@ -959,7 +1119,12 @@
       }
     ],
     "book_id": "b31",
-    "category": ["Biology", "Fiction", "Biology", "Math"],
+    "category": [
+      "Biology",
+      "Fiction",
+      "Biology",
+      "Math"
+    ],
     "edition": 4,
     "price": 2702,
     "publisher_id": "p3",
@@ -968,7 +1133,9 @@
     "year": 2018
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11baa"},
+    "_id": {
+      "$oid": "6102ce343535635627d11baa"
+    },
     "authors": [
       {
         "author_id": "a23",
@@ -1004,7 +1171,12 @@
       }
     ],
     "book_id": "b32",
-    "category": ["Programming", "Programming", "Programming", "Math"],
+    "category": [
+      "Programming",
+      "Programming",
+      "Programming",
+      "Math"
+    ],
     "edition": 4,
     "price": 200,
     "publisher_id": "p2",
@@ -1013,7 +1185,9 @@
     "year": 2024
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bab"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bab"
+    },
     "authors": [
       {
         "author_id": "a18",
@@ -1025,7 +1199,9 @@
       }
     ],
     "book_id": "b33",
-    "category": ["Programming"],
+    "category": [
+      "Programming"
+    ],
     "edition": 1,
     "price": 798,
     "publisher_id": "p0",
@@ -1034,7 +1210,9 @@
     "year": 2023
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bac"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bac"
+    },
     "authors": [
       {
         "author_id": "a10",
@@ -1054,7 +1232,10 @@
       }
     ],
     "book_id": "b34",
-    "category": ["Fiction", "Fiction"],
+    "category": [
+      "Fiction",
+      "Fiction"
+    ],
     "edition": 2,
     "price": 969,
     "publisher_id": "p5",
@@ -1063,7 +1244,9 @@
     "year": 2015
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bad"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bad"
+    },
     "authors": [
       {
         "author_id": "a26",
@@ -1083,7 +1266,10 @@
       }
     ],
     "book_id": "b35",
-    "category": ["Math", "Biology"],
+    "category": [
+      "Math",
+      "Biology"
+    ],
     "edition": 2,
     "price": 850,
     "publisher_id": "p3",
@@ -1092,7 +1278,9 @@
     "year": 2023
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bae"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bae"
+    },
     "authors": [
       {
         "author_id": "a1",
@@ -1104,7 +1292,9 @@
       }
     ],
     "book_id": "b36",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 1850,
     "publisher_id": "p0",
@@ -1113,7 +1303,9 @@
     "year": 2021
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11baf"},
+    "_id": {
+      "$oid": "6102ce343535635627d11baf"
+    },
     "authors": [
       {
         "author_id": "a12",
@@ -1149,7 +1341,12 @@
       }
     ],
     "book_id": "b37",
-    "category": ["Biology", "Programming", "Programming", "Programming"],
+    "category": [
+      "Biology",
+      "Programming",
+      "Programming",
+      "Programming"
+    ],
     "edition": 4,
     "price": 725,
     "publisher_id": "p0",
@@ -1158,7 +1355,9 @@
     "year": 2024
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb0"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb0"
+    },
     "authors": [
       {
         "author_id": "a18",
@@ -1194,7 +1393,12 @@
       }
     ],
     "book_id": "b38",
-    "category": ["Programming", "Fiction", "Fiction", "Biology"],
+    "category": [
+      "Programming",
+      "Fiction",
+      "Fiction",
+      "Biology"
+    ],
     "edition": 4,
     "price": 1529,
     "publisher_id": "p3",
@@ -1203,7 +1407,9 @@
     "year": 2018
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb1"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb1"
+    },
     "authors": [
       {
         "author_id": "a11",
@@ -1215,7 +1421,9 @@
       }
     ],
     "book_id": "b39",
-    "category": ["Math"],
+    "category": [
+      "Math"
+    ],
     "edition": 1,
     "price": 2358,
     "publisher_id": "p4",
@@ -1224,7 +1432,9 @@
     "year": 2016
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb2"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb2"
+    },
     "authors": [
       {
         "author_id": "a1",
@@ -1260,7 +1470,12 @@
       }
     ],
     "book_id": "b40",
-    "category": ["Math", "Programming", "Chemistry", "Chemistry"],
+    "category": [
+      "Math",
+      "Programming",
+      "Chemistry",
+      "Chemistry"
+    ],
     "edition": 4,
     "price": 2751,
     "publisher_id": "p0",
@@ -1269,7 +1484,9 @@
     "year": 2013
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb3"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb3"
+    },
     "authors": [
       {
         "author_id": "a6",
@@ -1289,7 +1506,10 @@
       }
     ],
     "book_id": "b41",
-    "category": ["Math", "Programming"],
+    "category": [
+      "Math",
+      "Programming"
+    ],
     "edition": 2,
     "price": 1342,
     "publisher_id": "p2",
@@ -1298,7 +1518,9 @@
     "year": 2020
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb4"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb4"
+    },
     "authors": [
       {
         "author_id": "a24",
@@ -1326,7 +1548,11 @@
       }
     ],
     "book_id": "b42",
-    "category": ["Chemistry", "Math", "Programming"],
+    "category": [
+      "Chemistry",
+      "Math",
+      "Programming"
+    ],
     "edition": 3,
     "price": 1958,
     "publisher_id": "p5",
@@ -1335,7 +1561,9 @@
     "year": 2011
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb5"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb5"
+    },
     "authors": [
       {
         "author_id": "a12",
@@ -1347,7 +1575,9 @@
       }
     ],
     "book_id": "b43",
-    "category": ["Biology"],
+    "category": [
+      "Biology"
+    ],
     "edition": 1,
     "price": 1857,
     "publisher_id": "p5",
@@ -1356,7 +1586,9 @@
     "year": 2012
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb6"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb6"
+    },
     "authors": [
       {
         "author_id": "a23",
@@ -1384,7 +1616,11 @@
       }
     ],
     "book_id": "b44",
-    "category": ["Programming", "Programming", "Fiction"],
+    "category": [
+      "Programming",
+      "Programming",
+      "Fiction"
+    ],
     "edition": 3,
     "price": 2916,
     "publisher_id": "p3",
@@ -1393,7 +1629,9 @@
     "year": 2023
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb7"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb7"
+    },
     "authors": [
       {
         "author_id": "a2",
@@ -1429,7 +1667,12 @@
       }
     ],
     "book_id": "b45",
-    "category": ["Biology", "Math", "Fiction", "Chemistry"],
+    "category": [
+      "Biology",
+      "Math",
+      "Fiction",
+      "Chemistry"
+    ],
     "edition": 4,
     "price": 1280,
     "publisher_id": "p6",
@@ -1438,7 +1681,9 @@
     "year": 2022
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb8"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb8"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -1466,7 +1711,11 @@
       }
     ],
     "book_id": "b46",
-    "category": ["Fiction", "Programming", "Programming"],
+    "category": [
+      "Fiction",
+      "Programming",
+      "Programming"
+    ],
     "edition": 3,
     "price": 1493,
     "publisher_id": "p6",
@@ -1475,7 +1724,9 @@
     "year": 2023
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bb9"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bb9"
+    },
     "authors": [
       {
         "author_id": "a17",
@@ -1495,7 +1746,10 @@
       }
     ],
     "book_id": "b47",
-    "category": ["Biology", "Biology"],
+    "category": [
+      "Biology",
+      "Biology"
+    ],
     "edition": 2,
     "price": 1935,
     "publisher_id": "p1",
@@ -1504,7 +1758,9 @@
     "year": 2024
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bba"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bba"
+    },
     "authors": [
       {
         "author_id": "a15",
@@ -1540,7 +1796,12 @@
       }
     ],
     "book_id": "b48",
-    "category": ["Fiction", "Math", "Fiction", "Chemistry"],
+    "category": [
+      "Fiction",
+      "Math",
+      "Fiction",
+      "Chemistry"
+    ],
     "edition": 4,
     "price": 2909,
     "publisher_id": "p5",
@@ -1549,7 +1810,9 @@
     "year": 2011
   },
   {
-    "_id": {"$oid": "6102ce343535635627d11bbb"},
+    "_id": {
+      "$oid": "6102ce343535635627d11bbb"
+    },
     "authors": [
       {
         "author_id": "a0",
@@ -1569,7 +1832,10 @@
       }
     ],
     "book_id": "b49",
-    "category": ["Fiction", "Chemistry"],
+    "category": [
+      "Fiction",
+      "Chemistry"
+    ],
     "edition": 2,
     "price": 1829,
     "publisher_id": "p5",

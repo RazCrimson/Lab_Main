@@ -1,6 +1,8 @@
 [
   {
-    "_id": {"$oid": "6102ce323535635627d11b83"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b83"
+    },
     "address": {
       "country": "India",
       "city": "Delhi",
@@ -11,7 +13,9 @@
     "publisher_id": "p0"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b84"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b84"
+    },
     "address": {
       "country": "India",
       "city": "Delhi",
@@ -22,7 +26,9 @@
     "publisher_id": "p1"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b85"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b85"
+    },
     "address": {
       "country": "Angola",
       "city": "Luanda",
@@ -33,7 +39,9 @@
     "publisher_id": "p2"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b86"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b86"
+    },
     "address": {
       "country": "American Samoa",
       "city": "Pago Pago",
@@ -44,7 +52,9 @@
     "publisher_id": "p3"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b87"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b87"
+    },
     "address": {
       "country": "India",
       "city": "Delhi",
@@ -55,7 +65,9 @@
     "publisher_id": "p4"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b88"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b88"
+    },
     "address": {
       "country": "United States",
       "city": "Atlanta",
@@ -66,7 +78,9 @@
     "publisher_id": "p5"
   },
   {
-    "_id": {"$oid": "6102ce323535635627d11b89"},
+    "_id": {
+      "$oid": "6102ce323535635627d11b89"
+    },
     "address": {
       "country": "Andorra",
       "city": "PO Boxes",
