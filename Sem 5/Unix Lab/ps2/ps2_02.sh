@@ -1,5 +1,4 @@
 #! /bin/bash
-printf "BOOK MANAGEMENT SYSTEM\n\n"
 
 DATA_FILE="books.dat"
 CHOICE=$1
@@ -15,7 +14,8 @@ READ_AUTHOR_NAME() {
 }
 
 if [ -z $CHOICE ]; then
-    printf "Enter 1 to enter a record\nEnter 2 to remove a record\nEnter 3 to list all books\nEnter 4 to list all books of an author\nEnter your choice: "
+    printf "BOOK MANAGEMENT SYSTEM\n\n"
+    printf "Enter 1 to enter a record\nEnter 2 to remove a record\nEnter 3 to list all books\nEnter 4 to list all books of an author\nEnter 5 to list all entries\nEnter your choice: "
     read CHOICE
 fi
 
@@ -62,6 +62,8 @@ case $CHOICE in
     printf "BOOKS BY $AUTHOR_NAME\n"
     grep "$AUTHOR_NAME$" "$DATA_FILE" | cut -f 2
     ;;
+
+5) cat "$DATA_FILE" ;;
 
 *)
     echo "Invalid Choice!"

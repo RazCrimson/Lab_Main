@@ -40,13 +40,13 @@ while true; do
 
         read -p "Enter the exponent: " EXP
         if ! [ "$EXP" ] || [ $EXP -ne $EXP ] 2>/dev/null; then echo "Invalid Number" && exit 0; fi
-
+        
         declare -i RESULT=1
         while [ $EXP -gt 0 ]; do
             RESULT=$(expr $RESULT \* $NUMBER)
             EXP=$(expr $EXP - 1)
         done
-        echo "Factorial: $RESULT"
+        echo "$RESULT"
         ;;
     *) exit ;;
     esac
