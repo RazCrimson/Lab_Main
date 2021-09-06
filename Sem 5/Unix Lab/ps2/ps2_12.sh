@@ -1,75 +1,56 @@
 #! /bin/bash
 
+DATA_FILE="contacts"
+
+READ_INPUT() {
+    read -p "$1" INPUT
+    echo "$INPUT"
+    if [[ -z "$INPUT" ]]; then echo "Invalid Input!" && exit 1; fi
+}
+
 while [ true ]; do
-    echo "1. ENTER NEW RECORD "
-    echo "2. REPORT ALL RECORDS "
-    echo "3. EXIT"
-    read -p "ENTER YOUR CHOICE " ch
+    printf "\n**** MENU ****\n1. Add a record\n2. List all records\n3. To Delete an entry\nAny other input to exit\n"
+    read -p "Enter your choice : " ch
+
     case $ch in
     1)
-        sno="."
-        mob="."
-        fname="."
-        sname="."
-        addr="."
-        ID="."
+        READ_INPUT "Enter the entry number "
+        if ! [[ "$INPUT" =~ [0-9]+ ]]; then echo "Invalid Entry Number!" && exit 1; fi
+        ENTRY_NUM=$INPUT
 
-        read -p "Enter the entry number " index
-        sno=$index
-        read -p "Enter mobile number " mobno
-        pat="[0-9]"
-        if [ ${#num} -gt 10 ]; then
-            echo "Enter valid phone number "
-        else
-            if [[ $mobno =~ $pat ]]; then
-                mob=$mobno
-            else
-                echo "Enter valid phone number"
-                exit
-            fi
-        fi
-        read -p "Enter first name " firstname
-        if [[ "${firstname}" =~ [a-zA-Z] ]]; then
-            fname=$firstname
-        else
-            echo "Enter valid name"
-            exit
-        fi
-        read -p "Enter second name " secondname
-        if [[ "{$secondname}" =~ [a-zA-Z] ]]; then
-            sname=$secondname
-        else
-            echo "Enter valid name"
-            exit
-        fi
-        read -p "Enter Address " address
-        addr=$address
-        read -p "Enter id " id
-        if [ ${#id} -gt 12 ]; then
-            echo "Enter valid id "
-            exit
-        else
-            if [[ "{$id}" =~ [0-9]{12} ]]; then
-                ID=$id
-            else
-                echo "Enter valid id "
-                exit
-            fi
-        fi
-        echo "INDEX $sno " >>contacts.txt
-        echo "PHONE NUMBER $mob " >>contacts.txt
-        echo "FIRST NAME $fname " >>contacts.txt
-        echo "SECOND NAME $sname" >>contacts.txt
-        echo "ADDRESS $addr" >>contacts.txt
-        echo "ID $id" >>contacts.txt
+        READ_INPUT "Enter the mobile number "
+        if ! [[ "$INPUT" =~ [0-9]{10} ]]; then echo "Invalid Mobile Number!" && exit 1; fi
+        MOBILE_NUM=$INPUT
+
+        READ_INPUT "Enter the First name : "
+        if ! [[ "$INPUT" =~ [a-zA-Z\ ]+ ]]; then echo "Invalid First Name!" && exit 1; fi
+        FIRST_NAME=$INPUT
+
+        READ_INPUT "Enter the Last name : "
+        if [[ ! "$INPUT" =~ [a-zA-Z\ ]+ ]]; then echo "Invalid Last Name!" && exit 1; fi
+        LAST_NAME=$INPUT
+
+        READ_INPUT "Enter the Address : "
+        ADDRESS=$INPUT
+
+        READ_INPUT "Enter the id : "
+        ID=$INPUT
+
+        printf "$ENTRY_NUM\\t$MOBILE_NUM\\t$FIRST_NAME\\t$LAST_NAME\\t$ADDRESS\\t$ID\n" >>"$DATA_FILE"
         ;;
 
     2)
-        cat contacts.txt
+        echo "**** DATA ****"
+        cat "$DATA_FILE"
         ;;
+
     3)
-        exit
+        READ_INPUT "Enter the Entry to delete : "
+        if ! [[ "$INPUT" =~ [0-9]+ ]]; then echo "Invalid Entry Number!" && exit 1; fi
+
+        grep -v "^$INPUT" "$DATA_FILE" >"$DATA_FILE.tmp"
+        mv "$DATA_FILE.tmp" "$DATA_FILE"
         ;;
-    *) echo "Enter valid Choice" ;;
+    *) exit ;;
     esac
 done

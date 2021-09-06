@@ -1,6 +1,6 @@
 #! /bin/bash
 
-filsize() {
+filesize() {
     TOTAL_SIZE=0
     for filename in "$@"; do
         if ! [ -f "$filename" ]; then echo "$filename is not a valid file" && continue; fi
@@ -9,4 +9,4 @@ filsize() {
     echo "Total Size(Bytes): $TOTAL_SIZE"
 }
 
-filsize $@
+filesize $@

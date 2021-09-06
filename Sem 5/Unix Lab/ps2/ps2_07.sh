@@ -1,7 +1,6 @@
 #! /bin/bash
 
 check=$(date +%H)
-echo $check
 if [ $check -ge 04 -a $check -le 12 ]; then
     echo "Good morning"
 elif [ $check -gt 12 -a $check -le 17 ]; then
