@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 mongo_user = "test_user"
 mongo_password = "test_password"
-host_address = "10.15.75.34"
+host_address = "10.8.3.34"
 host_port = 27017
 
 
