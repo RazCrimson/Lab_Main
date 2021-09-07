@@ -2,8 +2,8 @@ version: '3.3'
 services:
   mysql:
     container_name: MySQL
+    restart: unless-stopped
     image: mysql:5.7
-    restart: always
     environment:
       MYSQL_DATABASE: db
       MYSQL_USER: raz
@@ -12,41 +12,53 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - mydb:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
 
       
   postgres:
     container_name: PostgreSQL
-    restart: always
-    image: "postgres" 
-    ports:
-      - '5432:5432'
+    restart: unless-stopped
+    image: postgres
     environment: 
       POSTGRES_USER: test_user
       POSTGRES_PASSWORD: test_password
-      POSTGRES_DB: db
+      POSTGRES_DB: test_db
+    ports:
+      - '5432:5432'
     volumes:
-      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - postgres-data:/var/lib/postgresql/data/ # persist data even if container shuts down
 
   mongo:
     container_name: MongoDB
     image: mongo
-    restart: always
-    ports:
-      - '27017:27017'
+    restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: test_user
       MONGO_INITDB_ROOT_PASSWORD: test_password
+    ports:
+      - '27017:27017'
 
   redis:
     container_name: Redis
+    restart: unless-stopped
     image: redis
-    volumes:
-      - redisdata:/data
     ports:
       - '6379:6379'
+    volumes:
+      - redis-data:/data
+
+  cassandra:
+    container_name: Cassandra # Default username and pass: cassandra
+    restart: unless-stopped
+    image: cassandra
+    ports:
+      - '9042:9042'
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+
 
 volumes:
-  database-data: 
-  mydb:
-  redisdata:
+  postgres-data: 
+  mysql-data:
+  redis-data:
+  cassandra-data:
