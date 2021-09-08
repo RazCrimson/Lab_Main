@@ -3,6 +3,8 @@ from pprint import pprint
 import pymongo
 
 from mongo_client import MongoCon
+from geojson_converter import geojson_converter
+
 
 db = MongoCon().get_connection()
 
@@ -20,7 +22,10 @@ result = db.us_hospitals.aggregate([
         "$limit": 10
     }
 ])
-pprint(list(result))
+
+data = list(result)
+pprint(data)
+geojson_converter(data)
 
 
 
