@@ -27,6 +27,6 @@ result = db.us_cities.aggregate([
     }
 ])
 
-data= list(result)
-pprint(data)
-geojson_converter(data)
+pprint(list(result))
+data = [start, end]
+geojson_converter(data, file_path="./ps3_08-output.geojson")

@@ -26,4 +26,5 @@ for state in list(selected_states):
                 calc_centroid(coords)
 
 
-geojson_converter(list(results))
+data = list(results)
+geojson_converter(data, file_path="./ps3_09-output.geojson")

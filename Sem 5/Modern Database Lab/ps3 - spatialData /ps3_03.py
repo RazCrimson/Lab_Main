@@ -19,4 +19,4 @@ result = db.us_cities.find({
 })
 data = list(result)
 pprint(data)
-geojson_converter(data)
+geojson_converter(data, file_path="./ps3_03-output.geojson")

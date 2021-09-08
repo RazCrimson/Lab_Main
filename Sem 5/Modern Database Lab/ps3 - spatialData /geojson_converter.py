@@ -1,13 +1,14 @@
 from bson.json_util import dumps
 
-def geojson_converter(data):
+OUTPUT_PATH = "./output.geojson"
+
+def geojson_converter(data, file_path=OUTPUT_PATH):
     geojson_data = {"type":"FeatureCollection", "features": []}
-    print(data)
     if type(data) is list:
         geojson_data['features'] = data
     else:
         geojson_data['features'] = [data]
-    print(geojson_data['features'])
-    f = open("./output.geojson", 'w')
+    f = open(file_path, 'w')
     f.write(dumps(geojson_data))
     f.close()
+    print(len(geojson_data['features']), " written to ", file_path)
