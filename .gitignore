@@ -5,6 +5,7 @@
 *.bin
 *.elf
 *.img
+*.pyc
 
 # Zips
 *.zip 
