@@ -25,7 +25,4 @@ result = db.us_hospitals.aggregate([
 
 data = list(result)
 pprint(data)
-geojson_converter(data)
-
-
-
+geojson_converter(data, file_path="./ps3_06-output.geojson")

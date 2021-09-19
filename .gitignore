@@ -5,6 +5,7 @@
 *.bin
 *.elf
 *.img
+*.pyc
 
 # Zips
 *.zip 
@@ -16,6 +17,7 @@ node_modules
 
 # Temp Files
 ~$*
+*__pycache__/*
 
 # Java class files
 out/*
