@@ -16,9 +16,9 @@ public class ComplexMatrix {
         this.cols = cols;
         this.elements = new ComplexNumber[rows][cols];
 
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < rows; j++){
-                this.elements[i][j] = new ComplexNumber(0,0);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < rows; j++) {
+                this.elements[i][j] = new ComplexNumber(0, 0);
             }
         }
     }

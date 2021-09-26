@@ -1,9 +1,9 @@
 package test_stack;
 
 public class Stack {
-    private int top;
     private final int size;
     private final int[] elements;
+    private int top;
 
     public Stack(int size) {
         this.top = -1;

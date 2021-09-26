@@ -8,9 +8,9 @@ public class TestComplexMatrix {
         try {
             int rows = 3, cols = 3;
             ComplexNumber[][] array = {
-                    {new ComplexNumber(6,6), new ComplexNumber(6,6), new ComplexNumber(6,6)},
-                    {new ComplexNumber(6,6), new ComplexNumber(6,6), new ComplexNumber(6,6)},
-                    {new ComplexNumber(6,6), new ComplexNumber(6,6), new ComplexNumber(6,6)}};
+                    {new ComplexNumber(6, 6), new ComplexNumber(6, 6), new ComplexNumber(6, 6)},
+                    {new ComplexNumber(6, 6), new ComplexNumber(6, 6), new ComplexNumber(6, 6)},
+                    {new ComplexNumber(6, 6), new ComplexNumber(6, 6), new ComplexNumber(6, 6)}};
 
             ComplexMatrix m1 = new ComplexMatrix(rows, cols);
             ComplexMatrix m2 = new ComplexMatrix(rows, cols);
@@ -19,8 +19,8 @@ public class TestComplexMatrix {
 
             for (int i = 0; i < m1.getNumberOfRows(); i++) {
                 for (int j = 0; j < m1.getNumberOfCols(); j++) {
-                    m1.setElement(i, j, new ComplexNumber(1,1));
-                    m2.setElement(i, j, new ComplexNumber(2,2));
+                    m1.setElement(i, j, new ComplexNumber(1, 1));
+                    m2.setElement(i, j, new ComplexNumber(2, 2));
                 }
             }
             System.out.println("Matrix A:");

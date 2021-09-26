@@ -15,6 +15,20 @@ public class ComplexNumber {
         imaginary = img;
     }
 
+    public static ComplexNumber add(ComplexNumber c1, ComplexNumber c2) {
+        return new ComplexNumber(c1.real + c2.real, c1.imaginary + c2.imaginary);
+    }
+
+    public static ComplexNumber subtract(ComplexNumber c1, ComplexNumber c2) {
+        return new ComplexNumber(c1.real - c2.real, c1.imaginary - c2.imaginary);
+    }
+
+    public static ComplexNumber multiply(ComplexNumber c1, ComplexNumber c2) {
+        double realPart = (c1.real * c2.real) + (c1.imaginary * c2.imaginary);
+        double imgPart = (c1.real * c2.imaginary) + (c2.real * c1.imaginary);
+        return new ComplexNumber(realPart, imgPart);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,30 +46,16 @@ public class ComplexNumber {
         return real;
     }
 
-    public double getImaginary() {
-        return imaginary;
-    }
-
     public void setReal(double real) {
         this.real = real;
     }
 
+    public double getImaginary() {
+        return imaginary;
+    }
+
     public void setImaginary(double imaginary) {
         this.imaginary = imaginary;
-    }
-
-    public static ComplexNumber add(ComplexNumber c1, ComplexNumber c2) {
-        return new ComplexNumber(c1.real + c2.real, c1.imaginary + c2.imaginary);
-    }
-
-    public static ComplexNumber subtract(ComplexNumber c1, ComplexNumber c2) {
-        return new ComplexNumber(c1.real - c2.real, c1.imaginary - c2.imaginary);
-    }
-
-    public static ComplexNumber multiply(ComplexNumber c1, ComplexNumber c2) {
-        double realPart = (c1.real * c2.real) + (c1.imaginary * c2.imaginary);
-        double imgPart = (c1.real * c2.imaginary) + (c2.real * c1.imaginary);
-        return new ComplexNumber(realPart, imgPart);
     }
 
     public void add(ComplexNumber c) {
