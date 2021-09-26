@@ -1,0 +1,39 @@
+// NEO4J Queries
+// The built in tutorial movie-graph database is used as the source for the queries.
+// The data is included in the .zip folder
+
+// QN 1 - Aggregation
+MATCH (n:Person)-[:ACTED_IN]->(x:Movie {title:"The Matrix"}) RETURN count(1), avg(n.born)
+
+
+// QN 2 - Adjacency
+MATCH (n:Movie {title:"The Matrix"})<-[]-(p:Person) RETURN n, p
+
+
+// QN 3 - Connectivity
+// Out degree
+MATCH (p:Person {name:"Jessica Thompson"})-[]->(n) RETURN p, n
+
+// In degree
+MATCH (p:Person {name:"Jessica Thompson"})<-[]-(n) RETURN p, n
+
+
+// QN 4 - Complex Pattern Matching
+MATCH (p:Person)-[:FOLLOWS]->(m:Person)-[:FOLLOWS]->(n) RETURN p, m, n
+
+
+// QN 5 - Shortest Path
+MATCH (m:Person {name:"Paul Blythe"}), (n:Movie {title:"Jerry Maguire"}),
+path = shortestPath((m)-[*]-(n))
+RETURN path
+
+
+// QN 6 - Reachability
+MATCH path = (:Person {name:"Paul Blythe"})-[*]->(:Movie {title:"Jerry Maguire"}) RETURN path
+
+
+// QN 7 - Cycle
+MATCH path=(m:Person {name:"Jessica Thompson"})-[:FOLLOWS*]-(m)
+RETURN path
+
+// Solution for Neo4J by 19PW08
