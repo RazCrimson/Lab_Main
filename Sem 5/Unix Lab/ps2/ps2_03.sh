@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo"Enter string"
+echo "Enter string"
 read str
 
 length=$(echo $str | wc -c)

@@ -6,6 +6,7 @@ read pass1
 echo " Re-enter password"
 read pass2
 if [ "$pass1" = "$pass2" ]; then
+    clear
     echo "system is locked"
     echo "enter password to unlock"
     trap ‘ ‘ 1 2 3 9 15 18
