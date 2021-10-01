@@ -6,10 +6,10 @@ from sklearn.preprocessing import LabelEncoder
 import math
 
 df = pd.read_csv('./dataset/iris.data')
-EPOCH_LIMIT = 500
+EPOCH_LIMIT = 5000
 
 def sigmoid(x):
-    return (1 + math.exp(-x)) ** -1
+    return 1/(1 + math.exp(-x))
 
 def predict(weights, x):
     return 1 if sigmoid(np.dot(weights, x)) >= 0.5 else 0
@@ -26,8 +26,6 @@ def logisticRegression(x_data, y_data, plot=False):
             y_hat = 1 if sig >= 0.5 else 0
             if y_hat != y_data[i]:
                 weights = weights + (y_data[i] - sig) * eta * x_data[i]    
-                continue
-            break # Indicates convergence
     return weights
 
 def test_model(weights, x_data, y_data):

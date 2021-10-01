@@ -28,7 +28,7 @@ We normalize to change the data points to use a common scale. It converts data p
 
 - Z Score(Z distribution?) - Formula = (X - Xbar)/Sigma
 
-**Note:** Use n-1 instead of n when calculating the estimators for sample. We use 
+**Note:** Use n-1 instead of n when calculating the estimators for sample.
 
 
 ## Box Plot
