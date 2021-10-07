@@ -17,6 +17,9 @@ result = db.us_cities.find({
         }
     }
 })
+
 data = list(result)
 pprint(data)
+db.qn3.drop()
+db.qn3.insert_many(data)
 geojson_converter(data, file_path="./ps3_03-output.geojson")

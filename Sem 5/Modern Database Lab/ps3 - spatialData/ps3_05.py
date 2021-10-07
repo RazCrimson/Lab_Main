@@ -20,4 +20,6 @@ result = db.us_cities.find({
 
 data = list(result)
 pprint(data)
+db.qn5.drop()
+db.qn5.insert_many(data)
 geojson_converter(data, file_path="./ps3_05-output.geojson")

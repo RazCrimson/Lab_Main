@@ -27,4 +27,6 @@ for state in list(selected_states):
 
 
 data = list(results)
+db.qn9.drop()
+db.qn9.insert_many(data)
 geojson_converter(data, file_path="./ps3_09-output.geojson")

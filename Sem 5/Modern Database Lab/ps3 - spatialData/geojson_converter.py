@@ -11,4 +11,4 @@ def geojson_converter(data, file_path=OUTPUT_PATH):
     f = open(file_path, 'w')
     f.write(dumps(geojson_data))
     f.close()
-    print(len(geojson_data['features']), " written to ", file_path)
+    print(len(geojson_data['features']), " Feature(s) written to ", file_path)

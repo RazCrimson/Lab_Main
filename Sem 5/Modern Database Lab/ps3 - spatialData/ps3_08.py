@@ -29,4 +29,6 @@ result = db.us_cities.aggregate([
 
 pprint(list(result))
 data = [start, end]
+db.qn8.drop()
+db.qn8.insert_many(data)
 geojson_converter(data, file_path="./ps3_08-output.geojson")
