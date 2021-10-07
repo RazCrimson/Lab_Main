@@ -5,6 +5,7 @@
 // QN 1 - Aggregation
 MATCH (n:Person)-[:ACTED_IN]->(x:Movie {title:"The Matrix"}) RETURN count(1), avg(n.born)
 
+MATCH ()-[r]->() RETURN type(r), count(1)
 
 // QN 2 - Adjacency
 MATCH (n:Movie {title:"The Matrix"})<-[]-(p:Person) RETURN n, p
@@ -13,23 +14,24 @@ MATCH (n:Movie {title:"The Matrix"})<-[]-(p:Person) RETURN n, p
 // QN 3 - Connectivity
 // Out degree
 MATCH (p:Person {name:"Jessica Thompson"})-[]->(n) RETURN p, n
+MATCH (p:Person {name:"Jessica Thompson"})-[]->(n) RETURN count(n)
 
 // In degree
-MATCH (p:Person {name:"Jessica Thompson"})<-[]-(n) RETURN p, n
+MATCH (p:Movie {title:"Cloud Atlas"})<-[]-(n) RETURN p, n
+MATCH (p:Movie {title:"Cloud Atlas"})<-[]-(n) RETURN count(n)
 
 
 // QN 4 - Complex Pattern Matching
-MATCH (p:Person)-[:FOLLOWS]->(m:Person)-[:FOLLOWS]->(n) RETURN p, m, n
+MATCH (p:Person)-[:FOLLOWS*1..2]->(n:Person)-[:REVIEWED]->(m:Movie {title:"Cloud Atlas"}) RETURN p, m, n
 
 
 // QN 5 - Shortest Path
-MATCH (m:Person {name:"Paul Blythe"}), (n:Movie {title:"Jerry Maguire"}),
-path = shortestPath((m)-[*]-(n))
+MATCH (m:Person {name:"Paul Blythe"}), (n:Movie {title:"The Replacements"}),
+path = shortestPath((m)-[*]->(n))
 RETURN path
 
-
 // QN 6 - Reachability
-MATCH path = (:Person {name:"Paul Blythe"})-[*]->(:Movie {title:"Jerry Maguire"}) RETURN path
+MATCH path = (:Person {name:"Angela Scope"})-[*]->(:Movie {title:"The Replacements"}) RETURN path
 
 
 // QN 7 - Cycle
