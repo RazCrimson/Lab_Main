@@ -27,6 +27,7 @@ int main(int argc, char **argv)
     dup2(pipefd2[0], 0);
     close(pipefd2[0]);
 
+    // CHECK PATH WHILE RUNNING!!!!
     FILE *fptr = fopen("./Sem 4/OS Lab/Pipes/file.txt", "r");
     while ((c = fgetc(fptr)) != EOF)
       write(pipefd1[1], &c, 1);
