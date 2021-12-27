@@ -30,7 +30,7 @@
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}.bin",
 				"-lm",
-				"-pthread"
+				"-lpthread"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
