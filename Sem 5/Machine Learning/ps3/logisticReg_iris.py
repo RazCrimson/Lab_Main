@@ -16,7 +16,7 @@ df['type'] = label_encoder.fit_transform(df['type'])
 
 
 def sigmoid(x):
-    return (1 + math.exp(-x)) ** -1
+    return 1 / (1 + math.exp(-x))
 
 def predict(weights, x):
     return 1 if sigmoid(np.dot(weights, x)) >= 0.5 else 0
