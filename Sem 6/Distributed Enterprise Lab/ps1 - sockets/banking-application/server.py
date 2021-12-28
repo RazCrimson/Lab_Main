@@ -50,28 +50,33 @@ class TCPServer:
         try:
             msg_string = msg.decode("utf-8")
             msg_dict = json.loads(msg_string)
-            print(msg_dict)
+            print(conn, " ", msg_dict)
             operation = msg_dict["Operation"]
             if operation not in ["Withdraw", "Deposit", "Balance"]:
                 return
 
             if operation == "Balance":
-                conn.sendall(b"Balance : " + str(self.store[conn]).encode("utf-8"))
+                conn.sendall(
+                    b"Balance : " + str(self.store[conn]).encode("utf-8") + b"\n"
+                )
                 return
 
             amount = msg_dict["Amount"]
             if type(amount) is not int or int(amount) < 0:
+                conn.sendall(b"Invalid Amount\n")
                 return
             amount = int(amount)
 
             if operation == "Withdraw":
-                if self.store[conn] > amount:
+                if self.store[conn] >= amount:
                     self.store[conn] -= amount
-                    conn.sendall(b"Withdrawn : " + str(amount).encode("utf-8"))
+                    conn.sendall(b"Withdrawn : " + str(amount).encode("utf-8") + b"\n")
+                else:
+                    conn.sendall(b"Not enough Balance\n")
             elif operation == "Deposit":
                 self.store[conn] += amount
-                conn.sendall(b"Deposited : " + str(amount).encode("utf-8"))
-            conn.sendall(b"Balance : " + str(self.store[conn]).encode("utf-8"))
+                conn.sendall(b"Deposited : " + str(amount).encode("utf-8") + b"\n")
+            conn.sendall(b"Balance : " + str(self.store[conn]).encode("utf-8") + b"\n")
 
         except (JSONDecodeError, KeyError):
             pass

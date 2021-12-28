@@ -1,8 +1,7 @@
 import json
+import time
 import socket
 import select
-
-from threading import Thread
 
 
 class TCPClient(object):
@@ -16,21 +15,8 @@ class TCPClient(object):
         self.socket.setblocking(0)
         print(f"Connected to server - {ip_address}:{port}")
 
-    def print_messages(self):
-        while self.socket.fileno() != -1:
-            try:
-                r, _, _ = select.select([self.socket], [], [], 0)
-                for conn in r:
-                    msg_bytes = conn.recv(TCPClient.BUFFER_SIZE)
-                    print(msg_bytes.decode("utf-8"))
-            except ValueError:
-                pass
-
     def start_interactive_mode(self):
         """runs the client prog"""
-        thread = Thread(target=self.print_messages)
-        thread.start()
-
         messsages = {
             "1": {"Operation": "Deposit"},
             "2": {"Operation": "Withdraw"},
@@ -56,8 +42,15 @@ class TCPClient(object):
                 msg = msg.encode("utf-8")
                 self.socket.sendall(msg)
 
+                timestamp = time.time()
+                while time.time() - timestamp < 0.1:
+                    r, _, _ = select.select([self.socket], [], [], 0)
+                    for conn in r:
+                        msg_bytes = conn.recv(TCPClient.BUFFER_SIZE)
+                        print(msg_bytes.decode("utf-8"), end="")
+
         except KeyboardInterrupt:
-            print("Client Terminated")
+            print("\nClient Terminated")
         except Exception as e:
             print(type(e), e)
         finally:
