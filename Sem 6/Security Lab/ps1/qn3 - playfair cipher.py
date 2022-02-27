@@ -1,5 +1,4 @@
 from typing import List
-from pprint import pprint
 
 
 class PlayfairCipher:
@@ -75,12 +74,8 @@ class PlayfairCipher:
         return "".join([self._apply_transform(digraph) for digraph in padded_digraphs])
 
     def decrypt(self, ciphered_word: str) -> str:
-        ciphered_digraphs = [
-            ciphered_word[i : i + 2] for i in range(0, len(ciphered_word), 2)
-        ]
-        return "".join(
-            [self._reverse_transform(digraph) for digraph in ciphered_digraphs]
-        )
+        ciphered_digraphs = [ciphered_word[i : i + 2] for i in range(0, len(ciphered_word), 2)]
+        return "".join([self._reverse_transform(digraph) for digraph in ciphered_digraphs])
 
 
 if __name__ == "__main__":

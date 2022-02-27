@@ -11,9 +11,8 @@ class RandoCipher:
     def _reverse_transform(self, char: int) -> str:
         # Assuming plain text as input
         if char - self.key + 95 > 126:
-            return chr(char - self.key)  
+            return chr(char - self.key)
         return chr(char - self.key + 95)
-                  
 
     def encrypt(self, plain_text: str) -> str:
         return "".join(self._apply_transform(ord(char)) for char in plain_text)
@@ -22,6 +21,9 @@ class RandoCipher:
         return "".join([self._reverse_transform(ord(char)) for char in cipher_text])
 
 
-if __name__ == "__main__":  
-    rc = RandoCipher(88)   
+if __name__ == "__main__":
+    rc = RandoCipher(88)
     print(rc.decrypt(":mmZ\dxZmx]Zpgy"))
+    rc = RandoCipher(10)
+    print(rc.encrypt("Hey"))
+    print(rc.decrypt("Ro$"))

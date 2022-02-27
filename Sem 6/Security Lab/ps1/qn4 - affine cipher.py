@@ -1,9 +1,7 @@
-from typing import List
-
-
 class AffineCipher:
     SIZE = 26
-    def __init__(self, a:int, b:int):
+
+    def __init__(self, a: int, b: int):
         self.a = a
         self.b = b
 
@@ -37,8 +35,9 @@ class AffineCipher:
                 result_string += char
         return result_string
 
-    
-if __name__ == "__main__":
-    ac = AffineCipher(5, 8)
-    print(ac.decrypt("WZUSAAL"))
 
+if __name__ == "__main__":
+    ac_1 = AffineCipher(5, 8)
+    print(ac_1.encrypt("ITS COOL"))
+    ac_2 = AffineCipher(5, 8)
+    print(ac_2.decrypt("HPCCXAQ"))
