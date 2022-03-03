@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional, List
 
+
 class ElectorInterface(ABC):
     @abstractmethod
     def register_voter(self, name: str) -> str:
@@ -25,4 +26,3 @@ class ElectorInterface(ABC):
     @abstractmethod
     def announce_winner(self) -> str:
         pass
-

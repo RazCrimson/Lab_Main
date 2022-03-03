@@ -56,9 +56,7 @@ class TCPServer:
                 return
 
             if operation == "Balance":
-                conn.sendall(
-                    b"Balance : " + str(self.store[conn]).encode("utf-8") + b"\n"
-                )
+                conn.sendall(b"Balance : " + str(self.store[conn]).encode("utf-8") + b"\n")
                 return
 
             amount = msg_dict["Amount"]

@@ -24,7 +24,7 @@ while True:
             name = input("Enter name to register: ")
             voter_id = elector.register_voter(name)
             print(f"Voter ID for {name}: {voter_id}")
-        
+
         case "2":
             voter_id = input("Enter voter ID to verify: ")
             name = elector.verify_voter(voter_id)
@@ -60,4 +60,4 @@ while True:
         case _:
             print("Exiting....")
             exit()
-    print() # For visual comfort
+    print()  # For visual comfort

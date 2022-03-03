@@ -44,7 +44,5 @@ class TCPServer:
     def broadcast_message(self, msg: bytes, message_conn):
         for conn in self.connections:
             if conn is not message_conn:
-                data = bytearray(
-                    (str(self.connections[message_conn]) + ": ").encode("utf-8")
-                ) + bytearray(msg)
+                data = bytearray((str(self.connections[message_conn]) + ": ").encode("utf-8")) + bytearray(msg)
                 conn.sendall(data)

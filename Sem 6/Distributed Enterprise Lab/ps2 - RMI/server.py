@@ -50,6 +50,6 @@ if __name__ == "__main__":
     f = open(candidates_file)
     candidates = f.read().split("\n")
     f.close()
-    
+
     elector = Elector(candidates)
     Pyro4.Daemon.serveSimple({elector: "elector"}, ns=True)
