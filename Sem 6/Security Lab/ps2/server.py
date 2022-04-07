@@ -3,13 +3,14 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+
 class UserCredentials(BaseModel):
     username: str
     password: str
 
 
 # Mock Database
-db = {"users": { UserCredentials(username="test_user", password="zzzz")}}
+db = {"users": {UserCredentials(username="test_user", password="zzzz")}}
 
 
 @app.post("/login")

@@ -81,7 +81,7 @@ class MonoAlphabeticSubstitutor:
         plain_text = ""
         for char in cipher_text:
             if char.isalpha():
-                plain_text += self.__apply_transform(char)
+                plain_text += self.__reverse_transform(char)
             else:
                 plain_text += char
 
@@ -89,5 +89,9 @@ class MonoAlphabeticSubstitutor:
 
 
 if __name__ == "__main__":
-    x = MonoAlphabeticSubstitutor("CORNELL", SubstituionMode.col_transposition)
-    print(x.encrypt("FAR ABOVE CAYUGA’S WATERS"))
+    plain_text = "FAR ABOVE CAYUGA’S WATERS"
+    key = "CORNELL"
+    cipher = MonoAlphabeticSubstitutor(key, SubstituionMode.col_transposition)
+    cipher_text = cipher.encrypt(plain_text)
+    print(f"Encrypting {plain_text} with key({key}) results in `{cipher_text}`")
+    print(f"Decrypting {cipher_text} with key({key}) results in `{cipher.decrypt(cipher_text)}`")

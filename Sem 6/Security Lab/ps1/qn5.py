@@ -23,7 +23,11 @@ class RandoCipher:
 
 if __name__ == "__main__":
     rc = RandoCipher(88)
-    print(rc.decrypt(":mmZ\dxZmx]Zpgy"))
+    cipher_text = ":mmZ\dxZmx]Zpgy"
+    print(f"Decrypting {cipher_text} with RandoCipher(88) results in `{rc.decrypt(cipher_text)}`")
+
     rc = RandoCipher(10)
-    print(rc.encrypt("Hey"))
-    print(rc.decrypt("Ro$"))
+    plain_text = "Hey"
+    cipher_text = "Ro$"
+    print(f"Encrypting {plain_text} with RandoCipher(10) results in `{rc.encrypt(plain_text)}`")
+    print(f"Decrypting {cipher_text} with RandoCipher(10) results in `{rc.decrypt(cipher_text)}`")

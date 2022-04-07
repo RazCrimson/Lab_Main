@@ -22,8 +22,10 @@ class PermutationCipher:
 
 if __name__ == "__main__":
     pc = PermutationCipher(4)
-    print(pc.encrypt("cryptography"))
-    print(pc.decrypt("ctaropyghpry"))
+    plain_text = "cryptography"
+    cipher_text = pc.encrypt(plain_text)
+    assert plain_text == pc.decrypt(cipher_text)
+    print(f"Encrypting {plain_text} with PermitationCipher(4) results in `{cipher_text}`")
 
     string = "MYAMRARUYIQTENCTORAHROYWDSOYEOUARRGDERNOGW"
     for i in range(2, len(string)):

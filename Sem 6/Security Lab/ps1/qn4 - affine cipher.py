@@ -37,7 +37,8 @@ class AffineCipher:
 
 
 if __name__ == "__main__":
-    ac_1 = AffineCipher(5, 8)
-    print(ac_1.encrypt("ITS COOL"))
-    ac_2 = AffineCipher(5, 8)
-    print(ac_2.decrypt("HPCCXAQ"))
+    ac = AffineCipher(5, 8)
+    plain_text = "ITS COOL"
+    cipher_text = "HPCCXAQ"
+    print(f"Encrypting {plain_text} with AffineCipher(5, 8) results in `{ac.encrypt(plain_text)}`")
+    print(f"Decrypting {cipher_text} with AffineCipher(5, 8) results in `{ac.decrypt(cipher_text)}`")
