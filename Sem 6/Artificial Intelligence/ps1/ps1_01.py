@@ -26,7 +26,7 @@ class Graph:
 
         for neighbour in self.adj_list[node]:
             if neighbour not in visited:
-                path = self.search(neighbour, target, visited)
+                path = self.dfs(neighbour, target, visited)
                 if path:
                     path.insert(0, node)
                     return path
@@ -101,4 +101,5 @@ if __name__ == "__main__":
     g.add_edge(3, 4)
     dfs_path = g.dfs(0, 3)
     bfs_path = g.bfs(0, 3)
-    print(dfs_path, bfs_path)
+    print(dfs_path)
+    print(bfs_path)
