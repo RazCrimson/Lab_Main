@@ -1,6 +1,6 @@
 # Example 1 - Using a separate method
-from abc import ABC, abstractmethod
 import copy
+from abc import ABC, abstractmethod
 
 
 class Prototype(ABC):
