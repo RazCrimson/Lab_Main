@@ -18,7 +18,6 @@ class Graph:
         self.adj_list[end].append(start)
 
     def dfs(self, node, target, path=list(), visited=set()):
-        visited.add(node)
         if node == target:
             return [target]
 

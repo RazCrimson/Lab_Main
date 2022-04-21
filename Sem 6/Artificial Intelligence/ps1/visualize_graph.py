@@ -5,8 +5,8 @@ from matplotlib import pyplot as plt
 
 
 class VisualizeGraph(nx.DiGraph, ABC):
-    def visualize_path(self, path:list):
-        path_edges =list(zip(path, path[1:]))
+    def visualize_path(self, path: list):
+        path_edges = list(zip(path, path[1:]))
 
         # Get position using spring layout
         pos = nx.spring_layout(self)
