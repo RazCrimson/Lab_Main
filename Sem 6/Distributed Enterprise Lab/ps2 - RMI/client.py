@@ -1,7 +1,7 @@
 import sys
+
 import Pyro4
 import Pyro4.util
-
 from interface import ElectorInterface
 
 sys.excepthook = Pyro4.util.excepthook

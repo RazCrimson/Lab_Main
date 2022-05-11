@@ -1,7 +1,7 @@
-from json.decoder import JSONDecodeError
-import socket
-import select
 import json
+import select
+import socket
+from json.decoder import JSONDecodeError
 
 
 class TCPServer:

@@ -1,6 +1,5 @@
-import socket
 import select
-
+import socket
 from threading import Thread
 
 

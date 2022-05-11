@@ -1,7 +1,7 @@
 import json
-import time
-import socket
 import select
+import socket
+import time
 
 
 class TCPClient(object):

@@ -1,7 +1,7 @@
-from typing import Optional, List
-import Pyro4
 import os
+from typing import List, Optional
 
+import Pyro4
 from interface import ElectorInterface
 
 
