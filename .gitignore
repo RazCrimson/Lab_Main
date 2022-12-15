@@ -24,3 +24,7 @@ out/*
 
 # Env
 .env
+
+# Virtual Environments
+venv/
+*/venv/
