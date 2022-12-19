@@ -1,0 +1,7 @@
+pillow
+numpy
+opencv-python
+
+# dev
+black 
+isort
