@@ -101,6 +101,4 @@ if __name__ == "__main__":
     cropped.save(get_output_path(f"image-cropped.{img1.format}"), img1.format)
 
     thresholded_img = threshold(img1, 50, 200)
-    thresholded_img.save(
-        get_output_path(f"image-thresholded.{img1.format}"), img1.format
-    )
+    thresholded_img.save(get_output_path(f"image-thresholded.{img1.format}"), img1.format)

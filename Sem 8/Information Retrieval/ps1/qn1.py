@@ -32,9 +32,7 @@ df.head()
 ### Removing stopwords from the data
 nltk.download("stopwords")
 df["Features"] = df["Features"].apply(
-    lambda text: " ".join(
-        [word for word in text.split() if word not in stopwords.words("english")]
-    )
+    lambda text: " ".join([word for word in text.split() if word not in stopwords.words("english")])
 )
 df.head()
 
@@ -58,14 +56,7 @@ def get_wordnet_pos(word):
 def lemmetizeText(text):
     sentences = []
     for sentence in nltk.sent_tokenize(text):
-        sentences.append(
-            " ".join(
-                [
-                    lemmatizer.lemmatize(w, get_wordnet_pos(w))
-                    for w in nltk.word_tokenize(sentence)
-                ]
-            )
-        )
+        sentences.append(" ".join([lemmatizer.lemmatize(w, get_wordnet_pos(w)) for w in nltk.word_tokenize(sentence)]))
     return "".join(sentences)
 
 
