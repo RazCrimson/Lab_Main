@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 LOG = logging.getLogger()
 
 FILE_PATH = os.path.dirname(__file__)
-IMAGE = os.path.join(FILE_PATH, "images", f"img1.jpg")
+IMAGE = os.path.join(FILE_PATH, "img.jpg")
 OUTPUTS = os.path.join(FILE_PATH, "outputs")
 
 
