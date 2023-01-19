@@ -30,7 +30,8 @@ isPalindrome str = str == reverse str
 
 -- Qn 7
 -- Flatten a list
-
+flatten :: [[a]] -> [a]
+flatten x = foldr (++) [] x
 
 -- Qn 8
 -- Compress a list
@@ -66,5 +67,7 @@ main = do
   print (compress inputList)
   putStr "Packed List : "
   print (pack inputList)
+  putStr "Flattening packed list : "
+  print (flatten (pack inputList))
   putStr "Encoded List : "
   print (encode inputList)
