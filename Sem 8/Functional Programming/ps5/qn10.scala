@@ -1,5 +1,5 @@
 
-def index[A](l: List[A], elem: A): Int = l.indexOf(elem)
+def index[A](l: List[A], elem: A): Int = l.indexWhere(e => e == elem)
 
 
 assert(index(List(1), 2) == -1);
