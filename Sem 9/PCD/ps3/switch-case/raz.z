@@ -1,0 +1,28 @@
+
+a = 5;
+b = 5;
+
+if(a < b) {
+    a = 10;
+} else if (b < a) {
+    a = 0;
+} else {
+    a = -1;
+}
+
+print(a);
+print(b);
+
+while(a < b) {
+    print(a);
+    a = a + 1;
+}
+
+print(a);
+print(b);
+
+switch(b) {
+    case 5: print b; break;
+    default: print a;
+}
+
