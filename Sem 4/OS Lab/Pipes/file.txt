@@ -1,6 +1,0 @@
-hello
-hai testing
-say hai
-next 
-hai bye
-done
