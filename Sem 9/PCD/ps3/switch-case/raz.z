@@ -21,8 +21,15 @@ while(a < b) {
 print(a);
 print(b);
 
-switch(b) {
-    case 5: print b; break;
-    default: print a;
+b = 5;
+while(b > 0) {
+    switch(b) {
+        case 1: print 111;
+        case 2: print 222;
+        case 3: print 333;
+        case 4: print 444;
+        default: print 999;
+    }
+    b = b - 1;
 }
 

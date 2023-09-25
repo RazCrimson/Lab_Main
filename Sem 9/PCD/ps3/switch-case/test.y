@@ -25,7 +25,7 @@
 %token <iValue> CONSTANT
 %token <sIndex> VARIABLE
 
-%token WHILE IF PRINT SWITCH CASE DEFAULT BREAK
+%token WHILE IF PRINT SWITCH CASE DEFAULT
 
 %nonassoc IFX
 %nonassoc ELSE
@@ -79,26 +79,16 @@ conditional:
     ;
 
 switch:
-    SWITCH '(' expr ')' switch_stmt { $$ = addOperation(SWITCH, 2, $3, $5); }
+    SWITCH '(' expr ')' '{' switch_stmt_list '}' { $$ = addOperation(SWITCH, 2, $3, $6); }
 
 switch_stmt:
-    ';' { $$ = addOperation(';', 2, NULL, NULL); }
-    | expr ';' { $$ = $1; }
-    | PRINT expr ';' { $$ = addOperation(PRINT, 1, $2); }
-    | VARIABLE '=' expr ';' { $$ = addOperation('=', 2, addIdentifier($1), $3); }
-    | '{' switch_stmt_list '}' { $$ = $2; }
-    | '{' '}' { $$ = NULL; }
-    | loop
-    | conditional
-    | switch
-    | DEFAULT ':' { $$ = addOperation(DEFAULT, 0); }
-    | CASE CONSTANT ':' { $$ = addOperation(CASE, 1, addConstant($2)); }
-    | BREAK ';' { $$ = addOperation(BREAK, 0); }
+    DEFAULT ':' stmt { $$ = addOperation(DEFAULT, 1, $3); }
+    | CASE expr ':' stmt { $$ = addOperation(CASE, 2, $2, $4); }
     ;
 
 switch_stmt_list:
     switch_stmt { $$ = $1; }
-    | switch_stmt_list switch_stmt { $$ = addOperation(';', 2, $1, $2); }
+    | switch_stmt_list switch_stmt { $$ = addOperation(':', 2, $1, $2); }
     ;
 
 
@@ -191,7 +181,6 @@ int main(void)
     return 0;
 }
 
-
 int exec(nodeType *p)
 {
     if (!p)
@@ -252,9 +241,65 @@ int exec(nodeType *p)
             return exec(p->opr.op[0]) || exec(p->opr.op[1]);
         case AND:
             return exec(p->opr.op[0]) && exec(p->opr.op[1]);
+
+        case SWITCH: {
+            int targetVal = exec(p->opr.op[0]);
+            nodeType* evalNode = p->opr.op[1];
+            nodeType* defaultNode = NULL;
+
+            while(evalNode->opr.oper == ':') {
+                nodeType* currentNode = evalNode->opr.op[1];
+
+                switch(currentNode->opr.oper) {
+                    case CASE:
+                        if(targetVal == exec(currentNode->opr.op[0])) {
+                            exec(currentNode->opr.op[1]);
+                            return 0;
+                        }
+                        break;
+                    
+                    case DEFAULT:
+                        defaultNode = currentNode;
+                }
+
+                evalNode = evalNode->opr.op[0];
+            }
+
+            switch(evalNode->opr.oper) {
+                case CASE:
+                    if(targetVal == exec(evalNode->opr.op[0])) {
+                        exec(evalNode->opr.op[1]);
+                        return 0;
+                    }
+                    break;
+                
+                case DEFAULT:
+                    defaultNode = evalNode;
+            }
+
+
+            if(defaultNode != NULL) {
+                exec(defaultNode->opr.op[0]);
+                return 0;
+            }
+            
+
+        }
         default:
+            printf("unknown\n");
             return 0;
         }
     }
     return 0;
 }
+
+void printNode(nodeType* node) {
+    if(node->type == 0)
+        printf("(Node:Constant=%d)", node->con.value);
+    else if(node->type == 1)
+        printf("(Node:Identifier=%c)", node->id.i);
+    else
+        printf("(Node:Oper=%d, OpCount=%d)", node->opr.oper, node->opr.nops);
+    return;
+}
+

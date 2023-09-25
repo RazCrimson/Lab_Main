@@ -1,6 +1,5 @@
 %{
     #include <stdio.h>
-    #include <stdlib.h>
     #include <stdarg.h>
     #include "nodeTypes.h"
 
@@ -42,20 +41,16 @@
 
 %type <nodePtr> stmt expr stmt_list loop conditional
 
-%% program:
-    function { exit(0); }
-    ;
-
-function:
-    function stmt { exec($2); freeNode($2); }
+%% 
+program:
+    program stmt { exec($2); freeNode($2); }
     |
     ;   
 
 stmt:
     ';' { $$ = addOperation(';', 2, NULL, NULL); }
-    | expr ';' { $$ = $1; }
+    | expr ';'
     | PRINT expr ';' { $$ = addOperation(PRINT, 1, $2); }
-    | VARIABLE '=' expr ';' { $$ = addOperation('=', 2, addIdentifier($1), $3); }
     | '{' stmt_list '}' { $$ = $2; }
     | loop
     | conditional
@@ -71,13 +66,14 @@ conditional:
     ;
 
 stmt_list:
-    stmt { $$ = $1; }
+    stmt
     | stmt_list stmt { $$ = addOperation(';', 2, $1, $2); }
     ;
 
 expr:
     CONSTANT { $$ = addConstant($1); }
     | VARIABLE { $$ = addIdentifier($1); }
+    | VARIABLE '=' expr { $$ = addOperation('=', 2, addIdentifier($1), $3); }
     | '!' expr { $$ = addOperation('!', 1, $2); }
     | '-' expr %prec UMINUS { $$ = addOperation(UMINUS, 1, $2); }
     | expr '+' expr { $$ = addOperation('+', 2, $1, $3); }

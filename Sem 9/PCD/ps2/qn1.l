@@ -10,7 +10,7 @@ lines = 0;
 words = 0;
 
 %}
-  
+
 %%
 [a-zA-Z]+       {words++; alpha += yyleng;}
 [0-9]           {digits++;} 

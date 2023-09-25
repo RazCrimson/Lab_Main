@@ -1,0 +1,16 @@
+
+select a from b;
+
+select a from b where a = 3;
+
+select a, b from c as e where b <= a;
+
+select * from b where c <> a;
+
+select b from c group by a;
+
+select b from c group by a, b;
+
+select b from c group by a, b limit 10 offset 20;
+
+select b from c where (select a from d limit 1) = 2;

@@ -1,0 +1,37 @@
+class A: public C {};
+
+class A {
+    int a;
+};
+
+class A {
+    int a = 10;
+    int print();
+};
+
+class A {
+    int a = 10;
+    int* alloc(int size) {}
+};
+
+class A {
+    private:
+    int a = 10;
+    int* alloc(int size) {}
+    int* realloc(void* test, int size) {}
+};
+
+class Student : public Person, A, protected A {
+    private:
+        int marks;
+        char* name;
+    public:
+        void get_grade();
+        int get_marks();
+        void set_marks(int mark);
+        void random_pointer(int* ptr);
+        int* return_pointer();
+        int sum(int a, int b);
+        int* sum(int* a, int* b);
+        void* myVoidPointerFunction();
+};
